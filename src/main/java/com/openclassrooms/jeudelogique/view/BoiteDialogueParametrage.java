@@ -18,14 +18,14 @@ import javax.swing.JRadioButton;
 public class BoiteDialogueParametrage extends JDialog {
 
 	private static final long serialVersionUID = -3838016887347550142L;
-	
+
 	private JRadioButton recherche = new JRadioButton("Recheche +/-");
 	private JRadioButton mastermind = new JRadioButton("MasterMind");
 	private JComboBox<String> modeComboBox = new JComboBox<>();
 	private JLabel modeLabel = new JLabel("Mode");
 	private JButton confirmButton = new JButton("Confirmer");
 	private JButton cancelButton = new JButton("Quitter");
-	
+
 	public BoiteDialogueParametrage(JFrame owner, String title, boolean modal) {
 		super(owner, title, modal);
 		setSize(500, 470);
@@ -34,13 +34,13 @@ public class BoiteDialogueParametrage extends JDialog {
 		initDialog();
 		setVisible(true);
 	}
-	
+
 	private void initDialog() {
 		JPanel panIcone = new JPanel();
 		panIcone.setBackground(Color.WHITE);
 		JLabel icone = new JLabel(new ImageIcon(getClass().getResource("/mastermind3.gif")));
 		panIcone.add(icone);
-		
+
 		JPanel panGame = new JPanel();
 		panGame.setBackground(Color.WHITE);
 		panGame.setPreferredSize(new Dimension(250, 120));
@@ -51,7 +51,7 @@ public class BoiteDialogueParametrage extends JDialog {
 		bg.add(mastermind);
 		panGame.add(recherche);
 		panGame.add(mastermind);
-		
+
 		JPanel panMode = new JPanel();
 		panMode.setBackground(Color.WHITE);
 		panMode.setPreferredSize(new Dimension(250, 120));
@@ -61,21 +61,42 @@ public class BoiteDialogueParametrage extends JDialog {
 		modeComboBox.addItem("DEFENSEUR");
 		panMode.add(modeLabel);
 		panMode.add(modeComboBox);
-		
+
 		JPanel south = new JPanel();
 		south.setBackground(Color.WHITE);
 		south.add(confirmButton);
 		south.add(cancelButton);
-		
+
+		cancelButton.addActionListener((e) -> BoiteDialogueParametrage.this.dispose());
+		confirmButton.addActionListener((e) -> {
+			if (recherche.isSelected()) {
+				if (((String) modeComboBox.getSelectedItem()).equals("CHALLENGER")) {
+
+				} else if (((String) modeComboBox.getSelectedItem()).equals("DUEL")) {
+
+				} else if (((String) modeComboBox.getSelectedItem()).equals("DEFENSEUR")) {
+
+				}
+			} else if (mastermind.isSelected()) {
+				if (((String) modeComboBox.getSelectedItem()).equals("CHALLENGER")) {
+
+				} else if (((String) modeComboBox.getSelectedItem()).equals("DUEL")) {
+
+				} else if (((String) modeComboBox.getSelectedItem()).equals("DEFENSEUR")) {
+
+				}
+			}
+		});
+
 		JPanel content = new JPanel();
 		content.setBackground(Color.WHITE);
 		content.add(panGame);
 		content.add(panMode);
-		
+
 		add(panIcone, BorderLayout.WEST);
 		add(content, BorderLayout.CENTER);
 		add(south, BorderLayout.SOUTH);
-		
+
 	}
 
 }
