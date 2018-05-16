@@ -3,12 +3,14 @@ package com.openclassrooms.jeudelogique.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 
 public class Fenetre extends JFrame {
 
@@ -41,10 +43,17 @@ public class Fenetre extends JFrame {
 	}
 
 	private void initMenu() {
+		nouveau.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK));
+		quitter.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_DOWN_MASK));
+		
 		fichier.add(nouveau);
 		fichier.addSeparator();
 		fichier.add(quitter);
+		fichier.setMnemonic('F');
+		
 		APropos.add(regles);
+		APropos.setMnemonic('O');
+		
 		menubar.add(fichier);
 		menubar.add(APropos);
 		setJMenuBar(menubar);
@@ -57,7 +66,14 @@ public class Fenetre extends JFrame {
 		});
 
 		nouveau.addActionListener((e) -> {
-			new BoiteDialogueParametrage(null, "Sélectionner le jeu et le mode", false);
+			BoiteDialogueParametrage boite = new BoiteDialogueParametrage(null, "Sélectionner le jeu et le mode", true);
+			if ((!boite.getzInfo().getGame().equals("")) && (!boite.getzInfo().getMode().equals(""))) {
+				if (boite.getzInfo().getGame().equals("Recherche +/-") && boite.getzInfo().getMode().equals("CHALLENGER")) {
+					conteneur.removeAll();
+					conteneur.add(new SearchChallengerPanel(size).getPanel(), BorderLayout.CENTER);
+					conteneur.revalidate();
+				}
+			}
 		});
 	}
 
