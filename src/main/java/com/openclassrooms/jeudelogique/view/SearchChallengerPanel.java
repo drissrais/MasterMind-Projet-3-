@@ -2,14 +2,17 @@ package com.openclassrooms.jeudelogique.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.text.ParseException;
 
+import javax.swing.BorderFactory;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-
-import java.awt.Component;
+import javax.swing.text.MaskFormatter;
 
 public class SearchChallengerPanel extends ZContainer {
 
@@ -38,34 +41,48 @@ public class SearchChallengerPanel extends ZContainer {
 
 		JTextArea texte = new JTextArea(
 				"Saurez-vous trouver la combinaison cachée en moins de 10 coups?\n(Chiffres compris entre 0 et 9 avec répétitions possibles)\n+ : Chiffre plus grand\t - : Chiffre plus petit\t= : Bon chiffre");
-		texte.setPreferredSize(new Dimension(700, 150));
+		texte.setPreferredSize(new Dimension(700, 75));
 		texte.setFont(arial);
-		centerContent.add(texte, BorderLayout.NORTH);
+		centerContent.add(texte);
 		
 		JLabel propositionLabel = new JLabel("Entrez les 4 chiffres de votre proposition :");
 		propositionLabel.setHorizontalAlignment(JLabel.LEFT);
-		propositionLabel.setPreferredSize(new Dimension(300, 100));
+		propositionLabel.setPreferredSize(new Dimension(300, 40));
 		propositionLabel.setFont(arial);
-		centerContent.add(propositionLabel, BorderLayout.EAST);
+		centerContent.add(propositionLabel);
 		
-		JTextField propositionTextField = new JTextField();
+		JFormattedTextField propositionTextField = new JFormattedTextField();
+		try {
+			MaskFormatter maskFormatter = new MaskFormatter("# # # #");
+			propositionTextField = new JFormattedTextField(maskFormatter);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		propositionTextField.setPreferredSize(new Dimension(200, 30));
 		propositionTextField.setHorizontalAlignment(JTextField.CENTER);
-		centerContent.add(propositionTextField, BorderLayout.WEST);
+		propositionTextField.setForeground(Color.BLUE);
+		propositionTextField.setFont(arial);
+		centerContent.add(propositionTextField);
 		JTextField response = new JTextField();
-		response.setPreferredSize(new Dimension(400, 30));
+		response.setEditable(false);
+		response.setPreferredSize(new Dimension(200, 30));
 		response.setHorizontalAlignment(JTextField.CENTER);
-		response.setAlignmentX(Component.CENTER_ALIGNMENT);
-		centerContent.add(response, BorderLayout.SOUTH);
+		centerContent.add(response);
+		JTextArea story = new JTextArea();
+		story.setEditable(false);
+		story.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+		story.setPreferredSize(new Dimension(250, 250));
+		story.setAlignmentX(Component.CENTER_ALIGNMENT);
+		centerContent.add(story);
 
 		JPanel southContent = new JPanel();
 		southContent.setBackground(Color.WHITE);
 		southContent.setPreferredSize(dim);
-		JLabel nombreCoup = new JLabel("Nombre de coups restants : 10");
-		nombreCoup.setPreferredSize(new Dimension(700, 20));
-		nombreCoup.setHorizontalAlignment(JLabel.CENTER);
-		nombreCoup.setFont(arial);
-		southContent.add(nombreCoup);
+		JLabel nombreCoupLabel = new JLabel("Nombre de coups restants : 10");
+		nombreCoupLabel.setPreferredSize(new Dimension(800, 20));
+		nombreCoupLabel.setHorizontalAlignment(JLabel.CENTER);
+		nombreCoupLabel.setFont(arial);
+		southContent.add(nombreCoupLabel);
 		
 		this.panel.add(northContent, BorderLayout.NORTH);
 		this.panel.add(centerContent, BorderLayout.CENTER);
