@@ -17,9 +17,7 @@ public class Controler {
 	}
 	
 	public void control() {
-		if (this.proposition.matches("^[0-9][0-9][0-9][0-9]$")) {
-			this.model.setProposition(this.proposition);
-		}
+		this.model.setProposition(this.proposition);
 	}
 
 }
