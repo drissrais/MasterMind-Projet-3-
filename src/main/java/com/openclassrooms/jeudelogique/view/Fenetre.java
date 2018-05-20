@@ -18,13 +18,14 @@ import javax.swing.JPanel;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 
+import com.openclassrooms.jeudelogique.model.Model;
 import com.openclassrooms.jeudelogique.observer.Observable;
 import com.openclassrooms.jeudelogique.observer.Observer;
 
 public class Fenetre extends JFrame implements Observer {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	private JMenuBar menubar = new JMenuBar();
 	private JMenu fichier = new JMenu("Fichier");
 	private JMenu APropos = new JMenu("À Propos");
@@ -129,7 +130,7 @@ public class Fenetre extends JFrame implements Observer {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			BoiteDialogueParametrage boite = new BoiteDialogueParametrage(null, "Sélectionner le jeu et le mode", true);
+			BoiteDialogueParametrage boite = new BoiteDialogueParametrage(null, "Nouveau Jeu", true);
 			if ((!boite.getzInfo().getGame().equals("")) && (!boite.getzInfo().getMode().equals(""))) {
 				if (boite.getzInfo().getGame().equals("Recherche +/-") && boite.getzInfo().getMode().equals("CHALLENGER")) {
 					conteneur.removeAll();
@@ -137,10 +138,24 @@ public class Fenetre extends JFrame implements Observer {
 					model.addObserver(scp);
 					conteneur.add(scp.getPanel(), BorderLayout.CENTER);
 					conteneur.revalidate();
+					initModel();
+				}
+				if (boite.getzInfo().getGame().equals("MasterMind") && boite.getzInfo().getMode().equals("CHALLENGER")) {
+					conteneur.removeAll();
+					MasterMindChallengerPanel mcp = new MasterMindChallengerPanel(size, model);
+					model.addObserver(mcp);
+					conteneur.add(mcp.getPanel(), BorderLayout.CENTER);
+					conteneur.revalidate();
+					initModel();
 				}
 			}
 		}
 		
+	}
+	
+	private void initModel(){
+		this.model = new Model();
+		this.model.addObserver(this);
 	}
 
 }

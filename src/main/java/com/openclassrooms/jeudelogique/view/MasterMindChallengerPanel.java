@@ -20,17 +20,17 @@ import com.openclassrooms.jeudelogique.controler.Controler;
 import com.openclassrooms.jeudelogique.observer.Observable;
 import com.openclassrooms.jeudelogique.observer.Observer;
 
-public class SearchChallengerPanel extends ZContainer implements Observer {
-	private String gameName = "Recherche +/-";
-	private String gameMode = "Challenger";
-
+public class MasterMindChallengerPanel extends ZContainer implements Observer {
 	private JLabel propositionLabel;
 	private JFormattedTextField propositionTextField;
 	private JTextArea storyTextArea;
 	private JLabel nombreCoupLabel;
 	private Controler controler;
-
-	public SearchChallengerPanel(Dimension dim, Observable mod) {
+	
+	private String gameName = "MasterMind";
+	private String gameMode = "Challenger";
+	
+	public MasterMindChallengerPanel(Dimension dim, Observable mod) {
 		super(dim);
 		this.controler = new Controler(mod);
 		initPanel();
@@ -39,38 +39,38 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 	@Override
 	protected void initPanel() {
 		Dimension dim = new Dimension(800, 50);
-		this.panel.setBackground(Color.YELLOW);
+		this.panel.setBackground(Color.CYAN);
 
 		JPanel northContent = new JPanel();
-		northContent.setBackground(Color.YELLOW);
+		northContent.setBackground(Color.CYAN);
 		northContent.setPreferredSize(dim);
-		JLabel welcomeMessage = new JLabel(
-				"Bienvenue dans le jeu de " + this.gameName + " en mode " + this.gameMode + "".toUpperCase());
+		JLabel welcomeMessage = new JLabel("Bienvenue dans le jeu de mastermind en mode challenger".toUpperCase());
 		welcomeMessage.setPreferredSize(new Dimension(800, 50));
 		welcomeMessage.setHorizontalAlignment(JLabel.CENTER);
-		welcomeMessage.setFont(comics25);
+		welcomeMessage.setFont(comics20);
 		welcomeMessage.setForeground(Color.GRAY);
+		welcomeMessage.setFocusable(false);
 		northContent.add(welcomeMessage);
 
 		JPanel centerContent = new JPanel();
 		centerContent.setPreferredSize(new Dimension(800, 400));
-		centerContent.setBackground(Color.YELLOW);
+		centerContent.setBackground(Color.CYAN);
 
 		JTextArea texte = new JTextArea(
-				"Saurez-vous trouver la combinaison cachée en moins de 10 coups?\n(Chiffres compris entre 0 et 9 avec répétitions possibles)\n+ : Chiffre plus grand\t - : Chiffre plus petit\t= : Bon chiffre");
+				"Saurez-vous trouver la combinaison cachée en moins de 10 coups?\n(Chiffres compris entre 0 et 9 avec répétitions possibles)\nO : Chiffre mal placé ; # : Chiffre bien placé");
 		texte.setEditable(false);
 		texte.setFocusable(false);
-		texte.setBackground(Color.YELLOW);
 		texte.setPreferredSize(new Dimension(700, 75));
+		texte.setBackground(Color.CYAN);
 		texte.setFont(arial);
 		centerContent.add(texte);
-
+		
 		propositionLabel = new JLabel("Entrez les 4 chiffres de votre proposition :");
 		propositionLabel.setHorizontalAlignment(JLabel.LEFT);
 		propositionLabel.setPreferredSize(new Dimension(300, 40));
 		propositionLabel.setFont(arial);
 		centerContent.add(propositionLabel);
-
+		
 		propositionTextField = new JFormattedTextField();
 		try {
 			MaskFormatter maskFormatter = new MaskFormatter("####");
@@ -82,39 +82,38 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 		propositionTextField.setHorizontalAlignment(JTextField.CENTER);
 		propositionTextField.setForeground(Color.BLUE);
 		propositionTextField.setFont(arial);
-		propositionTextField.setRequestFocusEnabled(true);
 		centerContent.add(propositionTextField);
-
+		
 		storyTextArea = new JTextArea();
 		storyTextArea.setEditable(false);
 		storyTextArea.setFocusable(false);
 		storyTextArea.setFont(arial);
-		storyTextArea.setBackground(Color.YELLOW);
 		storyTextArea.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		storyTextArea.setPreferredSize(new Dimension(250, 250));
 		storyTextArea.setAlignmentX(Component.CENTER_ALIGNMENT);
+		storyTextArea.setBackground(Color.CYAN);
 		centerContent.add(storyTextArea);
 
 		JPanel southContent = new JPanel();
-		southContent.setBackground(Color.YELLOW);
+		southContent.setBackground(Color.CYAN);
 		southContent.setPreferredSize(dim);
 		nombreCoupLabel = new JLabel("Nombre de coups restants : 10");
 		nombreCoupLabel.setPreferredSize(new Dimension(800, 20));
 		nombreCoupLabel.setHorizontalAlignment(JLabel.CENTER);
 		nombreCoupLabel.setFont(arial);
 		southContent.add(nombreCoupLabel);
-
+		
 		this.panel.add(northContent, BorderLayout.NORTH);
 		this.panel.add(centerContent, BorderLayout.CENTER);
 		this.panel.add(southContent, BorderLayout.SOUTH);
-
+		
 		propositionTextField.addActionListener(new ActionListener() {
-
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controler.setGameName(SearchChallengerPanel.this.gameName);
-				controler.setGameMode(SearchChallengerPanel.this.gameMode);
-				controler.setProposition(((JTextField) e.getSource()).getText());
+				controler.setGameName(MasterMindChallengerPanel.this.gameName);
+				controler.setGameMode(MasterMindChallengerPanel.this.gameMode);
+				controler.setProposition(((JTextField)e.getSource()).getText());
 				propositionTextField.setText("");
 			}
 		});
