@@ -1,6 +1,7 @@
 package com.openclassrooms.jeudelogique.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JTextArea;
@@ -25,6 +26,7 @@ public class RulesPanel extends ZContainer {
 				+ "Proposition : 6274 -> Réponse : 2 bien placés\r\n" + "\r\n";
 		JTextArea instructions = new JTextArea(message);
 		instructions.setFont(arial);
+		instructions.setBackground(Color.decode("#eeeeee"));
 		instructions.setEditable(false);
 		this.panel.add(instructions, BorderLayout.CENTER);
 		

@@ -1,6 +1,5 @@
 package com.openclassrooms.jeudelogique.view;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
@@ -13,11 +12,11 @@ public abstract class ZContainer {
 	protected Font comics25 = new Font("Comics Sans MS", Font.BOLD, 25);
 	protected Font comics20 = new Font("Comics Sans MS", Font.BOLD, 20);
 	protected Font arial = new Font("Arial", Font.BOLD, 15);
-	protected Font dialog = new Font("Dialog", Font.BOLD + Font.ITALIC, 15);
+	protected Font arial20 = new Font("Arial", Font.BOLD, 20);
 	
 	public ZContainer(Dimension dim) {
 		this.panel = new JPanel();
-		this.panel.setBackground(Color.WHITE);
+//		this.panel.setBackground(Color.WHITE);
 		this.panel.setPreferredSize(dim);
 	}
 	

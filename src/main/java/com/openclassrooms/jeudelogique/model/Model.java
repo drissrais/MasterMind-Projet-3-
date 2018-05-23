@@ -72,7 +72,6 @@ public class Model implements Observable {
 			case "Rejouer":
 				solution = RandomCombination.generateRandomCombination(nbCases);
 				nbCoups = 0;
-				nbCases = 4;
 				this.restartObserver();
 				break;
 			case "Revenir au menu":
@@ -99,7 +98,6 @@ public class Model implements Observable {
 			case "Rejouer":
 				solution = RandomCombination.generateRandomCombination(nbCases);
 				nbCoups = 0;
-				nbCases = 4;
 				this.restartObserver();
 				break;
 			case "Revenir au menu":
@@ -171,6 +169,9 @@ public class Model implements Observable {
 	}
 
 	public void mastermindShowResult() {
+		for (int i : solution) {
+			System.out.println(i);
+		}
 		this.nbCoups++;
 		boolean isAllEqual = Arrays.stream(this.mastermindCompare()).allMatch(e -> e.equals("#"));
 		if (isAllEqual && this.mastermindCompare().length == this.nbCases && nbCoups < 10) {
@@ -187,7 +188,6 @@ public class Model implements Observable {
 			case "Rejouer":
 				solution = RandomCombination.generateRandomCombination(nbCases);
 				nbCoups = 0;
-				nbCases = 4;
 				this.restartObserver();
 				break;
 			case "Revenir au menu":
@@ -205,6 +205,7 @@ public class Model implements Observable {
 			this.notifyObserver();
 		}
 		if (this.nbCoups >= 10) {
+			this.notifyObserver();
 			JOptionPane.showMessageDialog(null,
 					"Désolé, vous avez perdu!\n" + "La bonne combinaison était "
 							+ FromIntArrayToString.convert(solution) + "\nRetentez votre chance !",
@@ -216,7 +217,6 @@ public class Model implements Observable {
 			case "Rejouer":
 				solution = RandomCombination.generateRandomCombination(nbCases);
 				nbCoups = 0;
-				nbCases = 4;
 				this.restartObserver();
 				break;
 			case "Revenir au menu":
@@ -231,6 +231,12 @@ public class Model implements Observable {
 		}
 	}
 
+	public void reset(){
+		this.solution = RandomCombination.generateRandomCombination(nbCases);
+		this.nbCoups = 0;
+		this.proposition.equals("");
+	}
+	
 	@Override
 	public void addObserver(Observer o) {
 		this.listObserver.add(o);
@@ -251,7 +257,7 @@ public class Model implements Observable {
 		}
 		if (this.gameName.equals("MasterMind") && this.gameMode.equals("Challenger")) {
 			for (Observer obs : listObserver) {
-				obs.update(this.nbCases, this.proposition + " : " + FromStringArrayToString.convert(this.mastermindCompare()),
+				obs.update(this.nbCases, this.proposition + " : " + FromStringArrayToString.convert(this.mastermindCompare()) + "\n",
 						10 - this.getNombreCoups());
 			}
 		}

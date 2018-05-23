@@ -26,10 +26,10 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 	private JTextArea storyTextArea;
 	private JLabel nombreCoupLabel;
 	private Controler controler;
-	
+
 	private String gameName = "MasterMind";
 	private String gameMode = "Challenger";
-	
+
 	public MasterMindChallengerPanel(Dimension dim, Observable mod) {
 		super(dim);
 		this.controler = new Controler(mod);
@@ -39,38 +39,35 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 	@Override
 	protected void initPanel() {
 		Dimension dim = new Dimension(800, 50);
-		this.panel.setBackground(Color.CYAN);
 
 		JPanel northContent = new JPanel();
-		northContent.setBackground(Color.CYAN);
 		northContent.setPreferredSize(dim);
-		JLabel welcomeMessage = new JLabel("Bienvenue dans le jeu de mastermind en mode challenger".toUpperCase());
+		JLabel welcomeMessage = new JLabel("mastermind | challenger mode".toUpperCase());
 		welcomeMessage.setPreferredSize(new Dimension(800, 50));
 		welcomeMessage.setHorizontalAlignment(JLabel.CENTER);
-		welcomeMessage.setFont(comics20);
-		welcomeMessage.setForeground(Color.GRAY);
+		welcomeMessage.setFont(comics30);
+		welcomeMessage.setForeground(Color.decode("#ee5100"));
 		welcomeMessage.setFocusable(false);
 		northContent.add(welcomeMessage);
 
 		JPanel centerContent = new JPanel();
 		centerContent.setPreferredSize(new Dimension(800, 400));
-		centerContent.setBackground(Color.CYAN);
 
 		JTextArea texte = new JTextArea(
 				"Saurez-vous trouver la combinaison cachée en moins de 10 coups?\n(Chiffres compris entre 0 et 9 avec répétitions possibles)\nO : Chiffre mal placé ; # : Chiffre bien placé");
 		texte.setEditable(false);
 		texte.setFocusable(false);
 		texte.setPreferredSize(new Dimension(700, 75));
-		texte.setBackground(Color.CYAN);
+		texte.setBackground(Color.decode("#eeeeee"));
 		texte.setFont(arial);
 		centerContent.add(texte);
-		
+
 		propositionLabel = new JLabel("Entrez les 4 chiffres de votre proposition :");
 		propositionLabel.setHorizontalAlignment(JLabel.LEFT);
 		propositionLabel.setPreferredSize(new Dimension(300, 40));
 		propositionLabel.setFont(arial);
 		centerContent.add(propositionLabel);
-		
+
 		propositionTextField = new JFormattedTextField();
 		try {
 			MaskFormatter maskFormatter = new MaskFormatter("####");
@@ -83,7 +80,7 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 		propositionTextField.setForeground(Color.BLUE);
 		propositionTextField.setFont(arial);
 		centerContent.add(propositionTextField);
-		
+
 		storyTextArea = new JTextArea();
 		storyTextArea.setEditable(false);
 		storyTextArea.setFocusable(false);
@@ -91,38 +88,36 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 		storyTextArea.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		storyTextArea.setPreferredSize(new Dimension(250, 250));
 		storyTextArea.setAlignmentX(Component.CENTER_ALIGNMENT);
-		storyTextArea.setBackground(Color.CYAN);
 		centerContent.add(storyTextArea);
 
 		JPanel southContent = new JPanel();
-		southContent.setBackground(Color.CYAN);
 		southContent.setPreferredSize(dim);
 		nombreCoupLabel = new JLabel("Nombre de coups restants : 10");
 		nombreCoupLabel.setPreferredSize(new Dimension(800, 20));
 		nombreCoupLabel.setHorizontalAlignment(JLabel.CENTER);
 		nombreCoupLabel.setFont(arial);
 		southContent.add(nombreCoupLabel);
-		
+
 		this.panel.add(northContent, BorderLayout.NORTH);
 		this.panel.add(centerContent, BorderLayout.CENTER);
 		this.panel.add(southContent, BorderLayout.SOUTH);
-		
+
 		propositionTextField.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controler.setGameName(MasterMindChallengerPanel.this.gameName);
 				controler.setGameMode(MasterMindChallengerPanel.this.gameMode);
-				controler.setProposition(((JTextField)e.getSource()).getText());
-				propositionTextField.setText("");
+				controler.setProposition(((JTextField) e.getSource()).getText());
 			}
 		});
 	}
 
 	@Override
 	public void update(int nbCases, String story, int nbCoups) {
+		this.propositionTextField.setText("");
 		this.propositionLabel.setText("Entrez les " + nbCases + " chiffres de votre proposition :");
-		this.storyTextArea.append(story + "\n");
+		this.storyTextArea.append(story);
 		this.nombreCoupLabel.setText("Nombre de coups restants : " + nbCoups);
 	}
 
@@ -133,6 +128,7 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 	}
 
 	@Override
-	public void accueil() {}
+	public void accueil() {
+	}
 
 }

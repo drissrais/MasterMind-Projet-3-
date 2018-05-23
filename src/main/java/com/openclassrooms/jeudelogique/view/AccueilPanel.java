@@ -1,6 +1,7 @@
 package com.openclassrooms.jeudelogique.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
@@ -16,8 +17,9 @@ public class AccueilPanel extends ZContainer {
 
 	@Override
 	protected void initPanel() {
-		JLabel welcomeMessage = new JLabel("Bienvenue dans le jeu de logique");
+		JLabel welcomeMessage = new JLabel("Bienvenue dans MindGames");
 		welcomeMessage.setFont(comics30);
+		welcomeMessage.setForeground(Color.decode("#ee5100"));
 		this.panel.add(welcomeMessage, BorderLayout.NORTH);
 		
 		JLabel icone = new JLabel(new ImageIcon(getClass().getResource("/master.jpg")));

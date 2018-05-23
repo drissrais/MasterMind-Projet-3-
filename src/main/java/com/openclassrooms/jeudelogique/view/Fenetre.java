@@ -1,7 +1,6 @@
 package com.openclassrooms.jeudelogique.view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,10 +33,14 @@ public class Fenetre extends JFrame implements Observer {
 	private JMenuItem regles = new JMenuItem("Règles du jeu");
 	
 	private JToolBar toolbar = new JToolBar(JToolBar.HORIZONTAL);
-	private JButton newGameButton = new JButton(new ImageIcon(getClass().getResource("/new.png")));
-	private JButton exitButton = new JButton(new ImageIcon(getClass().getResource("/quit.png")));
+	private JButton newGameButton = new JButton(new ImageIcon(getClass().getResource("/newGame.png")));
+	private JButton exitButton = new JButton(new ImageIcon(getClass().getResource("/quitGame.png")));
 	
-	private JPanel conteneur = new JPanel(new BorderLayout());
+	BorderLayout layout = new BorderLayout();
+	private JPanel conteneur = new JPanel();
+	private JPanel contentPane = new JPanel(layout);
+	private JPanel toolbarConteneur = new JPanel(new BorderLayout());
+	
 	private Dimension size;
 	private Observable model;
 
@@ -48,25 +51,28 @@ public class Fenetre extends JFrame implements Observer {
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		size = new Dimension(this.getWidth(), this.getHeight());
+		size = new Dimension(this.getWidth(), this.getHeight() - 35);
 		
 		this.model = obs;
 		this.model.addObserver(this);
 		
 		initMenu();
 		initToolBar();
-		conteneur.setBackground(Color.WHITE);
-		conteneur.add(toolbar, BorderLayout.PAGE_START);
+		
 		conteneur.add(new AccueilPanel(this.size).getPanel(), BorderLayout.CENTER);
-		setContentPane(conteneur);
+		
+		contentPane.add(toolbarConteneur, BorderLayout.NORTH);
+		contentPane.add(conteneur, BorderLayout.CENTER);
+		setContentPane(contentPane);
 		
 	}
 	
 	private void initToolBar() {
+		toolbarConteneur.setPreferredSize(new Dimension(900, 28));
 		toolbar.setBorder(BorderFactory.createEmptyBorder());
-		toolbar.setBackground(Color.WHITE);
 		toolbar.add(newGameButton);
 		toolbar.add(exitButton);
+		toolbarConteneur.add(toolbar, BorderLayout.PAGE_START);
 		newGameButton.addActionListener(new newGameListener());
 		exitButton.addActionListener((e) -> System.exit(1));
 	}

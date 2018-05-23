@@ -39,28 +39,25 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 	@Override
 	protected void initPanel() {
 		Dimension dim = new Dimension(800, 50);
-		this.panel.setBackground(Color.YELLOW);
 
 		JPanel northContent = new JPanel();
-		northContent.setBackground(Color.YELLOW);
 		northContent.setPreferredSize(dim);
 		JLabel welcomeMessage = new JLabel(
-				"Bienvenue dans le jeu de " + this.gameName + " en mode " + this.gameMode + "".toUpperCase());
+				"recherche +/- | challenger mode".toUpperCase());
 		welcomeMessage.setPreferredSize(new Dimension(800, 50));
 		welcomeMessage.setHorizontalAlignment(JLabel.CENTER);
-		welcomeMessage.setFont(comics25);
-		welcomeMessage.setForeground(Color.GRAY);
+		welcomeMessage.setFont(comics30);
+		welcomeMessage.setForeground(Color.decode("#ee5100"));
 		northContent.add(welcomeMessage);
 
 		JPanel centerContent = new JPanel();
 		centerContent.setPreferredSize(new Dimension(800, 400));
-		centerContent.setBackground(Color.YELLOW);
 
 		JTextArea texte = new JTextArea(
 				"Saurez-vous trouver la combinaison cachée en moins de 10 coups?\n(Chiffres compris entre 0 et 9 avec répétitions possibles)\n+ : Chiffre plus grand\t - : Chiffre plus petit\t= : Bon chiffre");
 		texte.setEditable(false);
 		texte.setFocusable(false);
-		texte.setBackground(Color.YELLOW);
+		texte.setBackground(Color.decode("#eeeeee"));
 		texte.setPreferredSize(new Dimension(700, 75));
 		texte.setFont(arial);
 		centerContent.add(texte);
@@ -89,14 +86,12 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 		storyTextArea.setEditable(false);
 		storyTextArea.setFocusable(false);
 		storyTextArea.setFont(arial);
-		storyTextArea.setBackground(Color.YELLOW);
 		storyTextArea.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		storyTextArea.setPreferredSize(new Dimension(250, 250));
 		storyTextArea.setAlignmentX(Component.CENTER_ALIGNMENT);
 		centerContent.add(storyTextArea);
 
 		JPanel southContent = new JPanel();
-		southContent.setBackground(Color.YELLOW);
 		southContent.setPreferredSize(dim);
 		nombreCoupLabel = new JLabel("Nombre de coups restants : 10");
 		nombreCoupLabel.setPreferredSize(new Dimension(800, 20));
