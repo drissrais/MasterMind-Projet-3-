@@ -6,4 +6,5 @@ public interface Observable {
 	public void notifyObserver();
 	public void restartObserver();
 	public void accueilObserver();
+	public void exitApplicationObserver();
 }

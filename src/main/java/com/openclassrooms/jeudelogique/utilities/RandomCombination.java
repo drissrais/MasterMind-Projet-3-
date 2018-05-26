@@ -4,12 +4,12 @@ import java.util.Random;
 
 public class RandomCombination {
 	
-	public static int[] generateRandomCombination(int n) {
-		int[] combinaison = new int[n]; 
+	public static String generateRandomCombination(int n) {
+		String str = "";
 		for (int i = 0; i < n; i++) {
 			Random randomGenerator = new Random();
-			combinaison[i] = randomGenerator.nextInt(10);
+			str += randomGenerator.nextInt(10);
 		}
-		return combinaison;
+		return str;
 	}
 }

@@ -1,13 +1,14 @@
 package com.openclassrooms.jeudelogique.view;
 
-import com.openclassrooms.jeudelogique.model.Model;
-import com.openclassrooms.jeudelogique.observer.Observable;
+import com.openclassrooms.jeudelogique.model.MastermindModel;
+import com.openclassrooms.jeudelogique.model.SearchModel;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Observable model = new Model();
-		Fenetre fen = new Fenetre(model);
+		SearchModel sModel = new SearchModel();
+		MastermindModel mModel = new MastermindModel();
+		Fenetre fen = new Fenetre(sModel, mModel);
 		fen.setVisible(true);
 	}
 

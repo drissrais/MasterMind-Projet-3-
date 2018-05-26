@@ -17,8 +17,8 @@ import javax.swing.JPanel;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 
-import com.openclassrooms.jeudelogique.model.Model;
-import com.openclassrooms.jeudelogique.observer.Observable;
+import com.openclassrooms.jeudelogique.model.MastermindModel;
+import com.openclassrooms.jeudelogique.model.SearchModel;
 import com.openclassrooms.jeudelogique.observer.Observer;
 
 public class Fenetre extends JFrame implements Observer {
@@ -42,9 +42,10 @@ public class Fenetre extends JFrame implements Observer {
 	private JPanel toolbarConteneur = new JPanel(new BorderLayout());
 	
 	private Dimension size;
-	private Observable model;
+	private SearchModel searchModel;
+	private MastermindModel mastermindModel;
 
-	public Fenetre(Observable obs) {
+	public Fenetre(SearchModel model1, MastermindModel model2) {
 		setTitle("Jeux de Logique");
 		pack();
 		setResizable(false);
@@ -53,8 +54,10 @@ public class Fenetre extends JFrame implements Observer {
 		
 		size = new Dimension(this.getWidth(), this.getHeight() - 35);
 		
-		this.model = obs;
-		this.model.addObserver(this);
+		this.searchModel = model1;
+		this.mastermindModel = model2;
+		this.searchModel.addObserver(this);
+		this.mastermindModel.addObserver(this);
 		
 		initMenu();
 		initToolBar();
@@ -70,6 +73,8 @@ public class Fenetre extends JFrame implements Observer {
 	private void initToolBar() {
 		toolbarConteneur.setPreferredSize(new Dimension(900, 28));
 		toolbar.setBorder(BorderFactory.createEmptyBorder());
+		newGameButton.setFocusable(false);
+		exitButton.setFocusable(false);
 		toolbar.add(newGameButton);
 		toolbar.add(exitButton);
 		toolbarConteneur.add(toolbar, BorderLayout.PAGE_START);
@@ -80,6 +85,7 @@ public class Fenetre extends JFrame implements Observer {
 	private void initMenu() {
 		nouveau.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK));
 		quitter.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_DOWN_MASK));
+		regles.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, KeyEvent.CTRL_DOWN_MASK));
 		
 		fichier.add(nouveau);
 		fichier.addSeparator();
@@ -119,7 +125,7 @@ public class Fenetre extends JFrame implements Observer {
 	}
 
 	@Override
-	public void update(int nbCases, String story, int nbCoups) {	}
+	public void update(String proposition, String reponse) {	}
 
 	@Override
 	public void restart() {}
@@ -132,6 +138,11 @@ public class Fenetre extends JFrame implements Observer {
 		newGameButton.doClick();
 	}
 	
+	@Override
+	public void exitApplication() {
+		System.exit(1);
+	}
+	
 	public class newGameListener implements ActionListener {
 
 		@Override
@@ -140,16 +151,16 @@ public class Fenetre extends JFrame implements Observer {
 			if ((!boite.getzInfo().getGame().equals("")) && (!boite.getzInfo().getMode().equals(""))) {
 				if (boite.getzInfo().getGame().equals("Recherche +/-") && boite.getzInfo().getMode().equals("CHALLENGER")) {
 					conteneur.removeAll();
-					SearchChallengerPanel scp = new SearchChallengerPanel(size, model);
-					model.addObserver(scp);
+					SearchChallengerPanel scp = new SearchChallengerPanel(size, searchModel);
+					searchModel.addObserver(scp);
 					conteneur.add(scp.getPanel(), BorderLayout.CENTER);
 					conteneur.revalidate();
 					initModel();
 				}
 				if (boite.getzInfo().getGame().equals("MasterMind") && boite.getzInfo().getMode().equals("CHALLENGER")) {
 					conteneur.removeAll();
-					MasterMindChallengerPanel mcp = new MasterMindChallengerPanel(size, model);
-					model.addObserver(mcp);
+					MasterMindChallengerPanel mcp = new MasterMindChallengerPanel(size, mastermindModel);
+					mastermindModel.addObserver(mcp);
 					conteneur.add(mcp.getPanel(), BorderLayout.CENTER);
 					conteneur.revalidate();
 					initModel();
@@ -160,8 +171,10 @@ public class Fenetre extends JFrame implements Observer {
 	}
 	
 	private void initModel(){
-		this.model = new Model();
-		this.model.addObserver(this);
+		this.searchModel = new SearchModel();
+		this.mastermindModel = new MastermindModel();
+		this.searchModel.addObserver(this);
+		this.mastermindModel.addObserver(this);
 	}
 
 }

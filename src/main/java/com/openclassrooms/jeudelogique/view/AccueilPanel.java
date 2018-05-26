@@ -27,6 +27,7 @@ public class AccueilPanel extends ZContainer {
 		
 		JTextArea texte = new JTextArea("Vous avez dix coups pour trouver la combinaison cachée.\n" + "Alors, à vous de jouer !");
 		texte.setFont(arial);
+		texte.setBackground(Color.decode("#eeeeee"));
 		texte.setEditable(false);
 		this.panel.add(texte, BorderLayout.SOUTH);
 		

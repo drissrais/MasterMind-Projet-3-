@@ -11,28 +11,30 @@ import java.text.ParseException;
 import javax.swing.BorderFactory;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
-import com.openclassrooms.jeudelogique.controler.Controler;
-import com.openclassrooms.jeudelogique.observer.Observable;
+import com.openclassrooms.jeudelogique.controler.MastermindControler;
+import com.openclassrooms.jeudelogique.model.MastermindModel;
 import com.openclassrooms.jeudelogique.observer.Observer;
+import com.openclassrooms.jeudelogique.utilities.RandomCombination;
 
 public class MasterMindChallengerPanel extends ZContainer implements Observer {
 	private JLabel propositionLabel;
 	private JFormattedTextField propositionTextField;
 	private JTextArea storyTextArea;
 	private JLabel nombreCoupLabel;
-	private Controler controler;
+	private MastermindControler controler;
+	
+	private int nbCases = 4, nbEssais = 10;
+	private String combinaisonSecrete = "";
 
-	private String gameName = "MasterMind";
-	private String gameMode = "Challenger";
-
-	public MasterMindChallengerPanel(Dimension dim, Observable mod) {
+	public MasterMindChallengerPanel(Dimension dim, MastermindModel mod) {
 		super(dim);
-		this.controler = new Controler(mod);
+		this.controler = new MastermindControler(mod);
 		initPanel();
 	}
 
@@ -43,7 +45,7 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 		JPanel northContent = new JPanel();
 		northContent.setPreferredSize(dim);
 		JLabel welcomeMessage = new JLabel("mastermind | challenger mode".toUpperCase());
-		welcomeMessage.setPreferredSize(new Dimension(800, 50));
+		welcomeMessage.setPreferredSize(dim);
 		welcomeMessage.setHorizontalAlignment(JLabel.CENTER);
 		welcomeMessage.setFont(comics30);
 		welcomeMessage.setForeground(Color.decode("#ee5100"));
@@ -79,6 +81,7 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 		propositionTextField.setHorizontalAlignment(JTextField.CENTER);
 		propositionTextField.setForeground(Color.BLUE);
 		propositionTextField.setFont(arial);
+		propositionTextField.requestFocusInWindow();
 		centerContent.add(propositionTextField);
 
 		storyTextArea = new JTextArea();
@@ -86,7 +89,7 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 		storyTextArea.setFocusable(false);
 		storyTextArea.setFont(arial);
 		storyTextArea.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-		storyTextArea.setPreferredSize(new Dimension(250, 250));
+		storyTextArea.setPreferredSize(new Dimension(265, 260));
 		storyTextArea.setAlignmentX(Component.CENTER_ALIGNMENT);
 		centerContent.add(storyTextArea);
 
@@ -101,34 +104,93 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 		this.panel.add(northContent, BorderLayout.NORTH);
 		this.panel.add(centerContent, BorderLayout.CENTER);
 		this.panel.add(southContent, BorderLayout.SOUTH);
+		
+		combinaisonSecrete = RandomCombination.generateRandomCombination(this.nbCases);
+		controler.setCombinaisonSecrete(combinaisonSecrete);
 
 		propositionTextField.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controler.setGameName(MasterMindChallengerPanel.this.gameName);
-				controler.setGameMode(MasterMindChallengerPanel.this.gameMode);
 				controler.setProposition(((JTextField) e.getSource()).getText());
 			}
 		});
 	}
+	
+	public int getNbEssais() {
+		return 10 - this.nbEssais;
+	}
+	
+	public void gestionFinDePartie(String reponse) {
+		this.nbEssais--;
+
+		if (reponse.equals("####") && this.nbEssais > 0) {
+			JOptionPane.showMessageDialog(null, "Bravo, vous avez trouvé la combinaison secrète "
+					+ this.combinaisonSecrete + " en " + this.getNbEssais() + " coups.", "Fin de partie",
+					JOptionPane.INFORMATION_MESSAGE);
+			String[] choix = { "Rejouer", "Revenir au menu", "Quitter" };
+			int rang = JOptionPane.showOptionDialog(null, "Voulez-vous rejouer?", "Rejouer",
+					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
+			switch (choix[rang]) {
+			case "Rejouer":
+				controler.setChoixFinDePartie("Rejouer");
+				break;
+			case "Revenir au menu":
+				controler.setChoixFinDePartie("Revenir au menu");
+				break;
+			case "Quitter":
+				controler.setChoixFinDePartie("Quitter");
+				break;
+			default:
+				break;
+			}
+		}
+		if ((!reponse.equals("####")) && this.nbEssais <= 0) {
+			JOptionPane.showMessageDialog(null, "Désolé, vous avez perdu!\n" + "La bonne combinaison était "
+					+ this.combinaisonSecrete + "\nRetentez votre chance !", "Fin de partie",
+					JOptionPane.INFORMATION_MESSAGE);
+			String[] choix = { "Rejouer", "Revenir au menu", "Quitter" };
+			int rang = JOptionPane.showOptionDialog(null, "Voulez-vous rejouer?", "Rejouer",
+					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
+			switch (choix[rang]) {
+			case "Rejouer":
+				controler.setChoixFinDePartie("Rejouer");
+				break;
+			case "Revenir au menu":
+				controler.setChoixFinDePartie("Revenir au menu");
+				break;
+			case "Quitter":
+				controler.setChoixFinDePartie("Quitter");
+				break;
+			default:
+				break;
+			}
+		}
+	}
 
 	@Override
-	public void update(int nbCases, String story, int nbCoups) {
+	public void update(String proposition, String reponse) {
 		this.propositionTextField.setText("");
-		this.propositionLabel.setText("Entrez les " + nbCases + " chiffres de votre proposition :");
-		this.storyTextArea.append(story);
-		this.nombreCoupLabel.setText("Nombre de coups restants : " + nbCoups);
+		this.storyTextArea.append(proposition + "\t:\t" + reponse + "\n");
+		this.gestionFinDePartie(reponse);
+		this.nombreCoupLabel.setText("Nombre de coups restants : " + this.nbEssais);
 	}
 
 	@Override
 	public void restart() {
 		this.storyTextArea.setText("");
 		this.nombreCoupLabel.setText("Nombre de coups restants : 10");
+		this.nbEssais = 10;
+		this.combinaisonSecrete = RandomCombination.generateRandomCombination(this.nbCases);
+		controler.setCombinaisonSecrete(this.combinaisonSecrete);
 	}
 
 	@Override
 	public void accueil() {
+	}
+
+	@Override
+	public void exitApplication() {
 	}
 
 }
