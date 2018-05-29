@@ -165,6 +165,14 @@ public class Fenetre extends JFrame implements Observer {
 					conteneur.revalidate();
 					initModel();
 				}
+				if (boite.getzInfo().getGame().equals("Recherche +/-") && boite.getzInfo().getMode().equals("DEFENSEUR")) {
+					conteneur.removeAll();
+					SearchDefenseurPanel sdp = new SearchDefenseurPanel(size, searchModel);
+					searchModel.addObserver(sdp);
+					conteneur.add(sdp.getPanel(), BorderLayout.CENTER);
+					conteneur.revalidate();
+					initModel();
+				}
 			}
 		}
 		

@@ -45,7 +45,6 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 		JPanel northContent = new JPanel();
 		northContent.setPreferredSize(dim);
 		JLabel welcomeMessage = new JLabel("mastermind | challenger mode".toUpperCase());
-		welcomeMessage.setPreferredSize(dim);
 		welcomeMessage.setHorizontalAlignment(JLabel.CENTER);
 		welcomeMessage.setFont(comics30);
 		welcomeMessage.setForeground(Color.decode("#ee5100"));
@@ -59,14 +58,14 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 				"Saurez-vous trouver la combinaison cachée en moins de 10 coups?\n(Chiffres compris entre 0 et 9 avec répétitions possibles)\nO : Chiffre mal placé ; # : Chiffre bien placé");
 		texte.setEditable(false);
 		texte.setFocusable(false);
-		texte.setPreferredSize(new Dimension(700, 75));
+		texte.setPreferredSize(new Dimension(700, 55));
 		texte.setBackground(Color.decode("#eeeeee"));
 		texte.setFont(arial);
 		centerContent.add(texte);
 
 		propositionLabel = new JLabel("Entrez les 4 chiffres de votre proposition :");
 		propositionLabel.setHorizontalAlignment(JLabel.LEFT);
-		propositionLabel.setPreferredSize(new Dimension(300, 40));
+		propositionLabel.setPreferredSize(new Dimension(300, 50));
 		propositionLabel.setFont(arial);
 		centerContent.add(propositionLabel);
 
@@ -89,7 +88,7 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 		storyTextArea.setFocusable(false);
 		storyTextArea.setFont(arial);
 		storyTextArea.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-		storyTextArea.setPreferredSize(new Dimension(265, 260));
+		storyTextArea.setPreferredSize(new Dimension(270, 275));
 		storyTextArea.setAlignmentX(Component.CENTER_ALIGNMENT);
 		centerContent.add(storyTextArea);
 
