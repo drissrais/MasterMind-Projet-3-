@@ -17,24 +17,24 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
-import com.openclassrooms.jeudelogique.controler.MastermindControler;
+import com.openclassrooms.jeudelogique.controler.MastermindChallengerControler;
 import com.openclassrooms.jeudelogique.model.MastermindModel;
 import com.openclassrooms.jeudelogique.observer.Observer;
 import com.openclassrooms.jeudelogique.utilities.RandomCombination;
 
-public class MasterMindChallengerPanel extends ZContainer implements Observer {
+public class MastermindChallengerPanel extends ZContainer implements Observer {
 	private JLabel propositionLabel;
 	private JFormattedTextField propositionTextField;
 	private JTextArea storyTextArea;
 	private JLabel nombreCoupLabel;
-	private MastermindControler controler;
+	private MastermindChallengerControler controler;
 	
 	private int nbCases = 4, nbEssais = 10;
 	private String combinaisonSecrete = "";
 
-	public MasterMindChallengerPanel(Dimension dim, MastermindModel mod) {
+	public MastermindChallengerPanel(Dimension dim, MastermindModel mod) {
 		super(dim);
-		this.controler = new MastermindControler(mod);
+		this.controler = new MastermindChallengerControler(mod);
 		initPanel();
 	}
 
@@ -61,6 +61,7 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 		texte.setPreferredSize(new Dimension(700, 55));
 		texte.setBackground(Color.decode("#eeeeee"));
 		texte.setFont(arial);
+		texte.setForeground(Color.BLUE);
 		centerContent.add(texte);
 
 		propositionLabel = new JLabel("Entrez les 4 chiffres de votre proposition :");
@@ -190,6 +191,10 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 
 	@Override
 	public void exitApplication() {
+	}
+
+	@Override
+	public void updateModeDefenseur(String proposition, String reponse, String combiSecrete) {
 	}
 
 }

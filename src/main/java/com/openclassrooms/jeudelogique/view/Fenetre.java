@@ -24,23 +24,23 @@ import com.openclassrooms.jeudelogique.observer.Observer;
 public class Fenetre extends JFrame implements Observer {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private JMenuBar menubar = new JMenuBar();
 	private JMenu fichier = new JMenu("Fichier");
 	private JMenu APropos = new JMenu("À Propos");
 	private JMenuItem nouveau = new JMenuItem("Nouveau Jeu");
 	private JMenuItem quitter = new JMenuItem("Quitter");
 	private JMenuItem regles = new JMenuItem("Règles du jeu");
-	
+
 	private JToolBar toolbar = new JToolBar(JToolBar.HORIZONTAL);
 	private JButton newGameButton = new JButton(new ImageIcon(getClass().getResource("/newGame.png")));
 	private JButton exitButton = new JButton(new ImageIcon(getClass().getResource("/quitGame.png")));
-	
+
 	BorderLayout layout = new BorderLayout();
 	private JPanel conteneur = new JPanel();
 	private JPanel contentPane = new JPanel(layout);
 	private JPanel toolbarConteneur = new JPanel(new BorderLayout());
-	
+
 	private Dimension size;
 	private SearchModel searchModel;
 	private MastermindModel mastermindModel;
@@ -51,25 +51,25 @@ public class Fenetre extends JFrame implements Observer {
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		size = new Dimension(this.getWidth(), this.getHeight() - 35);
-		
+
 		this.searchModel = model1;
 		this.mastermindModel = model2;
 		this.searchModel.addObserver(this);
 		this.mastermindModel.addObserver(this);
-		
+
 		initMenu();
 		initToolBar();
-		
+
 		conteneur.add(new AccueilPanel(this.size).getPanel(), BorderLayout.CENTER);
-		
+
 		contentPane.add(toolbarConteneur, BorderLayout.NORTH);
 		contentPane.add(conteneur, BorderLayout.CENTER);
 		setContentPane(contentPane);
-		
+
 	}
-	
+
 	private void initToolBar() {
 		toolbarConteneur.setPreferredSize(new Dimension(900, 28));
 		toolbar.setBorder(BorderFactory.createEmptyBorder());
@@ -86,15 +86,15 @@ public class Fenetre extends JFrame implements Observer {
 		nouveau.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK));
 		quitter.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_DOWN_MASK));
 		regles.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, KeyEvent.CTRL_DOWN_MASK));
-		
+
 		fichier.add(nouveau);
 		fichier.addSeparator();
 		fichier.add(quitter);
 		fichier.setMnemonic('F');
-		
+
 		APropos.add(regles);
 		APropos.setMnemonic('O');
-		
+
 		menubar.add(fichier);
 		menubar.add(APropos);
 		setJMenuBar(menubar);
@@ -102,7 +102,7 @@ public class Fenetre extends JFrame implements Observer {
 		quitter.addActionListener((e) -> System.exit(1));
 		regles.addActionListener((e) -> {
 			this.conteneur.removeAll();
-			this.conteneur.add(new RulesPanel(this.size).getPanel(), BorderLayout.CENTER);
+			this.conteneur.add(new RulesPanel(this.size, this.searchModel).getPanel(), BorderLayout.CENTER);
 			this.conteneur.revalidate();
 		});
 
@@ -125,31 +125,39 @@ public class Fenetre extends JFrame implements Observer {
 	}
 
 	@Override
-	public void update(String proposition, String reponse) {	}
+	public void update(String proposition, String reponse) {
+	}
 
 	@Override
-	public void restart() {}
+	public void updateModeDefenseur(String proposition, String reponse, String combiSecrete) {
+
+	}
+
+	@Override
+	public void restart() {
+	}
 
 	@Override
 	public void accueil() {
 		conteneur.removeAll();
 		conteneur.add(new AccueilPanel(size).getPanel(), BorderLayout.CENTER);
 		conteneur.revalidate();
-		newGameButton.doClick();
+//		newGameButton.doClick();
 	}
-	
+
 	@Override
 	public void exitApplication() {
 		System.exit(1);
 	}
-	
+
 	public class newGameListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			BoiteDialogueParametrage boite = new BoiteDialogueParametrage(null, "Nouveau Jeu", true);
 			if ((!boite.getzInfo().getGame().equals("")) && (!boite.getzInfo().getMode().equals(""))) {
-				if (boite.getzInfo().getGame().equals("Recherche +/-") && boite.getzInfo().getMode().equals("CHALLENGER")) {
+				if (boite.getzInfo().getGame().equals("Recherche +/-")
+						&& boite.getzInfo().getMode().equals("CHALLENGER")) {
 					conteneur.removeAll();
 					SearchChallengerPanel scp = new SearchChallengerPanel(size, searchModel);
 					searchModel.addObserver(scp);
@@ -157,28 +165,39 @@ public class Fenetre extends JFrame implements Observer {
 					conteneur.revalidate();
 					initModel();
 				}
-				if (boite.getzInfo().getGame().equals("MasterMind") && boite.getzInfo().getMode().equals("CHALLENGER")) {
+				if (boite.getzInfo().getGame().equals("MasterMind")
+						&& boite.getzInfo().getMode().equals("CHALLENGER")) {
 					conteneur.removeAll();
-					MasterMindChallengerPanel mcp = new MasterMindChallengerPanel(size, mastermindModel);
+					MastermindChallengerPanel mcp = new MastermindChallengerPanel(size, mastermindModel);
 					mastermindModel.addObserver(mcp);
 					conteneur.add(mcp.getPanel(), BorderLayout.CENTER);
 					conteneur.revalidate();
 					initModel();
 				}
-				if (boite.getzInfo().getGame().equals("Recherche +/-") && boite.getzInfo().getMode().equals("DEFENSEUR")) {
+				if (boite.getzInfo().getGame().equals("Recherche +/-")
+						&& boite.getzInfo().getMode().equals("DEFENSEUR")) {
 					conteneur.removeAll();
-					SearchDefenseurPanel sdp = new SearchDefenseurPanel(size, searchModel);
+					SearchDefenderPanel sdp = new SearchDefenderPanel(size, searchModel);
 					searchModel.addObserver(sdp);
 					conteneur.add(sdp.getPanel(), BorderLayout.CENTER);
 					conteneur.revalidate();
 					initModel();
 				}
+				if (boite.getzInfo().getGame().equals("MasterMind")
+						&& boite.getzInfo().getMode().equals("DEFENSEUR")) {
+					conteneur.removeAll();
+					MastermindDefenderPanel mdp = new MastermindDefenderPanel(size, mastermindModel);
+					mastermindModel.addObserver(mdp);
+					conteneur.add(mdp.getPanel(), BorderLayout.CENTER);
+					conteneur.revalidate();
+					initModel();
+				}
 			}
 		}
-		
+
 	}
-	
-	private void initModel(){
+
+	private void initModel() {
 		this.searchModel = new SearchModel();
 		this.mastermindModel = new MastermindModel();
 		this.searchModel.addObserver(this);

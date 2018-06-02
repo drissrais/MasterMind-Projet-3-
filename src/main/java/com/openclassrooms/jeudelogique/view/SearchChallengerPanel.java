@@ -17,7 +17,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
-import com.openclassrooms.jeudelogique.controler.SearchControler;
+import com.openclassrooms.jeudelogique.controler.SearchChallengerControler;
 import com.openclassrooms.jeudelogique.model.SearchModel;
 import com.openclassrooms.jeudelogique.observer.Observer;
 import com.openclassrooms.jeudelogique.utilities.RandomCombination;
@@ -27,14 +27,14 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 	private JFormattedTextField propositionTextField;
 	private JTextArea storyTextArea;
 	private JLabel nombreCoupLabel;
-	private SearchControler controler;
+	private SearchChallengerControler controler;
 
 	private int nbCases = 4, nbEssais = 10;
 	private String combinaisonSecrete = "";
 
 	public SearchChallengerPanel(Dimension dim, SearchModel mod) {
 		super(dim);
-		this.controler = new SearchControler(mod);
+		this.controler = new SearchChallengerControler(mod);
 		initPanel();
 	}
 
@@ -60,6 +60,7 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 		texte.setBackground(Color.decode("#eeeeee"));
 		texte.setPreferredSize(new Dimension(700, 55));
 		texte.setFont(arial);
+		texte.setForeground(Color.BLUE);
 		centerContent.add(texte);
 
 		propositionLabel = new JLabel("Entrez les 4 chiffres de votre proposition :");
@@ -110,6 +111,7 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				controler.setMode("CHALLENGER");
 				controler.setProposition(((JTextField) e.getSource()).getText());
 			}
 		});
@@ -189,6 +191,10 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 
 	@Override
 	public void exitApplication() {
+	}
+
+	@Override
+	public void updateModeDefenseur(String proposition, String reponse, String combiSecrete) {
 	}
 
 }

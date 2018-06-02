@@ -17,6 +17,8 @@ public class AccueilPanel extends ZContainer {
 
 	@Override
 	protected void initPanel() {
+		this.panel.setBackground(Color.WHITE);
+		
 		JLabel welcomeMessage = new JLabel("Bienvenue dans MindGames");
 		welcomeMessage.setFont(comics30);
 		welcomeMessage.setForeground(Color.decode("#ee5100"));

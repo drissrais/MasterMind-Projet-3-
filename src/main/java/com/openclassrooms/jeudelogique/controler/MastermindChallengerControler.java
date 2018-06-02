@@ -2,13 +2,14 @@ package com.openclassrooms.jeudelogique.controler;
 
 import com.openclassrooms.jeudelogique.model.MastermindModel;
 
-public class MastermindControler {
+public class MastermindChallengerControler {
 	private String proposition;
 	private String choixFinDePartie;
 	private String combinaisonSecrete;
-	private MastermindModel mastermindModel;
+	
+	private MastermindModel mastermindModel = null;
 
-	public MastermindControler(MastermindModel model) {
+	public MastermindChallengerControler(MastermindModel model) {
 		this.mastermindModel = model;
 	}
 	
@@ -19,7 +20,7 @@ public class MastermindControler {
 	
 	public void setCombinaisonSecrete(String combinaisonSecrete) {
 		this.combinaisonSecrete = combinaisonSecrete;
-		this.mastermindModel.setCombinaisonSecrete(this.combinaisonSecrete);
+		this.mastermindModel.setCombinaisonSecreteModeChallenger(this.combinaisonSecrete);
 	}
 	
 	public void setChoixFinDePartie(String choixFinDePartie) {
@@ -29,7 +30,7 @@ public class MastermindControler {
 
 	public void control() {
 		if (proposition.matches("^[0-9][0-9][0-9][0-9]$")) {
-			this.mastermindModel.setProposition(this.proposition);
+			this.mastermindModel.setPropositionModeChallenger(this.proposition);
 		}
 	}
 
