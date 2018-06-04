@@ -10,7 +10,7 @@ public class SearchModel implements Observable {
 	private ArrayList<Observer> listObserver;
 
 	// Attributs relatifs au mode challenger
-	private String proposition;
+	private String propositionJoueurModeChallenger;
 	private String combinaisonSecreteModeChallenger;
 
 	// Attributs relatifs au mode defenseur
@@ -19,7 +19,14 @@ public class SearchModel implements Observable {
 	private String propositionOrdinateurModeDefenseur;
 	private int[] bornesMin;
 	private int[] bornesMax;
-	
+
+	// Attributs relatifs au mode duel
+	private String combinaisonSecreteJoueurModeDuel;
+	private String combinaisonSecreteOrdinateurModeDuel;
+	private String propositionJoueurModeDuel;
+	private String propositionOrdinateurModeDuel = "";
+	private String reponseCorrespondanteModeDuel = "";
+
 	// Attributs communs
 	private String mode;
 	private String choixFinDePartie;
@@ -31,26 +38,13 @@ public class SearchModel implements Observable {
 
 	// Methodes relatives au mode challenger
 	public void setProposition(String proposition) {
-		this.proposition = proposition;
-		this.compare();
+		this.propositionJoueurModeChallenger = proposition;
+		this.compare(this.combinaisonSecreteModeChallenger, this.propositionJoueurModeChallenger);
 		this.notifyObserver();
 	}
 
 	public void setCombinaisonSecreteModeChallenger(String combinaisonSecrete) {
 		this.combinaisonSecreteModeChallenger = combinaisonSecrete;
-	}
-
-	public String compare() {
-		char[] tab = new char[this.combinaisonSecreteModeChallenger.length()];
-		for (int i = 0; i < this.combinaisonSecreteModeChallenger.length(); i++) {
-			if (combinaisonSecreteModeChallenger.charAt(i) == proposition.charAt(i))
-				tab[i] = '=';
-			if (combinaisonSecreteModeChallenger.charAt(i) < proposition.charAt(i))
-				tab[i] = '-';
-			if (combinaisonSecreteModeChallenger.charAt(i) > proposition.charAt(i))
-				tab[i] = '+';
-		}
-		return String.valueOf(tab);
 	}
 
 	// Methodes relatives au mode defenseur
@@ -74,7 +68,8 @@ public class SearchModel implements Observable {
 		if (this.reponseCorrespondanteModeDefenseur.equals("")) {
 			this.propositionOrdinateurModeDefenseur = RandomCombination
 					.generateRandomCombination(this.combinaisonSecreteModeDefenseur.length());
-			this.reponseCorrespondanteModeDefenseur = genererReponseCorrespondante();
+			this.reponseCorrespondanteModeDefenseur = this.compare(this.combinaisonSecreteModeDefenseur,
+					this.propositionOrdinateurModeDefenseur);
 			this.notifyObserver();
 		} else {
 			for (int i = 0; i < this.combinaisonSecreteModeDefenseur.length(); i++) {
@@ -95,34 +90,87 @@ public class SearchModel implements Observable {
 				tabIntermediate[i] = Character.forDigit(tabReponse[i], 10);
 			}
 			this.propositionOrdinateurModeDefenseur = String.valueOf(tabIntermediate);
-			this.reponseCorrespondanteModeDefenseur = genererReponseCorrespondante();
+			this.reponseCorrespondanteModeDefenseur = this.compare(this.combinaisonSecreteModeDefenseur,
+					this.propositionOrdinateurModeDefenseur);
 			this.notifyObserver();
 		}
 	}
 
-	private String genererReponseCorrespondante() {
-		int[] tabAnalyse = new int[combinaisonSecreteModeDefenseur.length()];
-		char[] charArray = new char[combinaisonSecreteModeDefenseur.length()];
-		for (int i = 0; i < combinaisonSecreteModeDefenseur.length(); i++) {
-			tabAnalyse[i] = Integer.valueOf(String.valueOf(this.propositionOrdinateurModeDefenseur.charAt(i)));
-			if (tabAnalyse[i] == Integer.valueOf(String.valueOf(this.combinaisonSecreteModeDefenseur.charAt(i)))) {
-				charArray[i] = '=';
-			} else if (tabAnalyse[i] < Integer
-					.valueOf(String.valueOf(this.combinaisonSecreteModeDefenseur.charAt(i)))) {
-				charArray[i] = '+';
-			} else if (tabAnalyse[i] > Integer
-					.valueOf(String.valueOf(this.combinaisonSecreteModeDefenseur.charAt(i)))) {
-				charArray[i] = '-';
-			}
+	// Methodes relatives au mode duel
+	public void setCombinaisonSecreteJoueurModeDuel(String combinaisonSecreteJoueurModeDuel) {
+		this.combinaisonSecreteJoueurModeDuel = combinaisonSecreteJoueurModeDuel;
+		bornesMin = new int[this.combinaisonSecreteJoueurModeDuel.length()];
+		bornesMax = new int[this.combinaisonSecreteJoueurModeDuel.length()];
+		for (int i = 0; i < bornesMin.length; i++) {
+			bornesMin[i] = 0;
+			bornesMax[i] = 9;
 		}
-		return String.valueOf(charArray);
+		this.reponseCorrespondanteModeDuel = "";
+	}
+
+	public void setCombinaisonSecreteOrdinateurModeDuel(String combinaisonSecreteOrdinateurModeDuel) {
+		this.combinaisonSecreteOrdinateurModeDuel = combinaisonSecreteOrdinateurModeDuel;
+	}
+
+	public void setPropositionJoueurModeDuel(String propositionJoueurModeDuel) {
+		this.propositionJoueurModeDuel = propositionJoueurModeDuel;
+		this.compare(this.combinaisonSecreteOrdinateurModeDuel, this.propositionJoueurModeDuel);
+		this.genererPropositionOrdinateurModeDuel();
+	}
+
+	public void genererPropositionOrdinateurModeDuel() {
+		int[] tabAnalyse = new int[this.combinaisonSecreteOrdinateurModeDuel.length()];
+		int[] tabReponse = new int[this.combinaisonSecreteOrdinateurModeDuel.length()];
+		char[] tabIntermediate = new char[this.combinaisonSecreteOrdinateurModeDuel.length()];
+
+		if (this.reponseCorrespondanteModeDuel.equals("")) {
+			this.propositionOrdinateurModeDuel = RandomCombination
+					.generateRandomCombination(this.combinaisonSecreteOrdinateurModeDuel.length());
+			this.reponseCorrespondanteModeDuel = this.compare(this.combinaisonSecreteJoueurModeDuel,
+					this.propositionOrdinateurModeDuel);
+		} else {
+			for (int i = 0; i < this.combinaisonSecreteOrdinateurModeDuel.length(); i++) {
+				tabAnalyse[i] = Integer.valueOf(String.valueOf(this.propositionOrdinateurModeDuel.charAt(i)));
+				if (this.reponseCorrespondanteModeDuel.charAt(i) == '=') {
+					tabReponse[i] = tabAnalyse[i];
+				} else if (this.reponseCorrespondanteModeDuel.charAt(i) == '-') {
+					bornesMax[i] = tabAnalyse[i] - 1;
+					tabReponse[i] = (int) ((bornesMax[i] + bornesMin[i]) / 2);
+				} else if (this.reponseCorrespondanteModeDuel.charAt(i) == '+') {
+					bornesMin[i] = tabAnalyse[i] + 1;
+					if (((bornesMin[i] + bornesMax[i]) / 2) % 2 == 1) {
+						tabReponse[i] = ((int) ((bornesMin[i] + bornesMax[i]) / 2)) + 1;
+					} else {
+						tabReponse[i] = (int) ((bornesMin[i] + bornesMax[i]) / 2);
+					}
+				}
+				tabIntermediate[i] = Character.forDigit(tabReponse[i], 10);
+			}
+			this.propositionOrdinateurModeDuel = String.valueOf(tabIntermediate);
+			this.reponseCorrespondanteModeDuel = this.compare(this.combinaisonSecreteJoueurModeDuel,
+					this.propositionOrdinateurModeDuel);
+		}
+		this.notifyObserver();
 	}
 
 	// Methodes communes
+	public String compare(String proposition1, String proposition2) {
+		char[] tab = new char[proposition1.length()];
+		for (int i = 0; i < proposition1.length(); i++) {
+			if (proposition1.charAt(i) == proposition2.charAt(i))
+				tab[i] = '=';
+			if (proposition1.charAt(i) < proposition2.charAt(i))
+				tab[i] = '-';
+			if (proposition1.charAt(i) > proposition2.charAt(i))
+				tab[i] = '+';
+		}
+		return String.valueOf(tab);
+	}
+
 	public void setMode(String mode) {
 		this.mode = mode;
 	}
-	
+
 	public void setChoixFinDePartie(String choixFinDePartie) {
 		this.choixFinDePartie = choixFinDePartie;
 		if (this.choixFinDePartie.equals("Quitter"))
@@ -133,8 +181,7 @@ public class SearchModel implements Observable {
 			this.restartObserver();
 		}
 	}
-	
-	
+
 	// Methodes a redefinir
 	@Override
 	public void addObserver(Observer o) {
@@ -150,12 +197,20 @@ public class SearchModel implements Observable {
 	public void notifyObserver() {
 		if (mode.equals("CHALLENGER")) {
 			for (Observer obs : listObserver) {
-				obs.update(this.proposition, this.compare());
+				obs.update(this.propositionJoueurModeChallenger,
+						this.compare(this.combinaisonSecreteModeChallenger, this.propositionJoueurModeChallenger));
 			}
 		}
 		if (mode.equals("DEFENSEUR")) {
 			for (Observer obs : listObserver) {
-				obs.updateModeDefenseur(this.propositionOrdinateurModeDefenseur, this.reponseCorrespondanteModeDefenseur, this.combinaisonSecreteModeDefenseur);
+				obs.updateModeDefenseurOuDuel(this.propositionOrdinateurModeDefenseur,
+						this.reponseCorrespondanteModeDefenseur, this.combinaisonSecreteModeDefenseur);
+			}
+		}
+		if (mode.equals("DUEL")) {
+			for (Observer obs : listObserver) {
+				obs.updateModeDefenseurOuDuel(this.propositionOrdinateurModeDuel, this.reponseCorrespondanteModeDuel,
+						this.compare(this.combinaisonSecreteOrdinateurModeDuel, this.propositionJoueurModeDuel));
 			}
 		}
 	}

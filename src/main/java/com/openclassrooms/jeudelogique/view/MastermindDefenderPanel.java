@@ -49,25 +49,24 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 	
 	@Override
 	protected void initPanel() {
-		Dimension dim = new Dimension(800, 40);
-
 		JPanel northContent = new JPanel();
-		northContent.setPreferredSize(dim);
-		JLabel welcomeMessage = new JLabel("mastermind | defender mode".toUpperCase());
+		northContent.setPreferredSize(new Dimension(800, 45));
+		northContent.setBackground(Color.WHITE);
+		JLabel welcomeMessage = new JLabel("mastermind | mode defenseur".toUpperCase());
 		welcomeMessage.setHorizontalAlignment(JLabel.CENTER);
 		welcomeMessage.setFont(comics30);
 		welcomeMessage.setForeground(Color.decode("#ee5100"));
 		northContent.add(welcomeMessage);
 
 		JPanel centerContent = new JPanel();
-		centerContent.setPreferredSize(new Dimension(800, 420));
+		centerContent.setPreferredSize(new Dimension(800, 410));
+		centerContent.setBackground(Color.WHITE);
 
 		JTextArea texte = new JTextArea("L'ordinateur a ".toUpperCase() + this.nbEssais
 				+ " essais pour trouver votre combinaison secrète.".toUpperCase()
 				+ "\n# : Chiffre bien placé\t O : Chiffre mal placé");
-		texte.setBackground(Color.decode("#eeeeee"));
 		texte.setForeground(Color.BLUE);
-		texte.setPreferredSize(new Dimension(800, 40));
+		texte.setPreferredSize(new Dimension(800, 50));
 		texte.setFont(arial);
 		texte.setEditable(false);
 		texte.setFocusable(false);
@@ -75,7 +74,7 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 
 		combinaisonLabel = new JLabel("Veuillez saisir votre combinaison secrète (" + this.nbCases + " chiffres) : ");
 		combinaisonLabel.setHorizontalAlignment(JLabel.LEFT);
-		combinaisonLabel.setPreferredSize(new Dimension(400, 40));
+		combinaisonLabel.setPreferredSize(new Dimension(400, 25));
 		combinaisonLabel.setFont(arial);
 		centerContent.add(combinaisonLabel);
 
@@ -86,7 +85,7 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		combinaisonTextField.setPreferredSize(new Dimension(140, 30));
+		combinaisonTextField.setPreferredSize(new Dimension(140, 25));
 		combinaisonTextField.setHorizontalAlignment(JTextField.CENTER);
 		combinaisonTextField.setForeground(Color.BLUE);
 		combinaisonTextField.setFont(arial);
@@ -94,18 +93,18 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 		centerContent.add(combinaisonTextField);
 
 		validerButton = new JButton("Valider");
-		validerButton.setPreferredSize(new Dimension(100, 30));
+		validerButton.setPreferredSize(new Dimension(100, 25));
 		validerButton.setEnabled(false);
 		centerContent.add(validerButton);
 
 		propOrdinateurLabel = new JLabel(" Proposition de l'ordinateur : ");
-		propOrdinateurLabel.setPreferredSize(new Dimension(210, 40));
+		propOrdinateurLabel.setPreferredSize(new Dimension(210, 35));
 		propOrdinateurLabel.setHorizontalAlignment(JLabel.LEFT);
 		propOrdinateurLabel.setFont(arial);
 		centerContent.add(propOrdinateurLabel);
 
 		propositionOrdinateurLabel = new JLabel("");
-		propositionOrdinateurLabel.setPreferredSize(new Dimension(70, 30));
+		propositionOrdinateurLabel.setPreferredSize(new Dimension(70, 25));
 		propositionOrdinateurLabel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		propositionOrdinateurLabel.setHorizontalAlignment(JTextField.CENTER);
 		propositionOrdinateurLabel.setForeground(Color.BLUE);
@@ -113,13 +112,13 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 		centerContent.add(propositionOrdinateurLabel);
 		
 		repOrdinateurLabel = new JLabel(" Réponse correspondante : ");
-		repOrdinateurLabel.setPreferredSize(new Dimension(205, 40));
+		repOrdinateurLabel.setPreferredSize(new Dimension(205, 35));
 		repOrdinateurLabel.setHorizontalAlignment(JLabel.LEFT);
 		repOrdinateurLabel.setFont(arial);
 		centerContent.add(repOrdinateurLabel);
 		
 		reponseOrdiLabel = new JLabel("");
-		reponseOrdiLabel.setPreferredSize(new Dimension(70, 30));
+		reponseOrdiLabel.setPreferredSize(new Dimension(70, 25));
 		reponseOrdiLabel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		reponseOrdiLabel.setHorizontalAlignment(JTextField.CENTER);
 		reponseOrdiLabel.setForeground(Color.BLUE);
@@ -127,11 +126,12 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 		centerContent.add(reponseOrdiLabel);
 
 		passerButton = new JButton("Passer");
-		passerButton.setPreferredSize(new Dimension(80, 30));
+		passerButton.setPreferredSize(new Dimension(80, 25));
 		passerButton.setEnabled(false);
 		centerContent.add(passerButton);
 
 		storyTextArea = new JTextArea();
+		storyTextArea.setBackground(Color.decode("#eeeeee"));
 		storyTextArea.setEditable(false);
 		storyTextArea.setFocusable(false);
 		storyTextArea.setFont(arial);
@@ -141,13 +141,15 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 		centerContent.add(storyTextArea);
 
 		JPanel southContent = new JPanel();
-		southContent.setPreferredSize(dim);
+		southContent.setPreferredSize(new Dimension(800, 30));
+		southContent.setBackground(Color.WHITE);
 		nombreCoupLabel = new JLabel("Nombre de coups restants : " + this.nbEssais);
-		nombreCoupLabel.setPreferredSize(new Dimension(800, 20));
+		nombreCoupLabel.setForeground(Color.decode("#51b46d"));
 		nombreCoupLabel.setHorizontalAlignment(JLabel.CENTER);
 		nombreCoupLabel.setFont(arial);
 		southContent.add(nombreCoupLabel);
-
+		
+		this.panel.setBackground(Color.WHITE);
 		this.panel.add(northContent, BorderLayout.NORTH);
 		this.panel.add(centerContent, BorderLayout.CENTER);
 		this.panel.add(southContent, BorderLayout.SOUTH);
@@ -244,7 +246,7 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 	}
 
 	@Override
-	public void updateModeDefenseur(String proposition, String reponse, String combiSecrete) {
+	public void updateModeDefenseurOuDuel(String proposition, String reponse, String combiSecrete) {
 		this.storyTextArea.append(proposition + "\t:\t" + reponse + "\n");
 		this.propositionOrdinateurLabel.setText(proposition);
 		this.reponseOrdiLabel.setText(reponse);

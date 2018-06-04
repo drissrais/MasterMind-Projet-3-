@@ -41,6 +41,7 @@ public class RulesPanel extends ZContainer implements Observer {
 		titre2Label.setPreferredSize(dim2);
 		
 		JPanel searchPanel = new JPanel();
+		searchPanel.setBackground(Color.WHITE);
 		searchPanel.setPreferredSize(dim);
 		String message = "\r\n"
 				+ "Le but : découvrir la combinaison à x chiffres de l'adversaire (le défenseur).\nPour ce faire, l'attaquant fait une proposition. Le défenseur indique pour chaque chiffre de la\ncombinaison proposée si le chiffre de sa combinaison est plus grand (+), plus petit (-) ou si\nc'est le bon chiffre (=).\r\n"
@@ -49,12 +50,12 @@ public class RulesPanel extends ZContainer implements Observer {
 				+ "Proposition : 2214 -> Réponse : -=+=\r\n" + "\r\n";
 		texte1 = new JTextArea(message);
 		texte1.setFont(arial);
-		texte1.setBackground(Color.decode("#eeeeee"));
 		texte1.setEditable(false);
 		searchPanel.add(titre1Label);
 		searchPanel.add(texte1);
 		
 		JPanel mastermindPanel = new JPanel();
+		mastermindPanel.setBackground(Color.WHITE);
 		mastermindPanel.setPreferredSize(dim);
 		String message2 = "\r\n"
 				+ "Le but : découvrir la combinaison à x chiffres/couleurs de l'adversaire (le défenseur). Pour\nce faire, l'attaquant fait une proposition. Le défenseur indique pour chaque proposition le\nnombre de chiffre/couleur de la proposition qui apparaissent à la bonne place et à la\nmauvaise place dans la combinaison secrète.\r\n"
@@ -63,7 +64,6 @@ public class RulesPanel extends ZContainer implements Observer {
 				+ "Proposition : 6274 -> Réponse : 2 bien placés\r\n" + "\r\n";
 		texte2 = new JTextArea(message2);
 		texte2.setFont(arial);
-		texte2.setBackground(Color.decode("#eeeeee"));
 		texte2.setEditable(false);
 		mastermindPanel.add(titre2Label);
 		mastermindPanel.add(texte2);
@@ -72,6 +72,7 @@ public class RulesPanel extends ZContainer implements Observer {
 		accueilButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		accueilButton.addActionListener((e) -> controler.setChoixFinDePartie("Revenir au menu"));
 		
+		this.panel.setBackground(Color.WHITE);
 		this.panel.add(searchPanel);
 		this.panel.add(mastermindPanel);
 		this.panel.add(accueilButton);
@@ -83,7 +84,7 @@ public class RulesPanel extends ZContainer implements Observer {
 	}
 
 	@Override
-	public void updateModeDefenseur(String proposition, String reponse, String combiSecrete) {
+	public void updateModeDefenseurOuDuel(String proposition, String reponse, String combiSecrete) {
 	}
 
 	@Override

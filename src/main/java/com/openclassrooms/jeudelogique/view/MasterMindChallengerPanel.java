@@ -31,6 +31,8 @@ public class MastermindChallengerPanel extends ZContainer implements Observer {
 	
 	private int nbCases = 4, nbEssais = 10;
 	private String combinaisonSecrete = "";
+	
+	private final int NBESSAIS = 10;
 
 	public MastermindChallengerPanel(Dimension dim, MastermindModel mod) {
 		super(dim);
@@ -43,8 +45,9 @@ public class MastermindChallengerPanel extends ZContainer implements Observer {
 		Dimension dim = new Dimension(800, 50);
 
 		JPanel northContent = new JPanel();
+		northContent.setBackground(Color.WHITE);
 		northContent.setPreferredSize(dim);
-		JLabel welcomeMessage = new JLabel("mastermind | challenger mode".toUpperCase());
+		JLabel welcomeMessage = new JLabel("mastermind | mode challenger".toUpperCase());
 		welcomeMessage.setHorizontalAlignment(JLabel.CENTER);
 		welcomeMessage.setFont(comics30);
 		welcomeMessage.setForeground(Color.decode("#ee5100"));
@@ -53,18 +56,18 @@ public class MastermindChallengerPanel extends ZContainer implements Observer {
 
 		JPanel centerContent = new JPanel();
 		centerContent.setPreferredSize(new Dimension(800, 400));
+		centerContent.setBackground(Color.white);
 
 		JTextArea texte = new JTextArea(
-				"Saurez-vous trouver la combinaison cachée en moins de 10 coups?\n(Chiffres compris entre 0 et 9 avec répétitions possibles)\nO : Chiffre mal placé ; # : Chiffre bien placé");
+				"Saurez-vous trouver la combinaison cachée en moins de " + NBESSAIS + " coups?\n(Chiffres compris entre 0 et 9 avec répétitions possibles)\nO : Chiffre mal placé ; # : Chiffre bien placé");
 		texte.setEditable(false);
 		texte.setFocusable(false);
 		texte.setPreferredSize(new Dimension(700, 55));
-		texte.setBackground(Color.decode("#eeeeee"));
 		texte.setFont(arial);
 		texte.setForeground(Color.BLUE);
 		centerContent.add(texte);
 
-		propositionLabel = new JLabel("Entrez les 4 chiffres de votre proposition :");
+		propositionLabel = new JLabel("Entrez les " + this.nbCases + " chiffres de votre proposition :");
 		propositionLabel.setHorizontalAlignment(JLabel.LEFT);
 		propositionLabel.setPreferredSize(new Dimension(300, 50));
 		propositionLabel.setFont(arial);
@@ -85,22 +88,26 @@ public class MastermindChallengerPanel extends ZContainer implements Observer {
 		centerContent.add(propositionTextField);
 
 		storyTextArea = new JTextArea();
+		storyTextArea.setBackground(Color.decode("#eeeeee"));
 		storyTextArea.setEditable(false);
 		storyTextArea.setFocusable(false);
 		storyTextArea.setFont(arial);
 		storyTextArea.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-		storyTextArea.setPreferredSize(new Dimension(270, 275));
+		storyTextArea.setPreferredSize(new Dimension(280, 275));
 		storyTextArea.setAlignmentX(Component.CENTER_ALIGNMENT);
 		centerContent.add(storyTextArea);
 
 		JPanel southContent = new JPanel();
+		southContent.setBackground(Color.WHITE);
 		southContent.setPreferredSize(dim);
-		nombreCoupLabel = new JLabel("Nombre de coups restants : 10");
+		nombreCoupLabel = new JLabel("Nombre de coups restants : " + this.nbEssais);
+		nombreCoupLabel.setForeground(Color.decode("#51b46d"));
 		nombreCoupLabel.setPreferredSize(new Dimension(800, 20));
 		nombreCoupLabel.setHorizontalAlignment(JLabel.CENTER);
 		nombreCoupLabel.setFont(arial);
 		southContent.add(nombreCoupLabel);
-
+		
+		this.panel.setBackground(Color.WHITE);
 		this.panel.add(northContent, BorderLayout.NORTH);
 		this.panel.add(centerContent, BorderLayout.CENTER);
 		this.panel.add(southContent, BorderLayout.SOUTH);
@@ -118,7 +125,7 @@ public class MastermindChallengerPanel extends ZContainer implements Observer {
 	}
 	
 	public int getNbEssais() {
-		return 10 - this.nbEssais;
+		return NBESSAIS - this.nbEssais;
 	}
 	
 	public void gestionFinDePartie(String reponse) {
@@ -146,7 +153,7 @@ public class MastermindChallengerPanel extends ZContainer implements Observer {
 			}
 		}
 		if ((!reponse.equals("####")) && this.nbEssais <= 0) {
-			JOptionPane.showMessageDialog(null, "Désolé, vous avez perdu!\n" + "La bonne combinaison était "
+			JOptionPane.showMessageDialog(null, "Perdu!\n" + "La bonne combinaison était "
 					+ this.combinaisonSecrete + "\nRetentez votre chance !", "Fin de partie",
 					JOptionPane.INFORMATION_MESSAGE);
 			String[] choix = { "Rejouer", "Revenir au menu", "Quitter" };
@@ -194,7 +201,7 @@ public class MastermindChallengerPanel extends ZContainer implements Observer {
 	}
 
 	@Override
-	public void updateModeDefenseur(String proposition, String reponse, String combiSecrete) {
+	public void updateModeDefenseurOuDuel(String proposition, String reponse, String combiSecrete) {
 	}
 
 }

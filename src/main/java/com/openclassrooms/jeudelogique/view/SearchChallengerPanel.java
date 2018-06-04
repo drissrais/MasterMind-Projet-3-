@@ -31,6 +31,8 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 
 	private int nbCases = 4, nbEssais = 10;
 	private String combinaisonSecrete = "";
+	
+	private final int NBESSAIS = 10;
 
 	public SearchChallengerPanel(Dimension dim, SearchModel mod) {
 		super(dim);
@@ -43,27 +45,28 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 		Dimension dim = new Dimension(800, 50);
 
 		JPanel northContent = new JPanel();
+		northContent.setBackground(Color.WHITE);
 		northContent.setPreferredSize(dim);
-		JLabel welcomeMessage = new JLabel("recherche +/- | challenger mode".toUpperCase());
+		JLabel welcomeMessage = new JLabel("recherche +/- | mode challenger".toUpperCase());
 		welcomeMessage.setHorizontalAlignment(JLabel.CENTER);
 		welcomeMessage.setFont(comics30);
 		welcomeMessage.setForeground(Color.decode("#ee5100"));
 		northContent.add(welcomeMessage);
 
 		JPanel centerContent = new JPanel();
+		centerContent.setBackground(Color.WHITE);
 		centerContent.setPreferredSize(new Dimension(800, 400));
 
 		JTextArea texte = new JTextArea(
-				"Saurez-vous trouver la combinaison cachée en moins de 10 coups?\n(Chiffres compris entre 0 et 9 avec répétitions possibles)\n+ : Chiffre plus grand\t - : Chiffre plus petit\t= : Bon chiffre");
+				"Saurez-vous trouver la combinaison cachée en moins de " + NBESSAIS + " coups?\n(Chiffres compris entre 0 et 9 avec répétitions possibles)\n+ : Chiffre plus grand\t - : Chiffre plus petit\t= : Bon chiffre");
 		texte.setEditable(false);
 		texte.setFocusable(false);
-		texte.setBackground(Color.decode("#eeeeee"));
 		texte.setPreferredSize(new Dimension(700, 55));
 		texte.setFont(arial);
 		texte.setForeground(Color.BLUE);
 		centerContent.add(texte);
 
-		propositionLabel = new JLabel("Entrez les 4 chiffres de votre proposition :");
+		propositionLabel = new JLabel("Entrez les " + this.nbCases + " chiffres de votre proposition :");
 		propositionLabel.setHorizontalAlignment(JLabel.LEFT);
 		propositionLabel.setPreferredSize(new Dimension(300, 50));
 		propositionLabel.setFont(arial);
@@ -84,6 +87,7 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 		centerContent.add(propositionTextField);
 
 		storyTextArea = new JTextArea();
+		storyTextArea.setBackground(Color.decode("#eeeeee"));
 		storyTextArea.setEditable(false);
 		storyTextArea.setFocusable(false);
 		storyTextArea.setFont(arial);
@@ -93,13 +97,16 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 		centerContent.add(storyTextArea);
 
 		JPanel southContent = new JPanel();
+		southContent.setBackground(Color.WHITE);
 		southContent.setPreferredSize(dim);
-		nombreCoupLabel = new JLabel("Nombre de coups restants : 10");
+		nombreCoupLabel = new JLabel("Nombre de coups restants : " + this.nbEssais);
+		nombreCoupLabel.setForeground(Color.decode("#51b46d"));
 		nombreCoupLabel.setPreferredSize(new Dimension(800, 20));
 		nombreCoupLabel.setHorizontalAlignment(JLabel.CENTER);
 		nombreCoupLabel.setFont(arial);
 		southContent.add(nombreCoupLabel);
 
+		this.panel.setBackground(Color.WHITE);
 		this.panel.add(northContent, BorderLayout.NORTH);
 		this.panel.add(centerContent, BorderLayout.CENTER);
 		this.panel.add(southContent, BorderLayout.SOUTH);
@@ -165,7 +172,7 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 	}
 	
 	public int getNbEssais() {
-		return 10 - this.nbEssais;
+		return NBESSAIS - this.nbEssais;
 	}
 
 	@Override
@@ -194,7 +201,7 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 	}
 
 	@Override
-	public void updateModeDefenseur(String proposition, String reponse, String combiSecrete) {
+	public void updateModeDefenseurOuDuel(String proposition, String reponse, String combiSecrete) {
 	}
 
 }

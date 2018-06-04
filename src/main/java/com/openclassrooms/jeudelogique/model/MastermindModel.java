@@ -232,7 +232,7 @@ public class MastermindModel implements Observable {
 		}
 		if (mode.equals("DEFENSEUR")) {
 			for (Observer obs : listObserver) {
-				obs.updateModeDefenseur(this.propositionOrdinateurModeDefenseur,
+				obs.updateModeDefenseurOuDuel(this.propositionOrdinateurModeDefenseur,
 						this.reponseCorrespondanteModeDefenseur, this.combinaisonSecreteModeDefenseur);
 			}
 		}

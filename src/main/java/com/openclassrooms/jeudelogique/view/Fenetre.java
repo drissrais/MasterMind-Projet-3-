@@ -1,6 +1,7 @@
 package com.openclassrooms.jeudelogique.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -52,7 +53,7 @@ public class Fenetre extends JFrame implements Observer {
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		size = new Dimension(this.getWidth(), this.getHeight() - 35);
+		size = new Dimension(this.getWidth(), this.getHeight());
 
 		this.searchModel = model1;
 		this.mastermindModel = model2;
@@ -62,6 +63,7 @@ public class Fenetre extends JFrame implements Observer {
 		initMenu();
 		initToolBar();
 
+		conteneur.setBackground(Color.WHITE);
 		conteneur.add(new AccueilPanel(this.size).getPanel(), BorderLayout.CENTER);
 
 		contentPane.add(toolbarConteneur, BorderLayout.NORTH);
@@ -71,7 +73,6 @@ public class Fenetre extends JFrame implements Observer {
 	}
 
 	private void initToolBar() {
-		toolbarConteneur.setPreferredSize(new Dimension(900, 28));
 		toolbar.setBorder(BorderFactory.createEmptyBorder());
 		newGameButton.setFocusable(false);
 		exitButton.setFocusable(false);
@@ -129,7 +130,7 @@ public class Fenetre extends JFrame implements Observer {
 	}
 
 	@Override
-	public void updateModeDefenseur(String proposition, String reponse, String combiSecrete) {
+	public void updateModeDefenseurOuDuel(String proposition, String reponse, String combiSecrete) {
 
 	}
 
@@ -189,6 +190,15 @@ public class Fenetre extends JFrame implements Observer {
 					MastermindDefenderPanel mdp = new MastermindDefenderPanel(size, mastermindModel);
 					mastermindModel.addObserver(mdp);
 					conteneur.add(mdp.getPanel(), BorderLayout.CENTER);
+					conteneur.revalidate();
+					initModel();
+				}
+				if (boite.getzInfo().getGame().equals("Recherche +/-")
+						&& boite.getzInfo().getMode().equals("DUEL")) {
+					conteneur.removeAll();
+					SearchDualPanel sdp = new SearchDualPanel(size, searchModel);
+					searchModel.addObserver(sdp);
+					conteneur.add(sdp.getPanel(), BorderLayout.CENTER);
 					conteneur.revalidate();
 					initModel();
 				}
