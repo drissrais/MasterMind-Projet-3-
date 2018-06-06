@@ -17,7 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-public class BoiteDialogueParametrage extends JDialog {
+public class BoiteDialogueDebutDePartie extends JDialog {
 
 	private static final long serialVersionUID = -3838016887347550142L;
 
@@ -30,7 +30,7 @@ public class BoiteDialogueParametrage extends JDialog {
 	
 	private ZDialogInfo zInfo = new ZDialogInfo("", "");
 	
-	public BoiteDialogueParametrage(JFrame owner, String title, boolean modal) {
+	public BoiteDialogueDebutDePartie(JFrame owner, String title, boolean modal) {
 		super(owner, title, modal);
 		setSize(500, 470);
 		setLocationRelativeTo(null);

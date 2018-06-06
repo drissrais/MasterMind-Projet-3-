@@ -155,7 +155,7 @@ public class Fenetre extends JFrame implements Observer {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			BoiteDialogueParametrage boite = new BoiteDialogueParametrage(null, "Nouveau Jeu", true);
+			BoiteDialogueDebutDePartie boite = new BoiteDialogueDebutDePartie(null, "Nouveau Jeu", true);
 			if ((!boite.getzInfo().getGame().equals("")) && (!boite.getzInfo().getMode().equals(""))) {
 				if (boite.getzInfo().getGame().equals("Recherche +/-")
 						&& boite.getzInfo().getMode().equals("CHALLENGER")) {
