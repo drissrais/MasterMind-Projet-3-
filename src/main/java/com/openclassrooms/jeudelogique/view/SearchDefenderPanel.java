@@ -178,6 +178,7 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 			passerButton.setEnabled(true);
 			passerButton.requestFocusInWindow();
 			this.nbEssais--;
+			this.combinaisonSecreteModeDefenseur = this.combinaisonTextField.getText();
 			this.controler.setMode("DEFENSEUR");
 			this.controler.setCombinaisonSecreteModeDefenseur(combinaisonTextField.getText());
 			this.gestionFinDePartie(this.reponseOrdiLabel.getText());
@@ -244,16 +245,15 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 	}
 
 	@Override
-	public void updateModeDefenseurOuDuel(String proposition, String reponse, String combiSecrete) {
-		this.storyTextArea.append(proposition + "\t:\t" + reponse + "\n");
-		this.propositionOrdinateurLabel.setText(proposition);
-		this.reponseOrdiLabel.setText(reponse);
-		this.nombreCoupLabel.setText("Nombre de coups restants : " + this.nbEssais);
-		this.combinaisonSecreteModeDefenseur = combiSecrete;
+	public void updateModeDuel(String proposition, String reponse, String combiSecrete) {
 	}
 
 	@Override
 	public void update(String proposition, String reponse) {
+		this.storyTextArea.append(proposition + "\t:\t" + reponse + "\n");
+		this.propositionOrdinateurLabel.setText(proposition);
+		this.reponseOrdiLabel.setText(reponse);
+		this.nombreCoupLabel.setText("Nombre de coups restants : " + this.nbEssais);
 	}
 
 	@Override

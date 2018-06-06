@@ -201,7 +201,7 @@ public class MastermindChallengerPanel extends ZContainer implements Observer {
 	}
 
 	@Override
-	public void updateModeDefenseurOuDuel(String proposition, String reponse, String combiSecrete) {
+	public void updateModeDuel(String proposition, String reponse, String combiSecrete) {
 	}
 
 }

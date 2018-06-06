@@ -203,13 +203,12 @@ public class SearchModel implements Observable {
 		}
 		if (mode.equals("DEFENSEUR")) {
 			for (Observer obs : listObserver) {
-				obs.updateModeDefenseurOuDuel(this.propositionOrdinateurModeDefenseur,
-						this.reponseCorrespondanteModeDefenseur, this.combinaisonSecreteModeDefenseur);
+				obs.update(this.propositionOrdinateurModeDefenseur, this.reponseCorrespondanteModeDefenseur);
 			}
 		}
 		if (mode.equals("DUEL")) {
 			for (Observer obs : listObserver) {
-				obs.updateModeDefenseurOuDuel(this.propositionOrdinateurModeDuel, this.reponseCorrespondanteModeDuel,
+				obs.updateModeDuel(this.propositionOrdinateurModeDuel, this.reponseCorrespondanteModeDuel,
 						this.compare(this.combinaisonSecreteOrdinateurModeDuel, this.propositionJoueurModeDuel));
 			}
 		}

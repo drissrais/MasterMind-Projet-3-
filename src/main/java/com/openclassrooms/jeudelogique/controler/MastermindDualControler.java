@@ -1,11 +1,11 @@
 package com.openclassrooms.jeudelogique.controler;
 
-import com.openclassrooms.jeudelogique.model.SearchModel;
+import com.openclassrooms.jeudelogique.model.MastermindModel;
 
-public class SearchDualControler {
-	private SearchModel model;
+public class MastermindDualControler {
+	private MastermindModel model;
 	
-	public SearchDualControler(SearchModel model) {
+	public MastermindDualControler(MastermindModel model) {
 		this.model = model;
 	}
 	

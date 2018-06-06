@@ -130,7 +130,7 @@ public class Fenetre extends JFrame implements Observer {
 	}
 
 	@Override
-	public void updateModeDefenseurOuDuel(String proposition, String reponse, String combiSecrete) {
+	public void updateModeDuel(String proposition, String reponse, String combiSecrete) {
 
 	}
 
@@ -143,7 +143,7 @@ public class Fenetre extends JFrame implements Observer {
 		conteneur.removeAll();
 		conteneur.add(new AccueilPanel(size).getPanel(), BorderLayout.CENTER);
 		conteneur.revalidate();
-//		newGameButton.doClick();
+		newGameButton.doClick();
 	}
 
 	@Override
@@ -199,6 +199,15 @@ public class Fenetre extends JFrame implements Observer {
 					SearchDualPanel sdp = new SearchDualPanel(size, searchModel);
 					searchModel.addObserver(sdp);
 					conteneur.add(sdp.getPanel(), BorderLayout.CENTER);
+					conteneur.revalidate();
+					initModel();
+				}
+				if (boite.getzInfo().getGame().equals("MasterMind")
+						&& boite.getzInfo().getMode().equals("DUEL")) {
+					conteneur.removeAll();
+					MastermindDualPanel mdp = new MastermindDualPanel(size, mastermindModel);
+					mastermindModel.addObserver(mdp);
+					conteneur.add(mdp.getPanel(), BorderLayout.CENTER);
 					conteneur.revalidate();
 					initModel();
 				}

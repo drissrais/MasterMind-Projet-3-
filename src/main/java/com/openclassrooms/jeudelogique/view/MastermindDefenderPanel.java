@@ -179,6 +179,7 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 			passerButton.setEnabled(true);
 			passerButton.requestFocusInWindow();
 			this.nbEssais--;
+			this.combinaisonSecreteModeDefenseur = this.combinaisonTextField.getText();
 			this.controler.setMode("DEFENSEUR");
 			this.controler.setCombinaisonSecreteModeDefenseur(combinaisonTextField.getText());
 			this.gestionFinDePartie(this.reponseOrdiLabel.getText());
@@ -243,15 +244,14 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 
 	@Override
 	public void update(String proposition, String reponse) {
-	}
-
-	@Override
-	public void updateModeDefenseurOuDuel(String proposition, String reponse, String combiSecrete) {
 		this.storyTextArea.append(proposition + "\t:\t" + reponse + "\n");
 		this.propositionOrdinateurLabel.setText(proposition);
 		this.reponseOrdiLabel.setText(reponse);
 		this.nombreCoupLabel.setText("Nombre de coups restants : " + this.nbEssais);
-		this.combinaisonSecreteModeDefenseur = combiSecrete;
+	}
+
+	@Override
+	public void updateModeDuel(String proposition, String reponse, String combiSecrete) {
 	}
 
 	@Override

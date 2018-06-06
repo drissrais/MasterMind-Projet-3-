@@ -21,13 +21,13 @@ import javax.swing.JTextField;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.text.MaskFormatter;
 
-import com.openclassrooms.jeudelogique.controler.SearchDualControler;
-import com.openclassrooms.jeudelogique.model.SearchModel;
+import com.openclassrooms.jeudelogique.controler.MastermindDualControler;
+import com.openclassrooms.jeudelogique.model.MastermindModel;
 import com.openclassrooms.jeudelogique.model.TableModel;
 import com.openclassrooms.jeudelogique.observer.Observer;
 import com.openclassrooms.jeudelogique.utilities.RandomCombination;
 
-public class SearchDualPanel extends ZContainer implements Observer {
+public class MastermindDualPanel extends ZContainer implements Observer {
 	private JLabel combinaisonLabel;
 	private JFormattedTextField combinaisonTextField;
 	private JButton validerButton;
@@ -39,25 +39,25 @@ public class SearchDualPanel extends ZContainer implements Observer {
 	private TableModel tableModel;
 	private LabelRenderer labelRenderer;
 	private JLabel couleurjoueurLabel, couleurOrdinateurLabel;
-	private SearchDualControler controler;
-
+	private MastermindDualControler controler;
+	
 	private int nbCases = 4, rowIndex = 0, columnIndex = 0;
 	private int activerBoutonValiderCombiSecrete;
 	private String combinaisonSecreteOrdinateurModeDuel;
-	private String reponseOrdinateur, reponseJoueur;
-
-	public SearchDualPanel(Dimension dim, SearchModel mod) {
+	private String reponseOrdinateur = "", reponseJoueur = "";
+	
+	public MastermindDualPanel(Dimension dim, MastermindModel mod) {
 		super(dim);
-		this.controler = new SearchDualControler(mod);
+		this.controler = new MastermindDualControler(mod);
 		initPanel();
 	}
-
+	
 	@Override
 	protected void initPanel() {
 		JPanel northContent = new JPanel();
 		northContent.setBackground(Color.WHITE);
 		northContent.setPreferredSize(new Dimension(800, 45));
-		JLabel welcomeMessage = new JLabel("recherche +/- | mode duel".toUpperCase());
+		JLabel welcomeMessage = new JLabel("mastermind | mode duel".toUpperCase());
 		welcomeMessage.setHorizontalAlignment(JLabel.CENTER);
 		welcomeMessage.setFont(comics30);
 		welcomeMessage.setForeground(Color.decode("#ee5100"));
@@ -69,7 +69,7 @@ public class SearchDualPanel extends ZContainer implements Observer {
 
 		JTextArea texte = new JTextArea(
 				"l'ordinateur et vous jouez tour à tour, le premier à trouver la combinaison secrète\nde l'autre a gagné.\t"
-						.toUpperCase() + " + : Chiffre plus grand       - : Chiffre plus petit        = : Bon chiffre");
+						.toUpperCase() + " # : Chiffre bien placé \t O : Chiffre mal placé");
 		texte.setForeground(Color.BLUE);
 		texte.setPreferredSize(new Dimension(800, 50));
 		texte.setFont(arial);
@@ -214,11 +214,11 @@ public class SearchDualPanel extends ZContainer implements Observer {
 			this.propositionJoueurTextField.requestFocusInWindow();
 			this.gestionFinDePartie(this.reponseOrdinateur, this.reponseJoueur);
 		});
-
+		
 	}
-
+	
 	public void gestionFinDePartie(String reponseOrdinateur, String reponseJoueur) {
-		if (reponseOrdinateur.equals("====") && (!reponseJoueur.equals("===="))) {
+		if (reponseOrdinateur.equals("####") && (!reponseJoueur.equals("####"))) {
 			JOptionPane.showMessageDialog(null,
 					"Bravo!!! vous avez trouvé en premier la combinaison secrète de l'ordinateur.", "Fin de partie",
 					JOptionPane.INFORMATION_MESSAGE);
@@ -239,7 +239,7 @@ public class SearchDualPanel extends ZContainer implements Observer {
 				break;
 			}
 		}
-		if ((!reponseOrdinateur.equals("====")) && reponseJoueur.equals("====")) {
+		if ((!reponseOrdinateur.equals("####")) && reponseJoueur.equals("####")) {
 			JOptionPane.showMessageDialog(null,
 					"Perdu! L'ordinateur a trouvé en premier votre combinaison secrète.\n"
 							+ "La combinaison secrète de l'ordinateur était : " + this.combinaisonSecreteOrdinateurModeDuel,
@@ -261,7 +261,7 @@ public class SearchDualPanel extends ZContainer implements Observer {
 				break;
 			}
 		}
-		if (reponseOrdinateur.equals("====") && reponseJoueur.equals("====")) {
+		if (reponseOrdinateur.equals("####") && reponseJoueur.equals("####")) {
 			JOptionPane.showMessageDialog(null,
 					"Ni Gagné Ni Perdu!!\nChacun a trouvé, au même tour, la combinaison secrète de l'autre.",
 					"Fin de partie", JOptionPane.INFORMATION_MESSAGE);
@@ -286,8 +286,7 @@ public class SearchDualPanel extends ZContainer implements Observer {
 
 	@Override
 	public void update(String proposition, String reponse) {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
@@ -329,13 +328,13 @@ public class SearchDualPanel extends ZContainer implements Observer {
 	@Override
 	public void accueil() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void exitApplication() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }
