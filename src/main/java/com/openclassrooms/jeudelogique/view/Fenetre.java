@@ -28,10 +28,12 @@ public class Fenetre extends JFrame implements Observer {
 
 	private JMenuBar menubar = new JMenuBar();
 	private JMenu fichier = new JMenu("Fichier");
-	private JMenu APropos = new JMenu("À Propos");
+	private JMenu aPropos = new JMenu("À Propos");
+	private JMenu param = new JMenu("Paramètres");
 	private JMenuItem nouveau = new JMenuItem("Nouveau Jeu");
 	private JMenuItem quitter = new JMenuItem("Quitter");
 	private JMenuItem regles = new JMenuItem("Règles du jeu");
+	private JMenuItem parametres = new JMenuItem("Paramètres");
 
 	private JToolBar toolbar = new JToolBar(JToolBar.HORIZONTAL);
 	private JButton newGameButton = new JButton(new ImageIcon(getClass().getResource("/newGame.png")));
@@ -87,27 +89,34 @@ public class Fenetre extends JFrame implements Observer {
 		nouveau.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK));
 		quitter.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_DOWN_MASK));
 		regles.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, KeyEvent.CTRL_DOWN_MASK));
+		parametres.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, KeyEvent.CTRL_DOWN_MASK));
 
 		fichier.add(nouveau);
 		fichier.addSeparator();
 		fichier.add(quitter);
 		fichier.setMnemonic('F');
 
-		APropos.add(regles);
-		APropos.setMnemonic('O');
+		aPropos.add(regles);
+		aPropos.setMnemonic('O');
+		
+		param.add(parametres);
+		param.setMnemonic('P');
 
 		menubar.add(fichier);
-		menubar.add(APropos);
+		menubar.add(aPropos);
+		menubar.add(param);
 		setJMenuBar(menubar);
 
+		nouveau.addActionListener(new newGameListener());
 		quitter.addActionListener((e) -> System.exit(1));
 		regles.addActionListener((e) -> {
 			this.conteneur.removeAll();
 			this.conteneur.add(new RulesPanel(this.size, this.searchModel).getPanel(), BorderLayout.CENTER);
 			this.conteneur.revalidate();
 		});
-
-		nouveau.addActionListener(new newGameListener());
+		parametres.addActionListener((e) -> {
+			new BoiteDialogueParametrage(null, "Paramètres de jeu", true);
+		});
 	}
 
 	@Override

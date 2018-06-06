@@ -27,7 +27,7 @@ public class AccueilPanel extends ZContainer {
 		JLabel icone = new JLabel(new ImageIcon(getClass().getResource("/master.jpg")));
 		this.panel.add(icone, BorderLayout.CENTER);
 		
-		JTextArea texte = new JTextArea("Vous avez dix coups pour trouver la combinaison cachée.\n\t" + "Alors, à vous de jouer !");
+		JTextArea texte = new JTextArea("Mettez votre logique à l'épreuve. À vous de jouer !");
 		texte.setFont(comics20);
 		texte.setEditable(false);
 		this.panel.add(texte, BorderLayout.SOUTH);
