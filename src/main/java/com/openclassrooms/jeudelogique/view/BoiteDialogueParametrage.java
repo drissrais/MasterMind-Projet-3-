@@ -41,7 +41,7 @@ public class BoiteDialogueParametrage extends JDialog {
 	private void initDialog() {
 		Integer[] nbCoupsArray = {5, 10, 15};
 		Integer[] nbCasesArray = {4, 5, 6, 7, 8, 9, 10};
-		Dimension dim = new Dimension(600, 65);
+		Dimension dim = new Dimension(600, 75);
 		
 		JPanel recherchePanel = new JPanel();
 		recherchePanel.setBorder(BorderFactory.createTitledBorder("RecherchePlusMoins"));
@@ -78,15 +78,11 @@ public class BoiteDialogueParametrage extends JDialog {
 		mastermindPanel.add(nbChiffresMastermindLabel);
 		mastermindPanel.add(nbChiffresMastermindComboBox);
 		
-		JPanel developerModePanel = new JPanel();
-		developerModePanel.setPreferredSize(dim);
-		developerModePanel.setBorder(BorderFactory.createTitledBorder("  Mode développeur"));
 		modeDeveloppeurCheckBox = new JCheckBox("Mode développeur ");
-		developerModePanel.add(modeDeveloppeurCheckBox);
 		
 		JPanel centerPanel = new JPanel();
 		centerPanel.add(mastermindPanel);
-		centerPanel.add(developerModePanel);
+		centerPanel.add(modeDeveloppeurCheckBox);
 		
 		JPanel controlPanel = new JPanel();
 		controlPanel.setPreferredSize(new Dimension(600, 50));
