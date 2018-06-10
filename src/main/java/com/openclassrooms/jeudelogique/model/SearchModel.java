@@ -87,7 +87,7 @@ public class SearchModel implements Observable {
 						tabReponse[i] = (int) ((bornesMin[i] + bornesMax[i]) / 2);
 					}
 				}
-				tabIntermediate[i] = Character.forDigit(tabReponse[i], 10);
+				tabIntermediate[i] = String.valueOf(tabReponse[i]).charAt(0);
 			}
 			this.propositionOrdinateurModeDefenseur = String.valueOf(tabIntermediate);
 			this.reponseCorrespondanteModeDefenseur = this.compare(this.combinaisonSecreteModeDefenseur,

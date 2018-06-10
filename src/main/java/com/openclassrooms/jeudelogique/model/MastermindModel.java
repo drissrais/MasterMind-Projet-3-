@@ -1,7 +1,6 @@
 package com.openclassrooms.jeudelogique.model;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Random;
 
 import com.openclassrooms.jeudelogique.observer.Observable;
@@ -28,7 +27,9 @@ public class MastermindModel implements Observable {
 	private String reponseCorrespondanteModeDuel = "";
 
 	// Attributs communs
-	private LinkedList<String> listPossibilities;
+	private ArrayList<String> listPossibilities;
+	private int nbCases = 4;
+	private int nbChiffresAUtiliser = 10;
 	private String mode;
 	private String choixFinDePartie;
 
@@ -62,14 +63,13 @@ public class MastermindModel implements Observable {
 		ArrayList<String> listeARejeter = new ArrayList<>();
 
 		if (this.reponseCorrespondanteModeDefenseur.equals("") && this.propositionOrdinateurModeDefenseur.equals("")) {
-			this.propositionOrdinateurModeDefenseur = this.listPossibilities
-					.get(new Random().nextInt(this.listPossibilities.size()));
+			this.propositionOrdinateurModeDefenseur = String.valueOf(this.listPossibilities.get(new Random().nextInt(this.listPossibilities.size())));
 			this.reponseCorrespondanteModeDefenseur = this.compare(this.combinaisonSecreteModeDefenseur,
 					this.propositionOrdinateurModeDefenseur);
 			this.notifyObserver();
 		} else {
 			for (int i = 0; i < listPossibilities.size(); i++) {
-				resultatsComparaisons[i] = this.compare(this.listPossibilities.get(i),
+				resultatsComparaisons[i] = this.compare(String.valueOf(this.listPossibilities.get(i)),
 						this.propositionOrdinateurModeDefenseur);
 				if (!resultatsComparaisons[i].equals(this.reponseCorrespondanteModeDefenseur)) {
 					listeARejeter.add(this.listPossibilities.get(i));
@@ -78,8 +78,7 @@ public class MastermindModel implements Observable {
 			for (String str : listeARejeter) {
 				this.listPossibilities.remove(str);
 			}
-			this.propositionOrdinateurModeDefenseur = this.listPossibilities
-					.get(new Random().nextInt(this.listPossibilities.size()));
+			this.propositionOrdinateurModeDefenseur = String.valueOf(this.listPossibilities.get(new Random().nextInt(this.listPossibilities.size())));
 			this.reponseCorrespondanteModeDefenseur = this.compare(this.combinaisonSecreteModeDefenseur,
 					this.propositionOrdinateurModeDefenseur);
 			this.notifyObserver();
@@ -89,21 +88,18 @@ public class MastermindModel implements Observable {
 	// Methodes relatives au mode duel
 	public void setCombinaisonSecreteJoueurModeDuel(String combinaisonSecreteJoueurModeDuel) {
 		this.combinaisonSecreteJoueurModeDuel = combinaisonSecreteJoueurModeDuel;
-		this.initListPossibilities();
 		this.reponseCorrespondanteModeDuel = "";
 		this.propositionOrdinateurModeDuel = "";
-//		System.out.println(this.combinaisonSecreteJoueurModeDuel);
 	}
 
 	public void setCombinaisonSecreteOrdinateurModeDuel(String combinaisonSecreteOrdinateurModeDuel) {
 		this.combinaisonSecreteOrdinateurModeDuel = combinaisonSecreteOrdinateurModeDuel;
-//		System.out.println(this.combinaisonSecreteOrdinateurModeDuel);
+		this.initListPossibilities();
 	}
 
 	public void setPropositionJoueurModeDuel(String propositionJoueurModeDuel) {
 		this.propositionJoueurModeDuel = propositionJoueurModeDuel;
 		this.compare(this.combinaisonSecreteOrdinateurModeDuel, this.propositionJoueurModeDuel);
-//		System.out.println(this.compare(this.combinaisonSecreteOrdinateurModeDuel, this.propositionJoueurModeDuel));
 		this.genererPropositionOrdinateurModeDuel();
 		this.notifyObserver();
 	}
@@ -113,15 +109,13 @@ public class MastermindModel implements Observable {
 		ArrayList<String> listeARejeter = new ArrayList<>();
 
 		if (this.reponseCorrespondanteModeDuel.equals("") && this.propositionOrdinateurModeDuel.equals("")) {
-			this.propositionOrdinateurModeDuel = this.listPossibilities
-					.get(new Random().nextInt(this.listPossibilities.size()));
-//			System.out.println(this.propositionOrdinateurModeDuel);
+			this.propositionOrdinateurModeDuel = String
+					.valueOf(this.listPossibilities.get(new Random().nextInt(this.listPossibilities.size())));
 			this.reponseCorrespondanteModeDuel = this.compare(this.combinaisonSecreteJoueurModeDuel,
 					this.propositionOrdinateurModeDuel);
-//			System.out.println(this.reponseCorrespondanteModeDuel);
 		} else {
 			for (int i = 0; i < listPossibilities.size(); i++) {
-				resultatsComparaisons[i] = this.compare(this.listPossibilities.get(i),
+				resultatsComparaisons[i] = this.compare(String.valueOf(this.listPossibilities.get(i)),
 						this.propositionOrdinateurModeDuel);
 				if (!resultatsComparaisons[i].equals(this.reponseCorrespondanteModeDuel)) {
 					listeARejeter.add(this.listPossibilities.get(i));
@@ -130,8 +124,8 @@ public class MastermindModel implements Observable {
 			for (String str : listeARejeter) {
 				this.listPossibilities.remove(str);
 			}
-			this.propositionOrdinateurModeDuel = this.listPossibilities
-					.get(new Random().nextInt(this.listPossibilities.size()));
+			this.propositionOrdinateurModeDuel = String
+					.valueOf(this.listPossibilities.get(new Random().nextInt(this.listPossibilities.size())));
 			this.reponseCorrespondanteModeDuel = this.compare(this.combinaisonSecreteJoueurModeDuel,
 					this.propositionOrdinateurModeDuel);
 		}
@@ -141,13 +135,13 @@ public class MastermindModel implements Observable {
 	public String compare(String combinaisonSecreteOrdinateur, String propositionJoueur) {
 		int nbChiffreMalPlace = 0;
 		int nbChiffreBienPlace = 0;
-		boolean[] marque = new boolean[combinaisonSecreteOrdinateur.length()];
+		boolean[] marque = new boolean[this.nbCases];
 		/*
 		 * cette boucle sert à trouver les éléments bien devinés et correctement placés.
 		 * Le tableau 'marque' permet de marquer de tels éléments pour qu'ils ne soient
 		 * pas comptés plusieurs fois.
 		 */
-		for (int i = 0; i < combinaisonSecreteOrdinateur.length(); i++) {
+		for (int i = 0; i < this.nbCases; i++) {
 			if (combinaisonSecreteOrdinateur.charAt(i) == propositionJoueur.charAt(i)) {
 				nbChiffreBienPlace++;
 				marque[i] = true;
@@ -157,11 +151,11 @@ public class MastermindModel implements Observable {
 		}
 		// la deuxième boucle suivante sert à identifier les
 		// éléments bien devinés mais mal placés.
-		for (int i = 0; i < combinaisonSecreteOrdinateur.length(); i++) {
+		for (int i = 0; i < this.nbCases; i++) {
 			if (combinaisonSecreteOrdinateur.charAt(i) != propositionJoueur.charAt(i)) {
 				int j = 0;
 				boolean trouveMalPlace = false;
-				while ((j < combinaisonSecreteOrdinateur.length()) && !trouveMalPlace) {
+				while ((j < this.nbCases) && !trouveMalPlace) {
 					if (!marque[j] && (combinaisonSecreteOrdinateur.charAt(i) == propositionJoueur.charAt(j))) {
 						nbChiffreMalPlace++;
 						trouveMalPlace = true;
@@ -203,15 +197,54 @@ public class MastermindModel implements Observable {
 	public void setMode(String mode) {
 		this.mode = mode;
 	}
+
+	public void setNbCases(int nbCases) {
+		this.nbCases = nbCases;
+	}
 	
+	public void setNbChiffresAUtiliser(int nbChiffresAUtiliser) {
+		this.nbChiffresAUtiliser = nbChiffresAUtiliser;
+	}
+
 	public void initListPossibilities() {
-		listPossibilities = new LinkedList<>();
-		for (int i = 0; i <= 9; i++) {
-			for (int j = 0; j <= 9; j++) {
-				for (int k = 0; k <= 9; k++) {
-					for (int l = 0; l <= 9; l++) {
-						listPossibilities
-								.add(String.valueOf(i) + String.valueOf(j) + String.valueOf(k) + String.valueOf(l));
+		listPossibilities = new ArrayList<>();
+		if (nbCases == 4) {
+			for (byte i = 0; i < nbChiffresAUtiliser; i++) {
+				for (byte j = 0; j < nbChiffresAUtiliser; j++) {
+					for (byte k = 0; k < nbChiffresAUtiliser; k++) {
+						for (byte l = 0; l < nbChiffresAUtiliser; l++) {
+							listPossibilities
+									.add(String.valueOf(i) + String.valueOf(j) + String.valueOf(k) + String.valueOf(l));
+						}
+					}
+				}
+			}
+		} else if (nbCases == 5) {
+			for (byte i = 0; i < nbChiffresAUtiliser; i++) {
+				for (byte j = 0; j < nbChiffresAUtiliser; j++) {
+					for (byte k = 0; k < nbChiffresAUtiliser; k++) {
+						for (byte l = 0; l < nbChiffresAUtiliser; l++) {
+							for (byte m = 0; m < nbChiffresAUtiliser; m++) {
+								listPossibilities.add(String.valueOf(i) + String.valueOf(j) + String.valueOf(k)
+										+ String.valueOf(l) + String.valueOf(m));
+							}
+						}
+
+					}
+				}
+			}
+		} else {
+			for (byte i = 0; i < nbChiffresAUtiliser; i++) {
+				for (byte j = 0; j < nbChiffresAUtiliser; j++) {
+					for (byte k = 0; k < nbChiffresAUtiliser; k++) {
+						for (byte l = 0; l < nbChiffresAUtiliser; l++) {
+							for (byte m = 0; m < nbChiffresAUtiliser; m++) {
+								for (byte n = 0; n < nbChiffresAUtiliser; n++) {
+									listPossibilities.add(String.valueOf(i) + String.valueOf(j) + String.valueOf(k)
+											+ String.valueOf(l) + String.valueOf(m) + String.valueOf(n));
+								}
+							}
+						}
 					}
 				}
 			}
@@ -252,6 +285,7 @@ public class MastermindModel implements Observable {
 
 	@Override
 	public void restartObserver() {
+		this.listPossibilities = new ArrayList<>();
 		for (Observer obs : listObserver) {
 			obs.restart();
 		}

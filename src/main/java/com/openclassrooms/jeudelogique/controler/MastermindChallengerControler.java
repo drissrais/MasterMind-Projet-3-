@@ -3,10 +3,8 @@ package com.openclassrooms.jeudelogique.controler;
 import com.openclassrooms.jeudelogique.model.MastermindModel;
 
 public class MastermindChallengerControler {
-	private String proposition;
-	private String choixFinDePartie;
 	private String combinaisonSecrete;
-	
+	private int nbChiffresAUtiliser;
 	private MastermindModel mastermindModel = null;
 
 	public MastermindChallengerControler(MastermindModel model) {
@@ -14,23 +12,62 @@ public class MastermindChallengerControler {
 	}
 	
 	public void setProposition(String proposition) {
-		this.proposition = proposition;
-		control();
+		this.mastermindModel.setPropositionModeChallenger(proposition);
 	}
 	
 	public void setCombinaisonSecrete(String combinaisonSecrete) {
 		this.combinaisonSecrete = combinaisonSecrete;
-		this.mastermindModel.setCombinaisonSecreteModeChallenger(this.combinaisonSecrete);
+		control();
 	}
 	
 	public void setChoixFinDePartie(String choixFinDePartie) {
-		this.choixFinDePartie = choixFinDePartie;
-		this.mastermindModel.setChoixFinDePartie(this.choixFinDePartie);
+		this.mastermindModel.setChoixFinDePartie(choixFinDePartie);
 	}
 
-	public void control() {
-		if (proposition.matches("^[0-9][0-9][0-9][0-9]$")) {
-			this.mastermindModel.setPropositionModeChallenger(this.proposition);
+	public void setMode(String mode) {
+		this.mastermindModel.setMode(mode);
+	}
+	
+	public void setNbChiffresAUtiliser(int nbChiffresAUtiliser) {
+		this.nbChiffresAUtiliser = nbChiffresAUtiliser;
+		this.mastermindModel.setNbChiffresAUtiliser(nbChiffresAUtiliser);
+	}
+	
+	private void control() {
+		if (this.nbChiffresAUtiliser == 4) {
+			if (this.combinaisonSecrete.matches("[0-3]+")) {
+				this.mastermindModel.setCombinaisonSecreteModeChallenger(combinaisonSecrete);
+			}
+		}
+		if (this.nbChiffresAUtiliser == 5) {
+			if (this.combinaisonSecrete.matches("[0-4]+")) {
+				this.mastermindModel.setCombinaisonSecreteModeChallenger(combinaisonSecrete);
+			}
+		}
+		if (this.nbChiffresAUtiliser == 6) {
+			if (this.combinaisonSecrete.matches("[0-5]+")) {
+				this.mastermindModel.setCombinaisonSecreteModeChallenger(combinaisonSecrete);
+			}
+		}
+		if (this.nbChiffresAUtiliser == 7) {
+			if (this.combinaisonSecrete.matches("[0-6]+")) {
+				this.mastermindModel.setCombinaisonSecreteModeChallenger(combinaisonSecrete);
+			}
+		}
+		if (this.nbChiffresAUtiliser == 8) {
+			if (this.combinaisonSecrete.matches("[0-7]+")) {
+				this.mastermindModel.setCombinaisonSecreteModeChallenger(combinaisonSecrete);
+			}
+		}
+		if (this.nbChiffresAUtiliser == 9) {
+			if (this.combinaisonSecrete.matches("[0-8]+")) {
+				this.mastermindModel.setCombinaisonSecreteModeChallenger(combinaisonSecrete);
+			}
+		}
+		if (this.nbChiffresAUtiliser == 10) {
+			if (this.combinaisonSecrete.matches("[0-9]+")) {
+				this.mastermindModel.setCombinaisonSecreteModeChallenger(combinaisonSecrete);
+			}
 		}
 	}
 

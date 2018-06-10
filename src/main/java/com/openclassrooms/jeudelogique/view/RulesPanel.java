@@ -49,7 +49,7 @@ public class RulesPanel extends ZContainer implements Observer {
 				+ "(Combinaison secrète : 1234)\r\n" + "Proposition : 4278 -> Réponse : -=--\r\n"
 				+ "Proposition : 2214 -> Réponse : -=+=\r\n" + "\r\n";
 		texte1 = new JTextArea(message);
-		texte1.setFont(arial);
+		texte1.setFont(arial15);
 		texte1.setEditable(false);
 		searchPanel.add(titre1Label);
 		searchPanel.add(texte1);
@@ -63,7 +63,7 @@ public class RulesPanel extends ZContainer implements Observer {
 				+ "(Combinaison secrète : 1234)\r\n" + "Proposition : 4278 -> Réponse : 1 présent, 1 bien placé\r\n"
 				+ "Proposition : 6274 -> Réponse : 2 bien placés\r\n" + "\r\n";
 		texte2 = new JTextArea(message2);
-		texte2.setFont(arial);
+		texte2.setFont(arial15);
 		texte2.setEditable(false);
 		mastermindPanel.add(titre2Label);
 		mastermindPanel.add(texte2);

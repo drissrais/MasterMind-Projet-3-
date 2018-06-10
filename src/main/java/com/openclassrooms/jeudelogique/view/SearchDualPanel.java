@@ -38,17 +38,20 @@ public class SearchDualPanel extends ZContainer implements Observer {
 	private JTable storyTable;
 	private TableModel tableModel;
 	private LabelRenderer labelRenderer;
-	private JLabel couleurjoueurLabel, couleurOrdinateurLabel;
+	private JLabel couleurjoueurLabel, couleurOrdinateurLabel, solution;
 	private SearchDualControler controler;
 
-	private int nbCases = 4, rowIndex = 0, columnIndex = 0;
+	private int nbCases, rowIndex = 0, columnIndex = 0;
 	private int activerBoutonValiderCombiSecrete;
 	private String combinaisonSecreteOrdinateurModeDuel;
 	private String reponseOrdinateur, reponseJoueur;
+	private boolean developerMode;
 
-	public SearchDualPanel(Dimension dim, SearchModel mod) {
+	public SearchDualPanel(Dimension dim, SearchModel mod, int nbCases, boolean developerMode) {
 		super(dim);
 		this.controler = new SearchDualControler(mod);
+		this.nbCases = nbCases;
+		this.developerMode = developerMode;
 		initPanel();
 	}
 
@@ -72,15 +75,29 @@ public class SearchDualPanel extends ZContainer implements Observer {
 						.toUpperCase() + " + : Chiffre plus grand       - : Chiffre plus petit        = : Bon chiffre");
 		texte.setForeground(Color.BLUE);
 		texte.setPreferredSize(new Dimension(800, 50));
-		texte.setFont(arial);
+		texte.setFont(arial15);
 		texte.setEditable(false);
 		texte.setFocusable(false);
 		centerContent.add(texte);
 
+		this.combinaisonSecreteOrdinateurModeDuel = RandomCombination.generateRandomCombination(this.nbCases);
+		this.controler.setCombinaisonSecreteOrdinateurModeDuel(this.combinaisonSecreteOrdinateurModeDuel);
+
+		if (this.developerMode == true) {
+			solution = new JLabel("Solution : " + this.combinaisonSecreteOrdinateurModeDuel);
+			solution.setPreferredSize(new Dimension(150, 50));
+			solution.setFont(arial15);
+			solution.setForeground(Color.RED);
+			texte.setPreferredSize(new Dimension(600, 50));
+			texte.setText(
+					"l'ordinateur et vous jouez tour à tour, le premier à trouver la combinaison secrète\nde l'autre a gagné. + : Chiffre plus grand. - : Chiffre plus petit. = : Bon chiffre");
+			centerContent.add(solution);
+		}
+
 		combinaisonLabel = new JLabel("Veuillez saisir votre combinaison secrète (" + this.nbCases + " chiffres) : ");
 		combinaisonLabel.setHorizontalAlignment(JLabel.LEFT);
 		combinaisonLabel.setPreferredSize(new Dimension(400, 25));
-		combinaisonLabel.setFont(arial);
+		combinaisonLabel.setFont(arial15);
 		centerContent.add(combinaisonLabel);
 
 		combinaisonTextField = new JFormattedTextField();
@@ -93,7 +110,7 @@ public class SearchDualPanel extends ZContainer implements Observer {
 		combinaisonTextField.setPreferredSize(new Dimension(140, 25));
 		combinaisonTextField.setHorizontalAlignment(JTextField.CENTER);
 		combinaisonTextField.setForeground(Color.BLUE);
-		combinaisonTextField.setFont(arial);
+		combinaisonTextField.setFont(arial15);
 		combinaisonTextField.requestFocusInWindow();
 		centerContent.add(combinaisonTextField);
 
@@ -105,7 +122,7 @@ public class SearchDualPanel extends ZContainer implements Observer {
 		propositionJoueurLabel = new JLabel("Votre proposition : ");
 		propositionJoueurLabel.setPreferredSize(new Dimension(150, 35));
 		propositionJoueurLabel.setHorizontalAlignment(JLabel.LEFT);
-		propositionJoueurLabel.setFont(arial);
+		propositionJoueurLabel.setFont(arial15);
 		centerContent.add(propositionJoueurLabel);
 
 		propositionJoueurTextField = new JTextField();
@@ -119,7 +136,7 @@ public class SearchDualPanel extends ZContainer implements Observer {
 		propositionJoueurTextField.setPreferredSize(new Dimension(90, 25));
 		propositionJoueurTextField.setHorizontalAlignment(JTextField.CENTER);
 		propositionJoueurTextField.setForeground(Color.decode("#51b46d"));
-		propositionJoueurTextField.setFont(arial);
+		propositionJoueurTextField.setFont(arial15);
 		centerContent.add(propositionJoueurTextField);
 
 		JTextArea vide = new JTextArea("\t");
@@ -131,7 +148,7 @@ public class SearchDualPanel extends ZContainer implements Observer {
 		propositionOrdinateurLabel = new JLabel("Proposition de l'ordinateur : ");
 		propositionOrdinateurLabel.setPreferredSize(new Dimension(215, 35));
 		propositionOrdinateurLabel.setHorizontalAlignment(JLabel.LEFT);
-		propositionOrdinateurLabel.setFont(arial);
+		propositionOrdinateurLabel.setFont(arial15);
 		centerContent.add(propositionOrdinateurLabel);
 
 		propositionOrdinateur = new JLabel("");
@@ -139,7 +156,7 @@ public class SearchDualPanel extends ZContainer implements Observer {
 		propositionOrdinateur.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		propositionOrdinateur.setHorizontalAlignment(JTextField.CENTER);
 		propositionOrdinateur.setForeground(Color.RED);
-		propositionOrdinateur.setFont(arial);
+		propositionOrdinateur.setFont(arial15);
 		centerContent.add(propositionOrdinateur);
 
 		JPanel containerTable = new JPanel(new BorderLayout());
@@ -154,7 +171,7 @@ public class SearchDualPanel extends ZContainer implements Observer {
 		storyTable.getColumn("Réponse").setCellRenderer(labelRenderer);
 		storyTable.setBackground(Color.decode("#eeeeee"));
 		storyTable.setAlignmentX(Component.CENTER_ALIGNMENT);
-		storyTable.setFont(arial);
+		storyTable.setFont(arial15);
 		containerTable.add(new JScrollPane(storyTable), BorderLayout.CENTER);
 		centerContent.add(containerTable);
 
@@ -164,16 +181,13 @@ public class SearchDualPanel extends ZContainer implements Observer {
 		couleurjoueurLabel = new JLabel("Vous êtes en vert.");
 		couleurjoueurLabel.setForeground(Color.decode("#51b46d"));
 		couleurjoueurLabel.setHorizontalAlignment(JLabel.CENTER);
-		couleurjoueurLabel.setFont(arial);
+		couleurjoueurLabel.setFont(arial15);
 		couleurOrdinateurLabel = new JLabel("L'ordinateur est en rouge.");
 		couleurOrdinateurLabel.setForeground(Color.RED);
 		couleurOrdinateurLabel.setHorizontalAlignment(JLabel.CENTER);
-		couleurOrdinateurLabel.setFont(arial);
+		couleurOrdinateurLabel.setFont(arial15);
 		southContent.add(couleurjoueurLabel);
 		southContent.add(couleurOrdinateurLabel);
-
-		this.combinaisonSecreteOrdinateurModeDuel = RandomCombination.generateRandomCombination(this.nbCases);
-		this.controler.setCombinaisonSecreteOrdinateurModeDuel(this.combinaisonSecreteOrdinateurModeDuel);
 
 		this.panel.setBackground(Color.WHITE);
 		this.panel.add(northContent, BorderLayout.NORTH);
@@ -240,9 +254,8 @@ public class SearchDualPanel extends ZContainer implements Observer {
 			}
 		}
 		if ((!reponseOrdinateur.equals("====")) && reponseJoueur.equals("====")) {
-			JOptionPane.showMessageDialog(null,
-					"Perdu! L'ordinateur a trouvé en premier votre combinaison secrète.\n"
-							+ "La combinaison secrète de l'ordinateur était : " + this.combinaisonSecreteOrdinateurModeDuel,
+			JOptionPane.showMessageDialog(null, "Perdu! L'ordinateur a trouvé en premier votre combinaison secrète.\n"
+					+ "La combinaison secrète de l'ordinateur était : " + this.combinaisonSecreteOrdinateurModeDuel,
 					"Fin de partie", JOptionPane.INFORMATION_MESSAGE);
 			String[] choix = { "Rejouer", "Revenir au menu", "Quitter" };
 			int rang = JOptionPane.showOptionDialog(null, "Voulez-vous rejouer?", "Rejouer",
@@ -286,8 +299,6 @@ public class SearchDualPanel extends ZContainer implements Observer {
 
 	@Override
 	public void update(String proposition, String reponse) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -301,25 +312,28 @@ public class SearchDualPanel extends ZContainer implements Observer {
 		((AbstractTableModel) this.storyTable.getModel()).fireTableCellUpdated(rowIndex + 1, columnIndex);
 		this.storyTable.getModel().setValueAt(reponse, rowIndex + 1, columnIndex + 1);
 		((AbstractTableModel) this.storyTable.getModel()).fireTableCellUpdated(rowIndex + 1, columnIndex + 1);
-		
+
 		this.reponseOrdinateur = String.valueOf(this.storyTable.getModel().getValueAt(rowIndex, columnIndex + 1));
 		this.reponseJoueur = String.valueOf(this.storyTable.getModel().getValueAt(rowIndex + 1, columnIndex + 1));
-		
+
 		rowIndex += 2;
 	}
 
 	@Override
 	public void restart() {
 		this.combinaisonSecreteOrdinateurModeDuel = RandomCombination.generateRandomCombination(this.nbCases);
+		if (developerMode) {
+			solution.setText("Solution : " + this.combinaisonSecreteOrdinateurModeDuel);
+		}
 		this.controler.setCombinaisonSecreteOrdinateurModeDuel(this.combinaisonSecreteOrdinateurModeDuel);
 		this.combinaisonTextField.setEnabled(true);
 		this.combinaisonTextField.setText("");
 		this.propositionOrdinateur.setText("");
 		this.propositionJoueurTextField.setEnabled(false);
-		for(int i = 0; i <= rowIndex; i++) {
+		for (int i = 0; i <= rowIndex; i++) {
 			for (int j = 0; j < 2; j++) {
-				((AbstractTableModel)this.storyTable.getModel()).setValueAt("", i, j);
-				((AbstractTableModel)this.storyTable.getModel()).fireTableCellUpdated(i, j);
+				((AbstractTableModel) this.storyTable.getModel()).setValueAt("", i, j);
+				((AbstractTableModel) this.storyTable.getModel()).fireTableCellUpdated(i, j);
 			}
 		}
 		this.rowIndex = 0;
@@ -328,14 +342,10 @@ public class SearchDualPanel extends ZContainer implements Observer {
 
 	@Override
 	public void accueil() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void exitApplication() {
-		// TODO Auto-generated method stub
-
 	}
 
 }

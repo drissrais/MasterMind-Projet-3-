@@ -35,15 +35,18 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 	private JLabel nombreCoupLabel;
 	private SearchDefenderControler controler;
 
-	private int nbCases = 4, nbEssais = 10;
+	private int nbCases, nbCoups;
 	private int activerBoutonValiderCombiSecrete;
 	private String combinaisonSecreteModeDefenseur;
 
-	private final int NBESSAIS = 10;
-
-	public SearchDefenderPanel(Dimension dim, SearchModel mod) {
+	private int nbCoupsConstant;
+	
+	public SearchDefenderPanel(Dimension dim, SearchModel mod, int nbCoups, int nbCases) {
 		super(dim);
 		this.controler = new SearchDefenderControler(mod);
+		this.nbCoups = nbCoups;
+		this.nbCoupsConstant = nbCoups;
+		this.nbCases = nbCases;
 		initPanel();
 	}
 
@@ -62,33 +65,59 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 		centerContent.setPreferredSize(new Dimension(800, 410));
 		centerContent.setBackground(Color.WHITE);
 
-		JTextArea texte = new JTextArea("L'ordinateur a ".toUpperCase() + NBESSAIS
+		JTextArea texte = new JTextArea("L'ordinateur a ".toUpperCase() + nbCoupsConstant
 				+ " essais pour trouver votre combinaison secrète.".toUpperCase()
 				+ "\n+ : Chiffre plus grand\t - : Chiffre plus petit\t= : Bon chiffre");
 		texte.setForeground(Color.BLUE);
 		texte.setPreferredSize(new Dimension(800, 50));
-		texte.setFont(arial);
+		texte.setFont(arial15);
 		texte.setEditable(false);
 		texte.setFocusable(false);
 		centerContent.add(texte);
 
 		combinaisonLabel = new JLabel("Veuillez saisir votre combinaison secrète (" + this.nbCases + " chiffres) : ");
 		combinaisonLabel.setHorizontalAlignment(JLabel.LEFT);
-		combinaisonLabel.setPreferredSize(new Dimension(400, 25));
-		combinaisonLabel.setFont(arial);
+		combinaisonLabel.setPreferredSize(new Dimension(410, 25));
+		combinaisonLabel.setFont(arial15);
 		centerContent.add(combinaisonLabel);
 
 		combinaisonTextField = new JFormattedTextField();
+		MaskFormatter maskFormatter;
 		try {
-			MaskFormatter maskFormatter = new MaskFormatter("####");
+			switch (this.nbCases) {
+			case 4:
+				maskFormatter = new MaskFormatter("####");
+				break;
+			case 5:
+				maskFormatter = new MaskFormatter("#####");
+				break;
+			case 6:
+				maskFormatter = new MaskFormatter("######");
+				break;
+			case 7:
+				maskFormatter = new MaskFormatter("#######");
+				break;
+			case 8:
+				maskFormatter = new MaskFormatter("########");
+				break;
+			case 9:
+				maskFormatter = new MaskFormatter("#########");
+				break;
+			case 10:
+				maskFormatter = new MaskFormatter("##########");
+				break;
+			default:
+				maskFormatter = new MaskFormatter("####");
+				break;
+			}
 			combinaisonTextField = new JFormattedTextField(maskFormatter);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		combinaisonTextField.setPreferredSize(new Dimension(140, 25));
+		combinaisonTextField.setPreferredSize(new Dimension(150, 25));
 		combinaisonTextField.setHorizontalAlignment(JTextField.CENTER);
 		combinaisonTextField.setForeground(Color.BLUE);
-		combinaisonTextField.setFont(arial);
+		combinaisonTextField.setFont(arial15);
 		combinaisonTextField.requestFocusInWindow();
 		centerContent.add(combinaisonTextField);
 
@@ -97,32 +126,32 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 		validerButton.setEnabled(false);
 		centerContent.add(validerButton);
 
-		propOrdinateurLabel = new JLabel(" Proposition de l'ordinateur : ");
-		propOrdinateurLabel.setPreferredSize(new Dimension(210, 35));
+		propOrdinateurLabel = new JLabel(" Proposition de l'ordinateur:");
+		propOrdinateurLabel.setPreferredSize(new Dimension(200, 35));
 		propOrdinateurLabel.setHorizontalAlignment(JLabel.LEFT);
-		propOrdinateurLabel.setFont(arial);
+		propOrdinateurLabel.setFont(arial15);
 		centerContent.add(propOrdinateurLabel);
 
 		propositionOrdinateurLabel = new JLabel("");
-		propositionOrdinateurLabel.setPreferredSize(new Dimension(70, 25));
+		propositionOrdinateurLabel.setPreferredSize(new Dimension(95, 25));
 		propositionOrdinateurLabel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		propositionOrdinateurLabel.setHorizontalAlignment(JTextField.CENTER);
 		propositionOrdinateurLabel.setForeground(Color.BLUE);
-		propositionOrdinateurLabel.setFont(arial);
+		propositionOrdinateurLabel.setFont(arial14);
 		centerContent.add(propositionOrdinateurLabel);
 
-		repOrdinateurLabel = new JLabel(" Réponse correspondante : ");
-		repOrdinateurLabel.setPreferredSize(new Dimension(205, 35));
+		repOrdinateurLabel = new JLabel(" Réponse correspondante:");
+		repOrdinateurLabel.setPreferredSize(new Dimension(192, 35));
 		repOrdinateurLabel.setHorizontalAlignment(JLabel.LEFT);
-		repOrdinateurLabel.setFont(arial);
+		repOrdinateurLabel.setFont(arial15);
 		centerContent.add(repOrdinateurLabel);
 
 		reponseOrdiLabel = new JLabel("");
-		reponseOrdiLabel.setPreferredSize(new Dimension(70, 25));
+		reponseOrdiLabel.setPreferredSize(new Dimension(90, 25));
 		reponseOrdiLabel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		reponseOrdiLabel.setHorizontalAlignment(JTextField.CENTER);
 		reponseOrdiLabel.setForeground(Color.BLUE);
-		reponseOrdiLabel.setFont(arial);
+		reponseOrdiLabel.setFont(arial14);
 		centerContent.add(reponseOrdiLabel);
 
 		passerButton = new JButton("Passer");
@@ -134,19 +163,19 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 		storyTextArea.setBackground(Color.decode("#eeeeee"));
 		storyTextArea.setEditable(false);
 		storyTextArea.setFocusable(false);
-		storyTextArea.setFont(arial);
+		storyTextArea.setFont(arial15);
 		storyTextArea.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-		storyTextArea.setPreferredSize(new Dimension(270, 275));
+		storyTextArea.setPreferredSize(new Dimension(560, 275));
 		storyTextArea.setAlignmentX(Component.CENTER_ALIGNMENT);
 		centerContent.add(storyTextArea);
 
 		JPanel southContent = new JPanel();
 		southContent.setBackground(Color.WHITE);
 		southContent.setPreferredSize(new Dimension(800, 30));
-		nombreCoupLabel = new JLabel("Nombre de coups restants : " + this.nbEssais);
+		nombreCoupLabel = new JLabel("Nombre de coups restants : " + this.nbCoups);
 		nombreCoupLabel.setForeground(Color.decode("#51b46d"));
 		nombreCoupLabel.setHorizontalAlignment(JLabel.CENTER);
-		nombreCoupLabel.setFont(arial);
+		nombreCoupLabel.setFont(arial15);
 		southContent.add(nombreCoupLabel, BorderLayout.NORTH);
 
 		this.panel.setBackground(Color.WHITE);
@@ -164,6 +193,7 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 				}
 				if (activerBoutonValiderCombiSecrete == nbCases) {
 					validerButton.setEnabled(true);
+					validerButton.requestFocusInWindow();
 					activerBoutonValiderCombiSecrete = 0;
 				} else {
 					activerBoutonValiderCombiSecrete = 0;
@@ -177,7 +207,7 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 			validerButton.setEnabled(false);
 			passerButton.setEnabled(true);
 			passerButton.requestFocusInWindow();
-			this.nbEssais--;
+			this.nbCoups--;
 			this.combinaisonSecreteModeDefenseur = this.combinaisonTextField.getText();
 			this.controler.setMode("DEFENSEUR");
 			this.controler.setCombinaisonSecreteModeDefenseur(combinaisonTextField.getText());
@@ -185,7 +215,7 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 		});
 
 		passerButton.addActionListener((e) -> {
-			this.nbEssais--;
+			this.nbCoups--;
 			this.controler.setMode("DEFENSEUR");
 			this.controler.genererPropositionOrdinateurModeDefenseur();
 			this.gestionFinDePartie(this.reponseOrdiLabel.getText());
@@ -194,10 +224,10 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 	}
 
 	public void gestionFinDePartie(String reponse) {
-		if (reponse.equals("====") && this.nbEssais >= 0) {
+		if (reponse.matches("[=]*") && this.nbCoups >= 0) {
 			JOptionPane.showMessageDialog(null,
 					"PERDU!\nL'IA a trouvé votre combinaison secrète " + this.combinaisonSecreteModeDefenseur
-							+ " en moins de " + this.NBESSAIS + " coups.",
+							+ " en moins de " + this.nbCoupsConstant + " coups.",
 					"Fin de partie", JOptionPane.INFORMATION_MESSAGE);
 			String[] choix = { "Rejouer", "Revenir au menu", "Quitter" };
 			int rang = JOptionPane.showOptionDialog(null, "Voulez-vous rejouer?", "Rejouer",
@@ -216,10 +246,10 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 				break;
 			}
 		}
-		if ((!reponse.equals("====")) && this.nbEssais <= 0) {
+		if ((!reponse.matches("[=]*")) && this.nbCoups <= 0) {
 			JOptionPane.showMessageDialog(null,
 					"Vous avez gagné!\n" + "Votre combinaison secrète " + this.combinaisonSecreteModeDefenseur
-							+ " n'a pas été trouvée par l'ordinateur en moins de " + this.NBESSAIS + " coups.",
+							+ " n'a pas été trouvée par l'ordinateur en moins de " + this.nbCoupsConstant + " coups.",
 					"Fin de partie", JOptionPane.INFORMATION_MESSAGE);
 			String[] choix = { "Rejouer", "Revenir au menu", "Quitter" };
 			int rang = JOptionPane.showOptionDialog(null, "Voulez-vous rejouer?", "Rejouer",
@@ -241,7 +271,7 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 	}
 
 	public int getNbEssais() {
-		return NBESSAIS - nbEssais;
+		return nbCoupsConstant - nbCoups;
 	}
 
 	@Override
@@ -250,17 +280,17 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 
 	@Override
 	public void update(String proposition, String reponse) {
-		this.storyTextArea.append(proposition + "\t:\t" + reponse + "\n");
+		this.storyTextArea.append(proposition + "\t\t:\t\t" + reponse + "\n");
 		this.propositionOrdinateurLabel.setText(proposition);
 		this.reponseOrdiLabel.setText(reponse);
-		this.nombreCoupLabel.setText("Nombre de coups restants : " + this.nbEssais);
+		this.nombreCoupLabel.setText("Nombre de coups restants : " + this.nbCoups);
 	}
 
 	@Override
 	public void restart() {
 		this.storyTextArea.setText("");
-		this.nbEssais = NBESSAIS;
-		this.nombreCoupLabel.setText("Nombre de coups restants : " + this.nbEssais);
+		this.nbCoups = nbCoupsConstant;
+		this.nombreCoupLabel.setText("Nombre de coups restants : " + this.nbCoups);
 		this.propositionOrdinateurLabel.setText("");
 		this.reponseOrdiLabel.setText("");
 		this.passerButton.setEnabled(false);

@@ -6,6 +6,14 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Properties;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -44,11 +52,16 @@ public class Fenetre extends JFrame implements Observer {
 	private JPanel contentPane = new JPanel(layout);
 	private JPanel toolbarConteneur = new JPanel(new BorderLayout());
 
+	private Properties properties;
+	private int nbCoupsRecherchePlusMoins, nbCasesRecherchePlusMoins, nbCoupsMastermind, nbCasesMastermind,
+			nbChiffresAUtiliserMastermind;
+	private boolean developerMode;
+
 	private Dimension size;
 	private SearchModel searchModel;
 	private MastermindModel mastermindModel;
 
-	public Fenetre(SearchModel model1, MastermindModel model2) {
+	public Fenetre(SearchModel model1, MastermindModel model2, boolean developerMode) {
 		setTitle("Jeux de Logique");
 		pack();
 		setResizable(false);
@@ -57,6 +70,7 @@ public class Fenetre extends JFrame implements Observer {
 
 		size = new Dimension(this.getWidth(), this.getHeight());
 
+		this.developerMode = developerMode;
 		this.searchModel = model1;
 		this.mastermindModel = model2;
 		this.searchModel.addObserver(this);
@@ -98,7 +112,7 @@ public class Fenetre extends JFrame implements Observer {
 
 		aPropos.add(regles);
 		aPropos.setMnemonic('O');
-		
+
 		param.add(parametres);
 		param.setMnemonic('P');
 
@@ -108,14 +122,57 @@ public class Fenetre extends JFrame implements Observer {
 		setJMenuBar(menubar);
 
 		nouveau.addActionListener(new newGameListener());
-		quitter.addActionListener((e) -> System.exit(1));
+		quitter.addActionListener((e) -> {
+			properties = new Properties();
+			try (InputStream input = new FileInputStream("src/main/resources/config.properties");
+					OutputStream output = new FileOutputStream("src/main/resources/config.properties")) {
+				properties.load(input);
+
+				properties.setProperty("param.nbCoupsRecherchePlusMoins", "10");
+				properties.setProperty("param.nbCasesRecherchePlusMoins", "4");
+
+				properties.setProperty("param.nbCoupsMastermind", "10");
+				properties.setProperty("param.nbCasesMastermind", "4");
+				properties.setProperty("param.nbChiffresAUtiliserMastermind", "10");
+
+				properties.store(output, "Fichier de configuration config.properties");
+				System.exit(0);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		});
 		regles.addActionListener((e) -> {
 			this.conteneur.removeAll();
 			this.conteneur.add(new RulesPanel(this.size, this.searchModel).getPanel(), BorderLayout.CENTER);
 			this.conteneur.revalidate();
+			param.setEnabled(true);
 		});
+		
 		parametres.addActionListener((e) -> {
-			new BoiteDialogueParametrage(null, "Paramètres de jeu", true);
+			new BoiteDialogueParametrage(null, "Paramètres de jeu", true, this.developerMode);
+		});
+		
+		this.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				properties = new Properties();
+				try (InputStream input = new FileInputStream("src/main/resources/config.properties");
+						OutputStream output = new FileOutputStream("src/main/resources/config.properties")) {
+					properties.load(input);
+
+					properties.setProperty("param.nbCoupsRecherchePlusMoins", "10");
+					properties.setProperty("param.nbCasesRecherchePlusMoins", "4");
+
+					properties.setProperty("param.nbCoupsMastermind", "10");
+					properties.setProperty("param.nbCasesMastermind", "4");
+					properties.setProperty("param.nbChiffresAUtiliserMastermind", "10");
+
+					properties.store(output, "Fichier de configuration config.properties");
+					System.exit(0);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
 		});
 	}
 
@@ -152,12 +209,31 @@ public class Fenetre extends JFrame implements Observer {
 		conteneur.removeAll();
 		conteneur.add(new AccueilPanel(size).getPanel(), BorderLayout.CENTER);
 		conteneur.revalidate();
-		newGameButton.doClick();
+		// newGameButton.doClick();
+		param.setEnabled(true);
 	}
 
 	@Override
 	public void exitApplication() {
-		System.exit(1);
+		properties = new Properties();
+		try (InputStream input = new FileInputStream("src/main/resources/config.properties");
+				OutputStream output = new FileOutputStream("src/main/resources/config.properties")) {
+			properties.load(input);
+
+			// Traitement pour le jeu RecherchePlusMoins
+			properties.setProperty("param.nbCoupsRecherchePlusMoins", "10");
+			properties.setProperty("param.nbCasesRecherchePlusMoins", "4");
+
+			// Traitement pour le jeu Mastermind
+			properties.setProperty("param.nbCoupsMastermind", "10");
+			properties.setProperty("param.nbCasesMastermind", "4");
+			properties.setProperty("param.nbChiffresAUtiliserMastermind", "10");
+
+			properties.store(output, "Fichier de configuration config.properties");
+			System.exit(0);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 	}
 
 	public class newGameListener implements ActionListener {
@@ -165,11 +241,26 @@ public class Fenetre extends JFrame implements Observer {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			BoiteDialogueDebutDePartie boite = new BoiteDialogueDebutDePartie(null, "Nouveau Jeu", true);
+			properties = new Properties();
+			try (InputStream input = new FileInputStream("src/main/resources/config.properties")) {
+				properties.load(input);
+				nbCoupsRecherchePlusMoins = Integer.parseInt(properties.getProperty("param.nbCoupsRecherchePlusMoins"));
+				nbCasesRecherchePlusMoins = Integer.parseInt(properties.getProperty("param.nbCasesRecherchePlusMoins"));
+				nbCoupsMastermind = Integer.parseInt(properties.getProperty("param.nbCoupsMastermind"));
+				nbCasesMastermind = Integer.parseInt(properties.getProperty("param.nbCasesMastermind"));
+				nbChiffresAUtiliserMastermind = Integer
+						.parseInt(properties.getProperty("param.nbChiffresAUtiliserMastermind"));
+				developerMode = Boolean.parseBoolean(properties.getProperty("param.modeDeveloppeur"));
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 			if ((!boite.getzInfo().getGame().equals("")) && (!boite.getzInfo().getMode().equals(""))) {
 				if (boite.getzInfo().getGame().equals("Recherche +/-")
 						&& boite.getzInfo().getMode().equals("CHALLENGER")) {
+					param.setEnabled(false);
 					conteneur.removeAll();
-					SearchChallengerPanel scp = new SearchChallengerPanel(size, searchModel);
+					SearchChallengerPanel scp = new SearchChallengerPanel(size, searchModel, nbCoupsRecherchePlusMoins,
+							nbCasesRecherchePlusMoins, developerMode);
 					searchModel.addObserver(scp);
 					conteneur.add(scp.getPanel(), BorderLayout.CENTER);
 					conteneur.revalidate();
@@ -177,8 +268,10 @@ public class Fenetre extends JFrame implements Observer {
 				}
 				if (boite.getzInfo().getGame().equals("MasterMind")
 						&& boite.getzInfo().getMode().equals("CHALLENGER")) {
+					param.setEnabled(false);
 					conteneur.removeAll();
-					MastermindChallengerPanel mcp = new MastermindChallengerPanel(size, mastermindModel);
+					MastermindChallengerPanel mcp = new MastermindChallengerPanel(size, mastermindModel,
+							nbCoupsMastermind, nbCasesMastermind, nbChiffresAUtiliserMastermind, developerMode);
 					mastermindModel.addObserver(mcp);
 					conteneur.add(mcp.getPanel(), BorderLayout.CENTER);
 					conteneur.revalidate();
@@ -186,35 +279,40 @@ public class Fenetre extends JFrame implements Observer {
 				}
 				if (boite.getzInfo().getGame().equals("Recherche +/-")
 						&& boite.getzInfo().getMode().equals("DEFENSEUR")) {
+					param.setEnabled(false);
 					conteneur.removeAll();
-					SearchDefenderPanel sdp = new SearchDefenderPanel(size, searchModel);
+					SearchDefenderPanel sdp = new SearchDefenderPanel(size, searchModel, nbCoupsRecherchePlusMoins,
+							nbCasesRecherchePlusMoins);
 					searchModel.addObserver(sdp);
 					conteneur.add(sdp.getPanel(), BorderLayout.CENTER);
 					conteneur.revalidate();
 					initModel();
 				}
-				if (boite.getzInfo().getGame().equals("MasterMind")
-						&& boite.getzInfo().getMode().equals("DEFENSEUR")) {
+				if (boite.getzInfo().getGame().equals("MasterMind") && boite.getzInfo().getMode().equals("DEFENSEUR")) {
+					param.setEnabled(false);
 					conteneur.removeAll();
-					MastermindDefenderPanel mdp = new MastermindDefenderPanel(size, mastermindModel);
+					MastermindDefenderPanel mdp = new MastermindDefenderPanel(size, mastermindModel, nbCoupsMastermind,
+							nbCasesMastermind, nbChiffresAUtiliserMastermind);
 					mastermindModel.addObserver(mdp);
 					conteneur.add(mdp.getPanel(), BorderLayout.CENTER);
 					conteneur.revalidate();
 					initModel();
 				}
-				if (boite.getzInfo().getGame().equals("Recherche +/-")
-						&& boite.getzInfo().getMode().equals("DUEL")) {
+				if (boite.getzInfo().getGame().equals("Recherche +/-") && boite.getzInfo().getMode().equals("DUEL")) {
+					param.setEnabled(false);
 					conteneur.removeAll();
-					SearchDualPanel sdp = new SearchDualPanel(size, searchModel);
+					SearchDualPanel sdp = new SearchDualPanel(size, searchModel, nbCasesRecherchePlusMoins,
+							developerMode);
 					searchModel.addObserver(sdp);
 					conteneur.add(sdp.getPanel(), BorderLayout.CENTER);
 					conteneur.revalidate();
 					initModel();
 				}
-				if (boite.getzInfo().getGame().equals("MasterMind")
-						&& boite.getzInfo().getMode().equals("DUEL")) {
+				if (boite.getzInfo().getGame().equals("MasterMind") && boite.getzInfo().getMode().equals("DUEL")) {
+					param.setEnabled(false);
 					conteneur.removeAll();
-					MastermindDualPanel mdp = new MastermindDualPanel(size, mastermindModel);
+					MastermindDualPanel mdp = new MastermindDualPanel(size, mastermindModel, nbCasesMastermind,
+							nbChiffresAUtiliserMastermind, developerMode);
 					mastermindModel.addObserver(mdp);
 					conteneur.add(mdp.getPanel(), BorderLayout.CENTER);
 					conteneur.revalidate();
