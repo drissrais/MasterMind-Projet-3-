@@ -86,6 +86,8 @@ public class Fenetre extends JFrame implements Observer {
 		contentPane.add(conteneur, BorderLayout.CENTER);
 		setContentPane(contentPane);
 
+		setIconImage(new ImageIcon(getClass().getResource("/MastermindFormatIcone.png")).getImage());
+
 	}
 
 	private void initToolBar() {
