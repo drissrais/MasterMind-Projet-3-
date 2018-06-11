@@ -88,7 +88,6 @@ public class BoiteDialogueParametrage extends JDialog {
 		nbCasesMastermindComboBox = new JComboBox<>();
 		nbCasesMastermindComboBox.addItem("4");
 		nbCasesMastermindComboBox.addItem("5");
-		nbCasesMastermindComboBox.addItem("6");
 		nbCasesMastermindComboBox.setSelectedItem(properties.getProperty("param.nbCasesMastermind"));
 		nbChiffresMastermindLabel = new JLabel("Nombre de chiffres à utiliser :");
 		nbChiffresMastermindComboBox = new JComboBox<String>(nbCasesArray);

@@ -114,21 +114,6 @@ public class MastermindChallengerPanel extends ZContainer implements Observer {
 			case 5:
 				maskFormatter = new MaskFormatter("#####");
 				break;
-			case 6:
-				maskFormatter = new MaskFormatter("######");
-				break;
-			case 7:
-				maskFormatter = new MaskFormatter("#######");
-				break;
-			case 8:
-				maskFormatter = new MaskFormatter("########");
-				break;
-			case 9:
-				maskFormatter = new MaskFormatter("#########");
-				break;
-			case 10:
-				maskFormatter = new MaskFormatter("##########");
-				break;
 			default:
 				maskFormatter = new MaskFormatter("####");
 				break;

@@ -119,21 +119,6 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 			case 5:
 				maskFormatter = new MaskFormatter("#####");
 				break;
-			case 6:
-				maskFormatter = new MaskFormatter("######");
-				break;
-			case 7:
-				maskFormatter = new MaskFormatter("#######");
-				break;
-			case 8:
-				maskFormatter = new MaskFormatter("########");
-				break;
-			case 9:
-				maskFormatter = new MaskFormatter("#########");
-				break;
-			case 10:
-				maskFormatter = new MaskFormatter("##########");
-				break;
 			default:
 				maskFormatter = new MaskFormatter("####");
 				break;
@@ -169,21 +154,6 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 				break;
 			case 5:
 				maskFormatter2 = new MaskFormatter("#####");
-				break;
-			case 6:
-				maskFormatter2 = new MaskFormatter("######");
-				break;
-			case 7:
-				maskFormatter2 = new MaskFormatter("#######");
-				break;
-			case 8:
-				maskFormatter2 = new MaskFormatter("########");
-				break;
-			case 9:
-				maskFormatter2 = new MaskFormatter("#########");
-				break;
-			case 10:
-				maskFormatter2 = new MaskFormatter("##########");
 				break;
 			default:
 				maskFormatter2 = new MaskFormatter("####");
@@ -294,67 +264,70 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 	}
 
 	public void gestionFinDePartie(String reponseOrdinateur, String reponseJoueur) {
-		if (reponseOrdinateur.equals("####") && (!reponseJoueur.equals("####"))) {
-			JOptionPane.showMessageDialog(null,
-					"Bravo!!! vous avez trouvé en premier la combinaison secrète de l'ordinateur.", "Fin de partie",
-					JOptionPane.INFORMATION_MESSAGE);
-			String[] choix = { "Rejouer", "Revenir au menu", "Quitter" };
-			int rang = JOptionPane.showOptionDialog(null, "Voulez-vous rejouer?", "Rejouer",
-					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
-			switch (choix[rang]) {
-			case "Rejouer":
-				controler.setChoixFinDePartie("Rejouer");
-				break;
-			case "Revenir au menu":
-				controler.setChoixFinDePartie("Revenir au menu");
-				break;
-			case "Quitter":
-				controler.setChoixFinDePartie("Quitter");
-				break;
-			default:
-				break;
+		if (reponseOrdinateur.matches("[#]*") && reponseOrdinateur.length() == this.nbCases) {
+			if (reponseJoueur.matches("[#]*") && reponseJoueur.length() == this.nbCases) {
+				JOptionPane.showMessageDialog(null,
+						"Ni Gagné Ni Perdu!!\nChacun a trouvé, au même tour, la combinaison secrète de l'autre.",
+						"Fin de partie", JOptionPane.INFORMATION_MESSAGE);
+				String[] choix = { "Rejouer", "Revenir au menu", "Quitter" };
+				int rang = JOptionPane.showOptionDialog(null, "Voulez-vous rejouer?", "Rejouer",
+						JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
+				switch (choix[rang]) {
+				case "Rejouer":
+					controler.setChoixFinDePartie("Rejouer");
+					break;
+				case "Revenir au menu":
+					controler.setChoixFinDePartie("Revenir au menu");
+					break;
+				case "Quitter":
+					controler.setChoixFinDePartie("Quitter");
+					break;
+				default:
+					break;
+				}
+			} else {
+				JOptionPane.showMessageDialog(null,
+						"Bravo!!! vous avez trouvé en premier la combinaison secrète de l'ordinateur.", "Fin de partie",
+						JOptionPane.INFORMATION_MESSAGE);
+				String[] choix = { "Rejouer", "Revenir au menu", "Quitter" };
+				int rang = JOptionPane.showOptionDialog(null, "Voulez-vous rejouer?", "Rejouer",
+						JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
+				switch (choix[rang]) {
+				case "Rejouer":
+					controler.setChoixFinDePartie("Rejouer");
+					break;
+				case "Revenir au menu":
+					controler.setChoixFinDePartie("Revenir au menu");
+					break;
+				case "Quitter":
+					controler.setChoixFinDePartie("Quitter");
+					break;
+				default:
+					break;
+				}
 			}
 		}
-		if ((!reponseOrdinateur.equals("####")) && reponseJoueur.equals("####")) {
-			JOptionPane.showMessageDialog(null, "Perdu! L'ordinateur a trouvé en premier votre combinaison secrète.\n"
-					+ "La combinaison secrète de l'ordinateur était : " + this.combinaisonSecreteOrdinateurModeDuel,
-					"Fin de partie", JOptionPane.INFORMATION_MESSAGE);
-			String[] choix = { "Rejouer", "Revenir au menu", "Quitter" };
-			int rang = JOptionPane.showOptionDialog(null, "Voulez-vous rejouer?", "Rejouer",
-					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
-			switch (choix[rang]) {
-			case "Rejouer":
-				controler.setChoixFinDePartie("Rejouer");
-				break;
-			case "Revenir au menu":
-				controler.setChoixFinDePartie("Revenir au menu");
-				break;
-			case "Quitter":
-				controler.setChoixFinDePartie("Quitter");
-				break;
-			default:
-				break;
-			}
-		}
-		if (reponseOrdinateur.equals("####") && reponseJoueur.equals("####")) {
-			JOptionPane.showMessageDialog(null,
-					"Ni Gagné Ni Perdu!!\nChacun a trouvé, au même tour, la combinaison secrète de l'autre.",
-					"Fin de partie", JOptionPane.INFORMATION_MESSAGE);
-			String[] choix = { "Rejouer", "Revenir au menu", "Quitter" };
-			int rang = JOptionPane.showOptionDialog(null, "Voulez-vous rejouer?", "Rejouer",
-					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
-			switch (choix[rang]) {
-			case "Rejouer":
-				controler.setChoixFinDePartie("Rejouer");
-				break;
-			case "Revenir au menu":
-				controler.setChoixFinDePartie("Revenir au menu");
-				break;
-			case "Quitter":
-				controler.setChoixFinDePartie("Quitter");
-				break;
-			default:
-				break;
+		if (reponseJoueur.matches("[#]*") && reponseJoueur.length() == this.nbCases) {
+			if (!(reponseOrdinateur.matches("[#]*"))) {
+				JOptionPane.showMessageDialog(null, "Perdu! L'ordinateur a trouvé en premier votre combinaison secrète.\n"
+						+ "La combinaison secrète de l'ordinateur était : " + this.combinaisonSecreteOrdinateurModeDuel,
+						"Fin de partie", JOptionPane.INFORMATION_MESSAGE);
+				String[] choix = { "Rejouer", "Revenir au menu", "Quitter" };
+				int rang = JOptionPane.showOptionDialog(null, "Voulez-vous rejouer?", "Rejouer",
+						JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
+				switch (choix[rang]) {
+				case "Rejouer":
+					controler.setChoixFinDePartie("Rejouer");
+					break;
+				case "Revenir au menu":
+					controler.setChoixFinDePartie("Revenir au menu");
+					break;
+				case "Quitter":
+					controler.setChoixFinDePartie("Quitter");
+					break;
+				default:
+					break;
+				}
 			}
 		}
 	}
