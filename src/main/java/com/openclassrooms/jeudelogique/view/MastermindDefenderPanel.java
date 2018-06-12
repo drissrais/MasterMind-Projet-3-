@@ -22,6 +22,9 @@ import com.openclassrooms.jeudelogique.controler.MastermindDefenderControler;
 import com.openclassrooms.jeudelogique.model.MastermindModel;
 import com.openclassrooms.jeudelogique.observer.Observer;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class MastermindDefenderPanel extends ZContainer implements Observer {
 	private JLabel combinaisonLabel;
 	private JFormattedTextField combinaisonTextField;
@@ -38,11 +41,15 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 	private int nbCases, nbCoups, nbChiffresAUtiliser;
 	private int activerBoutonValiderCombiSecrete;
 	private String combinaisonSecreteModeDefenseur;
-	
+
 	private int nbCoupsConstant;
-	
-	public MastermindDefenderPanel(Dimension dim, MastermindModel mod, int nbCoups, int nbCases, int nbChiffresAUtiliser) {
+	private static final Logger LOGGER = LogManager.getLogger();
+
+	public MastermindDefenderPanel(Dimension dim, MastermindModel mod, int nbCoups, int nbCases,
+			int nbChiffresAUtiliser) {
 		super(dim);
+		LOGGER.trace("Instanciation du jeu Mastermind en mode Défenseur");
+
 		this.controler = new MastermindDefenderControler(mod);
 		this.nbCoups = nbCoups;
 		this.nbCoupsConstant = nbCoups;
@@ -50,7 +57,7 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 		this.nbChiffresAUtiliser = nbChiffresAUtiliser;
 		initPanel();
 	}
-	
+
 	@Override
 	protected void initPanel() {
 		JPanel northContent = new JPanel();
@@ -82,23 +89,22 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 		combinaisonLabel.setFont(arial15);
 		centerContent.add(combinaisonLabel);
 
-		combinaisonTextField = new JFormattedTextField();
-		MaskFormatter maskFormatter;
 		try {
 			switch (this.nbCases) {
 			case 4:
-				maskFormatter = new MaskFormatter("####");
+				MaskFormatter maskFormatter = new MaskFormatter("####");
+				combinaisonTextField = new JFormattedTextField(maskFormatter);
 				break;
 			case 5:
-				maskFormatter = new MaskFormatter("#####");
+				MaskFormatter maskFormatter2 = new MaskFormatter("#####");
+				combinaisonTextField = new JFormattedTextField(maskFormatter2);
 				break;
 			default:
-				maskFormatter = new MaskFormatter("####");
+				LOGGER.error("Jeu Mastermind en mode Défenseur - Erreur d'initialisation pour le JFormattedTextField");
 				break;
 			}
-			combinaisonTextField = new JFormattedTextField(maskFormatter);
 		} catch (ParseException e) {
-			e.printStackTrace();
+			LOGGER.error("Jeu Mastermind en mode Défenseur -" + e.getMessage());
 		}
 		combinaisonTextField.setPreferredSize(new Dimension(150, 25));
 		combinaisonTextField.setHorizontalAlignment(JTextField.CENTER);
@@ -125,13 +131,13 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 		propositionOrdinateurLabel.setForeground(Color.BLUE);
 		propositionOrdinateurLabel.setFont(arial15);
 		centerContent.add(propositionOrdinateurLabel);
-		
+
 		repOrdinateurLabel = new JLabel("Réponse correspondante :");
 		repOrdinateurLabel.setPreferredSize(new Dimension(192, 35));
 		repOrdinateurLabel.setHorizontalAlignment(JLabel.LEFT);
 		repOrdinateurLabel.setFont(arial15);
 		centerContent.add(repOrdinateurLabel);
-		
+
 		reponseOrdiLabel = new JLabel("");
 		reponseOrdiLabel.setPreferredSize(new Dimension(90, 25));
 		reponseOrdiLabel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
@@ -163,7 +169,7 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 		nombreCoupLabel.setHorizontalAlignment(JLabel.CENTER);
 		nombreCoupLabel.setFont(arial15);
 		southContent.add(nombreCoupLabel);
-		
+
 		this.panel.setBackground(Color.WHITE);
 		this.panel.add(northContent, BorderLayout.NORTH);
 		this.panel.add(centerContent, BorderLayout.CENTER);
@@ -195,13 +201,15 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 			passerButton.requestFocusInWindow();
 			this.nbCoups--;
 			this.combinaisonSecreteModeDefenseur = this.combinaisonTextField.getText();
+			LOGGER.debug("Jeu Mastermind en mode Défenseur - Définition de la combinaison secrète du joueur:"
+					+ combinaisonSecreteModeDefenseur);
 			this.controler.setMode("DEFENSEUR");
 			this.controler.setNbCases(this.nbCases);
 			this.controler.setNbChiffresAUtiliser(this.nbChiffresAUtiliser);
 			this.controler.setCombinaisonSecreteModeDefenseur(combinaisonTextField.getText());
 			this.gestionFinDePartie(this.reponseOrdiLabel.getText());
 		});
-		
+
 		passerButton.addActionListener((e) -> {
 			this.nbCoups--;
 			this.controler.setMode("DEFENSEUR");
@@ -209,16 +217,18 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 			this.gestionFinDePartie(this.reponseOrdiLabel.getText());
 		});
 	}
-	
+
 	public int getNbEssais() {
 		return nbCoupsConstant - nbCoups;
 	}
-	
+
 	public void gestionFinDePartie(String reponse) {
 		if (reponse.matches("[#]*") && reponse.length() == this.nbCases && this.nbCoups >= 0) {
-			JOptionPane.showMessageDialog(null, "PERDU!\nL'IA a trouvé votre combinaison secrète "
-					+ this.combinaisonSecreteModeDefenseur + " en moins de " + this.nbCoupsConstant + " coups.", "Fin de partie",
-					JOptionPane.INFORMATION_MESSAGE);
+			LOGGER.trace("Jeu Mastermind en mode Défenseur - Fin de partie");
+			JOptionPane.showMessageDialog(null,
+					"PERDU!\nL'IA a trouvé votre combinaison secrète " + this.combinaisonSecreteModeDefenseur
+							+ " en moins de " + this.nbCoupsConstant + " coups.",
+					"Fin de partie", JOptionPane.INFORMATION_MESSAGE);
 			String[] choix = { "Rejouer", "Revenir au menu", "Quitter" };
 			int rang = JOptionPane.showOptionDialog(null, "Voulez-vous rejouer?", "Rejouer",
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
@@ -237,9 +247,12 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 			}
 		}
 		if ((!reponse.matches("[#]*")) && reponse.length() != this.nbCases && this.nbCoups <= 0) {
-			JOptionPane.showMessageDialog(null, "Vous avez gagné!\n" + "Votre combinaison secrète "
-					+ this.combinaisonSecreteModeDefenseur + " n'a pas été trouvée par l'IA.", "Fin de partie",
-					JOptionPane.INFORMATION_MESSAGE);
+			LOGGER.trace("Jeu Mastermind en mode Défenseur - Fin de partie");
+			JOptionPane
+					.showMessageDialog(null,
+							"Vous avez gagné!\n" + "Votre combinaison secrète " + this.combinaisonSecreteModeDefenseur
+									+ " n'a pas été trouvée par l'IA.",
+							"Fin de partie", JOptionPane.INFORMATION_MESSAGE);
 			String[] choix = { "Rejouer", "Revenir au menu", "Quitter" };
 			int rang = JOptionPane.showOptionDialog(null, "Voulez-vous rejouer?", "Rejouer",
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
@@ -273,6 +286,7 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 
 	@Override
 	public void restart() {
+		LOGGER.trace("Jeu Mastermind en mode Défenseur - Partie relancée");
 		this.storyTextArea.setText("");
 		this.nbCoups = nbCoupsConstant;
 		this.nombreCoupLabel.setText("Nombre de coups restants : " + this.nbCoups);

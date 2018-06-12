@@ -7,7 +7,11 @@ import com.openclassrooms.jeudelogique.observer.Observable;
 import com.openclassrooms.jeudelogique.observer.Observer;
 import com.openclassrooms.jeudelogique.utilities.FromStringArrayToString;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class MastermindModel implements Observable {
+	private static final Logger LOGGER = LogManager.getLogger();
 	private ArrayList<Observer> listObserver;
 
 	// Attributs relatifs au mode challenger
@@ -41,6 +45,8 @@ public class MastermindModel implements Observable {
 	// Methodes relatives au mode challenger
 	public void setPropositionModeChallenger(String proposition) {
 		this.propositionJoueurModeChallenger = proposition;
+		LOGGER.debug("Mode Challenger - proposition Joueur :"
+				+ this.propositionJoueurModeChallenger);
 		this.compare(this.combinaisonSecreteModeChallenger, this.propositionJoueurModeChallenger);
 		this.notifyObserver();
 	}
@@ -52,7 +58,10 @@ public class MastermindModel implements Observable {
 	// Methodes relatives au mode defenseur
 	public void setCombinaisonSecreteModeDefenseur(String combinaisonSecreteModeDefenseur) {
 		this.combinaisonSecreteModeDefenseur = combinaisonSecreteModeDefenseur;
+		LOGGER.debug(
+				"Mode Défenseur - Combinaison secrète Joueur Mode Défenseur :" + this.combinaisonSecreteModeDefenseur);
 		this.initListPossibilities();
+		LOGGER.debug("Mode Défenseur - Taille de la liste :" + listPossibilities.size());
 		this.reponseCorrespondanteModeDefenseur = "";
 		this.propositionOrdinateurModeDefenseur = "";
 		this.genererPropositionOrdinateurModeDefenseur();
@@ -63,9 +72,14 @@ public class MastermindModel implements Observable {
 		ArrayList<String> listeARejeter = new ArrayList<>();
 
 		if (this.reponseCorrespondanteModeDefenseur.equals("") && this.propositionOrdinateurModeDefenseur.equals("")) {
-			this.propositionOrdinateurModeDefenseur = String.valueOf(this.listPossibilities.get(new Random().nextInt(this.listPossibilities.size())));
+			this.propositionOrdinateurModeDefenseur = String
+					.valueOf(this.listPossibilities.get(new Random().nextInt(this.listPossibilities.size())));
+			LOGGER.debug("Mode Défenseur - proposition Ordinateur Mode Défenseur :"
+					+ this.propositionOrdinateurModeDefenseur);
 			this.reponseCorrespondanteModeDefenseur = this.compare(this.combinaisonSecreteModeDefenseur,
 					this.propositionOrdinateurModeDefenseur);
+			LOGGER.debug("Mode Défenseur - réponse correspondante à la proposition de l'ordinateur Mode Défenseur :"
+					+ this.reponseCorrespondanteModeDefenseur);
 			this.notifyObserver();
 		} else {
 			for (int i = 0; i < listPossibilities.size(); i++) {
@@ -78,9 +92,14 @@ public class MastermindModel implements Observable {
 			for (String str : listeARejeter) {
 				this.listPossibilities.remove(str);
 			}
-			this.propositionOrdinateurModeDefenseur = String.valueOf(this.listPossibilities.get(new Random().nextInt(this.listPossibilities.size())));
+			this.propositionOrdinateurModeDefenseur = String
+					.valueOf(this.listPossibilities.get(new Random().nextInt(this.listPossibilities.size())));
+			LOGGER.debug("Mode Défenseur - proposition Ordinateur Mode Défenseur :"
+					+ this.propositionOrdinateurModeDefenseur);
 			this.reponseCorrespondanteModeDefenseur = this.compare(this.combinaisonSecreteModeDefenseur,
 					this.propositionOrdinateurModeDefenseur);
+			LOGGER.debug("Mode Défenseur - réponse correspondante à la proposition de l'ordinateur Mode Défenseur :"
+					+ this.reponseCorrespondanteModeDefenseur);
 			this.notifyObserver();
 		}
 	}
@@ -88,6 +107,8 @@ public class MastermindModel implements Observable {
 	// Methodes relatives au mode duel
 	public void setCombinaisonSecreteJoueurModeDuel(String combinaisonSecreteJoueurModeDuel) {
 		this.combinaisonSecreteJoueurModeDuel = combinaisonSecreteJoueurModeDuel;
+		LOGGER.debug(
+				"Mode Duel - Combinaison Secrète Joueur Modèle de données :" + this.combinaisonSecreteJoueurModeDuel);
 		this.reponseCorrespondanteModeDuel = "";
 		this.propositionOrdinateurModeDuel = "";
 	}
@@ -95,10 +116,13 @@ public class MastermindModel implements Observable {
 	public void setCombinaisonSecreteOrdinateurModeDuel(String combinaisonSecreteOrdinateurModeDuel) {
 		this.combinaisonSecreteOrdinateurModeDuel = combinaisonSecreteOrdinateurModeDuel;
 		this.initListPossibilities();
+		LOGGER.debug("Mode Duel - Taille de la liste des possibilités :" + listPossibilities.size());
 	}
 
 	public void setPropositionJoueurModeDuel(String propositionJoueurModeDuel) {
 		this.propositionJoueurModeDuel = propositionJoueurModeDuel;
+		LOGGER.debug(
+				"Mode Duel - Proposition Joueur Modèle de données :" + this.propositionJoueurModeDuel);
 		this.compare(this.combinaisonSecreteOrdinateurModeDuel, this.propositionJoueurModeDuel);
 		this.genererPropositionOrdinateurModeDuel();
 		this.notifyObserver();
@@ -111,8 +135,12 @@ public class MastermindModel implements Observable {
 		if (this.reponseCorrespondanteModeDuel.equals("") && this.propositionOrdinateurModeDuel.equals("")) {
 			this.propositionOrdinateurModeDuel = String
 					.valueOf(this.listPossibilities.get(new Random().nextInt(this.listPossibilities.size())));
+			LOGGER.debug("Mode Duel - proposition Ordinateur Mode Duel :"
+					+ this.propositionOrdinateurModeDefenseur);
 			this.reponseCorrespondanteModeDuel = this.compare(this.combinaisonSecreteJoueurModeDuel,
 					this.propositionOrdinateurModeDuel);
+			LOGGER.debug("Mode Duel - réponse correspondante à la proposition de l'ordinateur Mode Défenseur :"
+					+ this.reponseCorrespondanteModeDefenseur);
 		} else {
 			for (int i = 0; i < listPossibilities.size(); i++) {
 				resultatsComparaisons[i] = this.compare(String.valueOf(this.listPossibilities.get(i)),
@@ -126,8 +154,12 @@ public class MastermindModel implements Observable {
 			}
 			this.propositionOrdinateurModeDuel = String
 					.valueOf(this.listPossibilities.get(new Random().nextInt(this.listPossibilities.size())));
+			LOGGER.debug("Mode Duel - proposition Ordinateur Mode Duel :"
+					+ this.propositionOrdinateurModeDefenseur);
 			this.reponseCorrespondanteModeDuel = this.compare(this.combinaisonSecreteJoueurModeDuel,
 					this.propositionOrdinateurModeDuel);
+			LOGGER.debug("Mode Duel - réponse correspondante à la proposition de l'ordinateur Mode Défenseur :"
+					+ this.reponseCorrespondanteModeDefenseur);
 		}
 	}
 
@@ -201,7 +233,7 @@ public class MastermindModel implements Observable {
 	public void setNbCases(int nbCases) {
 		this.nbCases = nbCases;
 	}
-	
+
 	public void setNbChiffresAUtiliser(int nbChiffresAUtiliser) {
 		this.nbChiffresAUtiliser = nbChiffresAUtiliser;
 	}

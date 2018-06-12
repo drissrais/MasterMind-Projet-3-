@@ -24,8 +24,12 @@ import javax.swing.text.MaskFormatter;
 import com.openclassrooms.jeudelogique.controler.SearchDualControler;
 import com.openclassrooms.jeudelogique.model.SearchModel;
 import com.openclassrooms.jeudelogique.model.TableModel;
+
 import com.openclassrooms.jeudelogique.observer.Observer;
 import com.openclassrooms.jeudelogique.utilities.RandomCombination;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class SearchDualPanel extends ZContainer implements Observer {
 	private JLabel combinaisonLabel;
@@ -47,8 +51,12 @@ public class SearchDualPanel extends ZContainer implements Observer {
 	private String reponseOrdinateur, reponseJoueur;
 	private boolean developerMode;
 
+	private static final Logger LOGGER = LogManager.getLogger();
+
 	public SearchDualPanel(Dimension dim, SearchModel mod, int nbCases, boolean developerMode) {
 		super(dim);
+		LOGGER.trace("Instanciation du jeu RecherchePlusMoins en mode Duel");
+
 		this.controler = new SearchDualControler(mod);
 		this.nbCases = nbCases;
 		this.developerMode = developerMode;
@@ -81,6 +89,8 @@ public class SearchDualPanel extends ZContainer implements Observer {
 		centerContent.add(texte);
 
 		this.combinaisonSecreteOrdinateurModeDuel = RandomCombination.generateRandomCombination(this.nbCases);
+		LOGGER.debug("Jeu RecherchePlusMoins en mode Duel - Génération de la combinaison secrète:"
+				+ combinaisonSecreteOrdinateurModeDuel);
 		this.controler.setCombinaisonSecreteOrdinateurModeDuel(this.combinaisonSecreteOrdinateurModeDuel);
 
 		if (this.developerMode == true) {
@@ -100,12 +110,42 @@ public class SearchDualPanel extends ZContainer implements Observer {
 		combinaisonLabel.setFont(arial15);
 		centerContent.add(combinaisonLabel);
 
-		combinaisonTextField = new JFormattedTextField();
 		try {
-			MaskFormatter maskFormatter = new MaskFormatter("####");
-			combinaisonTextField = new JFormattedTextField(maskFormatter);
+			switch (this.nbCases) {
+			case 4:
+				MaskFormatter maskFormatter = new MaskFormatter("####");
+				combinaisonTextField = new JFormattedTextField(maskFormatter);
+				break;
+			case 5:
+				MaskFormatter maskFormatter2 = new MaskFormatter("#####");
+				combinaisonTextField = new JFormattedTextField(maskFormatter2);
+				break;
+			case 6:
+				MaskFormatter maskFormatter3 = new MaskFormatter("######");
+				combinaisonTextField = new JFormattedTextField(maskFormatter3);
+				break;
+			case 7:
+				MaskFormatter maskFormatter4 = new MaskFormatter("#######");
+				combinaisonTextField = new JFormattedTextField(maskFormatter4);
+				break;
+			case 8:
+				MaskFormatter maskFormatter5 = new MaskFormatter("########");
+				combinaisonTextField = new JFormattedTextField(maskFormatter5);
+				break;
+			case 9:
+				MaskFormatter maskFormatter6 = new MaskFormatter("#########");
+				combinaisonTextField = new JFormattedTextField(maskFormatter6);
+				break;
+			case 10:
+				MaskFormatter maskFormatter7 = new MaskFormatter("##########");
+				combinaisonTextField = new JFormattedTextField(maskFormatter7);
+				break;
+			default:
+				LOGGER.error("Jeu RecherchePlusMoins en mode Duel - Erreur d'initialisation des JFormattedTextField");
+				break;
+			}
 		} catch (ParseException e) {
-			e.printStackTrace();
+			LOGGER.error("Jeu RecherchePlusMoins en mode Duel -" + e.getMessage());
 		}
 		combinaisonTextField.setPreferredSize(new Dimension(140, 25));
 		combinaisonTextField.setHorizontalAlignment(JTextField.CENTER);
@@ -233,6 +273,7 @@ public class SearchDualPanel extends ZContainer implements Observer {
 
 	public void gestionFinDePartie(String reponseOrdinateur, String reponseJoueur) {
 		if (reponseOrdinateur.equals("====") && (!reponseJoueur.equals("===="))) {
+			LOGGER.trace("Jeu RecherchePlusMoins en mode Duel - Fin de partie");
 			JOptionPane.showMessageDialog(null,
 					"Bravo!!! vous avez trouvé en premier la combinaison secrète de l'ordinateur.", "Fin de partie",
 					JOptionPane.INFORMATION_MESSAGE);
@@ -254,6 +295,7 @@ public class SearchDualPanel extends ZContainer implements Observer {
 			}
 		}
 		if ((!reponseOrdinateur.equals("====")) && reponseJoueur.equals("====")) {
+			LOGGER.trace("Jeu RecherchePlusMoins en mode Duel - Fin de partie");
 			JOptionPane.showMessageDialog(null, "Perdu! L'ordinateur a trouvé en premier votre combinaison secrète.\n"
 					+ "La combinaison secrète de l'ordinateur était : " + this.combinaisonSecreteOrdinateurModeDuel,
 					"Fin de partie", JOptionPane.INFORMATION_MESSAGE);
@@ -275,6 +317,7 @@ public class SearchDualPanel extends ZContainer implements Observer {
 			}
 		}
 		if (reponseOrdinateur.equals("====") && reponseJoueur.equals("====")) {
+			LOGGER.trace("Jeu RecherchePlusMoins en mode Duel - Fin de partie");
 			JOptionPane.showMessageDialog(null,
 					"Ni Gagné Ni Perdu!!\nChacun a trouvé, au même tour, la combinaison secrète de l'autre.",
 					"Fin de partie", JOptionPane.INFORMATION_MESSAGE);
@@ -321,6 +364,7 @@ public class SearchDualPanel extends ZContainer implements Observer {
 
 	@Override
 	public void restart() {
+		LOGGER.trace("Jeu RecherchePlusMoins en mode Duel - Partie relancée");
 		this.combinaisonSecreteOrdinateurModeDuel = RandomCombination.generateRandomCombination(this.nbCases);
 		if (developerMode) {
 			solution.setText("Solution : " + this.combinaisonSecreteOrdinateurModeDuel);

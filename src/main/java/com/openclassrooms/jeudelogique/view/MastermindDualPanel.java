@@ -27,6 +27,9 @@ import com.openclassrooms.jeudelogique.model.MastermindModel;
 import com.openclassrooms.jeudelogique.model.TableModel;
 import com.openclassrooms.jeudelogique.observer.Observer;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class MastermindDualPanel extends ZContainer implements Observer {
 	private JLabel combinaisonLabel;
 	private JFormattedTextField combinaisonTextField;
@@ -46,10 +49,14 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 	private String combinaisonSecreteOrdinateurModeDuel;
 	private String reponseOrdinateur = "", reponseJoueur = "";
 	private boolean developerMode;
+	
+	private static final Logger LOGGER=LogManager.getLogger();
 
 	public MastermindDualPanel(Dimension dim, MastermindModel mod, int nbCases, int nbChiffresAUtiliser,
 			boolean developerMode) {
 		super(dim);
+		LOGGER.trace("Instanciation du jeu Mastermind en mode Duel");
+		
 		this.controler = new MastermindDualControler(mod);
 		this.nbCases = nbCases;
 		this.nbChiffresAUtiliser = nbChiffresAUtiliser;
@@ -88,6 +95,8 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 			str += randomGenerator.nextInt(this.nbChiffresAUtiliser);
 		}
 		this.combinaisonSecreteOrdinateurModeDuel = str;
+		LOGGER.debug("Jeu Mastermind en mode Duel - Génération de la combinaison secrète:"
+				+ combinaisonSecreteOrdinateurModeDuel);
 		this.controler.setNbChiffresAUtiliser(this.nbChiffresAUtiliser);
 		this.controler.setNbCases(this.nbCases);
 		this.controler.setCombinaisonSecreteOrdinateurModeDuel(this.combinaisonSecreteOrdinateurModeDuel);
@@ -109,23 +118,22 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 		combinaisonLabel.setFont(arial15);
 		centerContent.add(combinaisonLabel);
 
-		combinaisonTextField = new JFormattedTextField();
-		MaskFormatter maskFormatter;
 		try {
 			switch (this.nbCases) {
 			case 4:
-				maskFormatter = new MaskFormatter("####");
+				MaskFormatter maskFormatter = new MaskFormatter("####");
+				combinaisonTextField = new JFormattedTextField(maskFormatter);
 				break;
 			case 5:
-				maskFormatter = new MaskFormatter("#####");
+				MaskFormatter maskFormatter2 = new MaskFormatter("#####");
+				combinaisonTextField = new JFormattedTextField(maskFormatter2);
 				break;
 			default:
-				maskFormatter = new MaskFormatter("####");
+				LOGGER.error("Jeu Mastermind en mode Duel - Erreur d'initialisation des JFormattedTextField");
 				break;
 			}
-			combinaisonTextField = new JFormattedTextField(maskFormatter);
 		} catch (ParseException e) {
-			e.printStackTrace();
+			LOGGER.error("Jeu Mastermind en mode Duel -" + e.getMessage());
 		}
 		combinaisonTextField.setPreferredSize(new Dimension(140, 25));
 		combinaisonTextField.setHorizontalAlignment(JTextField.CENTER);
@@ -265,6 +273,7 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 
 	public void gestionFinDePartie(String reponseOrdinateur, String reponseJoueur) {
 		if (reponseOrdinateur.matches("[#]*") && reponseOrdinateur.length() == this.nbCases) {
+			LOGGER.trace("Jeu Mastermind en mode Duel - Fin de partie");
 			if (reponseJoueur.matches("[#]*") && reponseJoueur.length() == this.nbCases) {
 				JOptionPane.showMessageDialog(null,
 						"Ni Gagné Ni Perdu!!\nChacun a trouvé, au même tour, la combinaison secrète de l'autre.",
@@ -286,6 +295,7 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 					break;
 				}
 			} else {
+				LOGGER.trace("Jeu Mastermind en mode Duel - Fin de partie");
 				JOptionPane.showMessageDialog(null,
 						"Bravo!!! vous avez trouvé en premier la combinaison secrète de l'ordinateur.", "Fin de partie",
 						JOptionPane.INFORMATION_MESSAGE);
@@ -308,6 +318,7 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 			}
 		}
 		if (reponseJoueur.matches("[#]*") && reponseJoueur.length() == this.nbCases) {
+			LOGGER.trace("Jeu Mastermind en mode Duel - Fin de partie");
 			if (!(reponseOrdinateur.matches("[#]*"))) {
 				JOptionPane.showMessageDialog(null, "Perdu! L'ordinateur a trouvé en premier votre combinaison secrète.\n"
 						+ "La combinaison secrète de l'ordinateur était : " + this.combinaisonSecreteOrdinateurModeDuel,
@@ -357,6 +368,7 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 
 	@Override
 	public void restart() {
+		LOGGER.trace("Jeu Mastermind en mode Duel - Partie relancée");
 		String str = "";
 		for (int i = 0; i < this.nbCases; i++) {
 			Random randomGenerator = new Random();

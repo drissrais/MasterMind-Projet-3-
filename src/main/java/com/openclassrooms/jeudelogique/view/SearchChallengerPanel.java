@@ -22,7 +22,12 @@ import com.openclassrooms.jeudelogique.model.SearchModel;
 import com.openclassrooms.jeudelogique.observer.Observer;
 import com.openclassrooms.jeudelogique.utilities.RandomCombination;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class SearchChallengerPanel extends ZContainer implements Observer {
+	private static final Logger LOGGER = LogManager.getLogger();
+
 	private JLabel propositionLabel;
 	private JFormattedTextField propositionTextField;
 	private JTextArea storyTextArea;
@@ -34,11 +39,13 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 	private boolean developerMode = false;
 
 	private int nbCoupsConstant;
-	
+
 	private JLabel solution;
 
 	public SearchChallengerPanel(Dimension dim, SearchModel mod, int nbCoups, int nbCases, boolean developerMode) {
 		super(dim);
+		LOGGER.trace("Instanciation du jeu RecherchePlusMoins en mode Challenger");
+
 		this.controler = new SearchChallengerControler(mod);
 		this.nbCoups = nbCoups;
 		this.nbCases = nbCases;
@@ -72,8 +79,10 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 		texte.setFont(arial15);
 		texte.setForeground(Color.BLUE);
 		centerContent.add(texte);
-		
+
 		combinaisonSecrete = RandomCombination.generateRandomCombination(this.nbCases);
+		LOGGER.debug("Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:"
+				+ combinaisonSecrete);
 		controler.setCombinaisonSecrete(combinaisonSecrete);
 
 		if (this.developerMode == true) {
@@ -93,38 +102,43 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 		propositionLabel.setFont(arial15);
 		centerContent.add(propositionLabel);
 
-		propositionTextField = new JFormattedTextField();
-		MaskFormatter maskFormatter;
 		try {
 			switch (this.nbCases) {
 			case 4:
-				maskFormatter = new MaskFormatter("####");
+				MaskFormatter maskFormatter = new MaskFormatter("####");
+				propositionTextField = new JFormattedTextField(maskFormatter);
 				break;
 			case 5:
-				maskFormatter = new MaskFormatter("#####");
+				MaskFormatter maskFormatter2 = new MaskFormatter("#####");
+				propositionTextField = new JFormattedTextField(maskFormatter2);
 				break;
 			case 6:
-				maskFormatter = new MaskFormatter("######");
+				MaskFormatter maskFormatter3 = new MaskFormatter("######");
+				propositionTextField = new JFormattedTextField(maskFormatter3);
 				break;
 			case 7:
-				maskFormatter = new MaskFormatter("#######");
+				MaskFormatter maskFormatter4 = new MaskFormatter("#######");
+				propositionTextField = new JFormattedTextField(maskFormatter4);
 				break;
 			case 8:
-				maskFormatter = new MaskFormatter("########");
+				MaskFormatter maskFormatter5 = new MaskFormatter("########");
+				propositionTextField = new JFormattedTextField(maskFormatter5);
 				break;
 			case 9:
-				maskFormatter = new MaskFormatter("#########");
+				MaskFormatter maskFormatter6 = new MaskFormatter("#########");
+				propositionTextField = new JFormattedTextField(maskFormatter6);
 				break;
 			case 10:
-				maskFormatter = new MaskFormatter("##########");
+				MaskFormatter maskFormatter7 = new MaskFormatter("##########");
+				propositionTextField = new JFormattedTextField(maskFormatter7);
 				break;
 			default:
-				maskFormatter = new MaskFormatter("####");
+				LOGGER.error(
+						"Jeu RecherchePlusMoins en mode Challenger - Erreur d'initialisation pour le JFormattedTextField");
 				break;
 			}
-			propositionTextField = new JFormattedTextField(maskFormatter);
 		} catch (ParseException e) {
-			e.printStackTrace();
+			LOGGER.error("Jeu RecherchePlusMoins en mode Challenger -" + e.getMessage());
 		}
 		propositionTextField.setPreferredSize(new Dimension(300, 30));
 		propositionTextField.setHorizontalAlignment(JTextField.CENTER);
@@ -171,6 +185,7 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 
 	public void gestionFinDePartie(String reponse) {
 		if (reponse.matches("[=]*") && this.nbCoups > 0) {
+			LOGGER.trace("Jeu RecherchePlusMoins en mode Challenger - Fin de partie");
 			JOptionPane.showMessageDialog(null, "Bravo, vous avez trouvé la combinaison secrète "
 					+ this.combinaisonSecrete + " en " + this.getNbEssais() + " coups.", "Fin de partie",
 					JOptionPane.INFORMATION_MESSAGE);
@@ -192,6 +207,7 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 			}
 		}
 		if ((!reponse.matches("[=]*")) && this.nbCoups <= 0) {
+			LOGGER.trace("Jeu RecherchePlusMoins en mode Challenger - Fin de partie");
 			JOptionPane.showMessageDialog(null, "Désolé, vous avez perdu!\n" + "La bonne combinaison était "
 					+ this.combinaisonSecrete + "\nRetentez votre chance !", "Fin de partie",
 					JOptionPane.INFORMATION_MESSAGE);
@@ -228,6 +244,7 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 
 	@Override
 	public void restart() {
+		LOGGER.trace("Jeu RecherchePlusMoins en mode Challenger - Partie rejouée");
 		this.storyTextArea.setText("");
 		this.nombreCoupLabel.setText("Nombre de coups restants : " + this.nbCoupsConstant);
 		this.nbCoups = this.nbCoupsConstant;

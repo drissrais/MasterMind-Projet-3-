@@ -30,8 +30,12 @@ import com.openclassrooms.jeudelogique.model.MastermindModel;
 import com.openclassrooms.jeudelogique.model.SearchModel;
 import com.openclassrooms.jeudelogique.observer.Observer;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Fenetre extends JFrame implements Observer {
 
+	static final Logger LOGGER = LogManager.getLogger();
 	private static final long serialVersionUID = 1L;
 
 	private JMenuBar menubar = new JMenuBar();
@@ -62,6 +66,7 @@ public class Fenetre extends JFrame implements Observer {
 	private MastermindModel mastermindModel;
 
 	public Fenetre(SearchModel model1, MastermindModel model2, boolean developerMode) {
+		LOGGER.trace("Instanciation de la fenêtre principale");
 		setTitle("Jeux de Logique");
 		pack();
 		setResizable(false);
@@ -73,6 +78,8 @@ public class Fenetre extends JFrame implements Observer {
 		this.developerMode = developerMode;
 		this.searchModel = model1;
 		this.mastermindModel = model2;
+		LOGGER.trace("Initialisation des modèles de données");
+
 		this.searchModel.addObserver(this);
 		this.mastermindModel.addObserver(this);
 
@@ -86,11 +93,13 @@ public class Fenetre extends JFrame implements Observer {
 		contentPane.add(conteneur, BorderLayout.CENTER);
 		setContentPane(contentPane);
 
-		setIconImage(new ImageIcon(getClass().getResource("/MastermindFormatIcone.png")).getImage());
+		setIconImage(new ImageIcon(getClass().getResource("/mastermindIcone.png")).getImage());
 
 	}
 
 	private void initToolBar() {
+		LOGGER.trace("Initialisation de la barre d'outils");
+
 		toolbar.setBorder(BorderFactory.createEmptyBorder());
 		newGameButton.setFocusable(false);
 		exitButton.setFocusable(false);
@@ -102,6 +111,8 @@ public class Fenetre extends JFrame implements Observer {
 	}
 
 	private void initMenu() {
+		LOGGER.trace("Initialisation du menu");
+
 		nouveau.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK));
 		quitter.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_DOWN_MASK));
 		regles.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, KeyEvent.CTRL_DOWN_MASK));
@@ -124,6 +135,7 @@ public class Fenetre extends JFrame implements Observer {
 		setJMenuBar(menubar);
 
 		nouveau.addActionListener(new newGameListener());
+
 		quitter.addActionListener((e) -> {
 			properties = new Properties();
 			try (InputStream input = new FileInputStream("src/main/resources/config.properties");
@@ -143,17 +155,18 @@ public class Fenetre extends JFrame implements Observer {
 				e1.printStackTrace();
 			}
 		});
+
 		regles.addActionListener((e) -> {
 			this.conteneur.removeAll();
 			this.conteneur.add(new RulesPanel(this.size, this.searchModel).getPanel(), BorderLayout.CENTER);
 			this.conteneur.revalidate();
 			param.setEnabled(true);
 		});
-		
+
 		parametres.addActionListener((e) -> {
 			new BoiteDialogueParametrage(null, "Paramètres de jeu", true, this.developerMode);
 		});
-		
+
 		this.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -180,7 +193,9 @@ public class Fenetre extends JFrame implements Observer {
 
 	@Override
 	public Dimension getPreferredSize() {
-		return new Dimension(900, 600);
+		Dimension dim = new Dimension(900, 600);
+		LOGGER.debug("Largeur et hauteur de la fenêtre de l'application", dim);
+		return dim;
 	}
 
 	@Override
@@ -213,10 +228,12 @@ public class Fenetre extends JFrame implements Observer {
 		conteneur.revalidate();
 		// newGameButton.doClick();
 		param.setEnabled(true);
+		LOGGER.trace("Retour à l'accueil");
 	}
 
 	@Override
 	public void exitApplication() {
+		LOGGER.trace("Fin de l'application");
 		properties = new Properties();
 		try (InputStream input = new FileInputStream("src/main/resources/config.properties");
 				OutputStream output = new FileOutputStream("src/main/resources/config.properties")) {
@@ -242,6 +259,7 @@ public class Fenetre extends JFrame implements Observer {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			LOGGER.trace("Initialisation de la boite dialogue de début de partie");
 			BoiteDialogueDebutDePartie boite = new BoiteDialogueDebutDePartie(null, "Nouveau Jeu", true);
 			properties = new Properties();
 			try (InputStream input = new FileInputStream("src/main/resources/config.properties")) {
@@ -253,6 +271,12 @@ public class Fenetre extends JFrame implements Observer {
 				nbChiffresAUtiliserMastermind = Integer
 						.parseInt(properties.getProperty("param.nbChiffresAUtiliserMastermind"));
 				developerMode = Boolean.parseBoolean(properties.getProperty("param.modeDeveloppeur"));
+				LOGGER.debug("Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :" + nbCoupsRecherchePlusMoins);
+				LOGGER.debug("Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :" + nbCasesRecherchePlusMoins);
+				LOGGER.debug("Menu Fichier -> Nouveau jeu - Nb coups Mastermind :" + nbCoupsMastermind);
+				LOGGER.debug("Menu Fichier -> Nouveau jeu - Nb cases Mastermind :" + nbCasesMastermind);
+				LOGGER.debug("Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :" + nbChiffresAUtiliserMastermind);
+				LOGGER.debug("Menu Fichier -> Nouveau jeu - Etat du mode développeur :" + developerMode);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
@@ -330,6 +354,7 @@ public class Fenetre extends JFrame implements Observer {
 		this.mastermindModel = new MastermindModel();
 		this.searchModel.addObserver(this);
 		this.mastermindModel.addObserver(this);
+		LOGGER.trace("Réinitialisation des modèles de données");
 	}
 
 }

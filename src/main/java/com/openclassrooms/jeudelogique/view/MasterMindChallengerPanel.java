@@ -24,6 +24,9 @@ import com.openclassrooms.jeudelogique.model.MastermindModel;
 import com.openclassrooms.jeudelogique.observer.Observer;
 import com.openclassrooms.jeudelogique.utilities.RandomCombination;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class MastermindChallengerPanel extends ZContainer implements Observer {
 	private JLabel propositionLabel;
 	private JFormattedTextField propositionTextField;
@@ -36,10 +39,13 @@ public class MastermindChallengerPanel extends ZContainer implements Observer {
 	private boolean developerMode;
 
 	private int nbCoupsConstant;
+	private static final Logger LOGGER = LogManager.getLogger();
 
 	public MastermindChallengerPanel(Dimension dim, MastermindModel mod, int nbCoups, int nbCases,
 			int nbChiffresAUtiliser, boolean developerMode) {
 		super(dim);
+		LOGGER.trace("Instanciation du jeu Mastermind en mode Challenger");
+
 		this.controler = new MastermindChallengerControler(mod);
 		this.nbCoups = nbCoups;
 		this.nbCoupsConstant = nbCoups;
@@ -76,14 +82,16 @@ public class MastermindChallengerPanel extends ZContainer implements Observer {
 		texte.setFont(arial15);
 		texte.setForeground(Color.BLUE);
 		centerContent.add(texte);
-		
+
 		for (int i = 0; i < this.nbCases; i++) {
 			Random randomGenerator = new Random();
 			this.combinaisonSecrete += randomGenerator.nextInt(this.nbChiffresAUtiliser);
+			LOGGER.debug(
+					"Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:" + combinaisonSecrete);
 		}
 		controler.setNbChiffresAUtiliser(this.nbChiffresAUtiliser);
 		controler.setCombinaisonSecrete(combinaisonSecrete);
-		
+
 		if (this.developerMode == true) {
 			solution = new JLabel("Solution : " + this.combinaisonSecrete);
 			solution.setPreferredSize(new Dimension(150, 50));
@@ -91,8 +99,7 @@ public class MastermindChallengerPanel extends ZContainer implements Observer {
 			solution.setForeground(Color.RED);
 			texte.setPreferredSize(new Dimension(550, 55));
 			texte.setAlignmentX(SwingConstants.LEFT);
-			texte.setText(
-					"Saurez-vous trouver la combinaison cachée en moins de " + nbCoupsConstant
+			texte.setText("Saurez-vous trouver la combinaison cachée en moins de " + nbCoupsConstant
 					+ " coups?\n(Chiffres compris entre 0 et " + (this.nbChiffresAUtiliser - 1)
 					+ "  avec répétitions possibles)\nO : Chiffre mal placé ; # : Chiffre bien placé");
 			centerContent.add(solution);
@@ -104,23 +111,22 @@ public class MastermindChallengerPanel extends ZContainer implements Observer {
 		propositionLabel.setFont(arial15);
 		centerContent.add(propositionLabel);
 
-		propositionTextField = new JFormattedTextField();
-		MaskFormatter maskFormatter;
 		try {
 			switch (this.nbCases) {
 			case 4:
-				maskFormatter = new MaskFormatter("####");
+				MaskFormatter maskFormatter = new MaskFormatter("####");
+				propositionTextField = new JFormattedTextField(maskFormatter);
 				break;
 			case 5:
-				maskFormatter = new MaskFormatter("#####");
+				MaskFormatter maskFormatter2 = new MaskFormatter("#####");
+				propositionTextField = new JFormattedTextField(maskFormatter2);
 				break;
 			default:
-				maskFormatter = new MaskFormatter("####");
+				LOGGER.error("Jeu Mastermind en mode Challenger - Erreur d'initialisation pour le JFormattedTextField");
 				break;
 			}
-			propositionTextField = new JFormattedTextField(maskFormatter);
 		} catch (ParseException e) {
-			e.printStackTrace();
+			LOGGER.error("Jeu Mastermind en mode Challenger -" + e.getMessage());
 		}
 		propositionTextField.setPreferredSize(new Dimension(300, 30));
 		propositionTextField.setHorizontalAlignment(JTextField.CENTER);
@@ -172,6 +178,7 @@ public class MastermindChallengerPanel extends ZContainer implements Observer {
 
 	public void gestionFinDePartie(String reponse) {
 		if (reponse.matches("[#]*") && reponse.length() == this.nbCases && this.nbCoups > 0) {
+			LOGGER.trace("Jeu Mastermind en mode Challenger - Fin de partie");
 			JOptionPane.showMessageDialog(null, "Bravo, vous avez trouvé la combinaison secrète "
 					+ this.combinaisonSecrete + " en " + this.getNbEssais() + " coups.", "Fin de partie",
 					JOptionPane.INFORMATION_MESSAGE);
@@ -193,6 +200,7 @@ public class MastermindChallengerPanel extends ZContainer implements Observer {
 			}
 		}
 		if ((!reponse.matches("[#]*")) && reponse.length() != this.nbCases && this.nbCoups <= 0) {
+			LOGGER.trace("Jeu Mastermind en mode Challenger - Fin de partie");
 			JOptionPane.showMessageDialog(null,
 					"Perdu!\n" + "La bonne combinaison était " + this.combinaisonSecrete + "\nRetentez votre chance !",
 					"Fin de partie", JOptionPane.INFORMATION_MESSAGE);
@@ -225,6 +233,7 @@ public class MastermindChallengerPanel extends ZContainer implements Observer {
 
 	@Override
 	public void restart() {
+		LOGGER.trace("Jeu Mastermind en mode Challenger - Partie relancée");
 		this.storyTextArea.setText("");
 		this.nombreCoupLabel.setText("Nombre de coups restants : " + this.nbCoupsConstant);
 		this.nbCoups = this.nbCoupsConstant;

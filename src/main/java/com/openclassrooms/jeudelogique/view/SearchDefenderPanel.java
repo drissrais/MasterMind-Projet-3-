@@ -22,6 +22,9 @@ import com.openclassrooms.jeudelogique.controler.SearchDefenderControler;
 import com.openclassrooms.jeudelogique.model.SearchModel;
 import com.openclassrooms.jeudelogique.observer.Observer;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class SearchDefenderPanel extends ZContainer implements Observer {
 	private JLabel combinaisonLabel;
 	private JFormattedTextField combinaisonTextField;
@@ -40,9 +43,13 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 	private String combinaisonSecreteModeDefenseur;
 
 	private int nbCoupsConstant;
-	
+
+	private static final Logger LOGGER = LogManager.getLogger();
+
 	public SearchDefenderPanel(Dimension dim, SearchModel mod, int nbCoups, int nbCases) {
 		super(dim);
+		LOGGER.trace("Instanciation du jeu RecherchePlusMoins en mode Défenseur");
+
 		this.controler = new SearchDefenderControler(mod);
 		this.nbCoups = nbCoups;
 		this.nbCoupsConstant = nbCoups;
@@ -81,38 +88,43 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 		combinaisonLabel.setFont(arial15);
 		centerContent.add(combinaisonLabel);
 
-		combinaisonTextField = new JFormattedTextField();
-		MaskFormatter maskFormatter;
 		try {
 			switch (this.nbCases) {
 			case 4:
-				maskFormatter = new MaskFormatter("####");
+				MaskFormatter maskFormatter = new MaskFormatter("####");
+				combinaisonTextField = new JFormattedTextField(maskFormatter);
 				break;
 			case 5:
-				maskFormatter = new MaskFormatter("#####");
+				MaskFormatter maskFormatter2 = new MaskFormatter("#####");
+				combinaisonTextField = new JFormattedTextField(maskFormatter2);
 				break;
 			case 6:
-				maskFormatter = new MaskFormatter("######");
+				MaskFormatter maskFormatter3 = new MaskFormatter("######");
+				combinaisonTextField = new JFormattedTextField(maskFormatter3);
 				break;
 			case 7:
-				maskFormatter = new MaskFormatter("#######");
+				MaskFormatter maskFormatter4 = new MaskFormatter("#######");
+				combinaisonTextField = new JFormattedTextField(maskFormatter4);
 				break;
 			case 8:
-				maskFormatter = new MaskFormatter("########");
+				MaskFormatter maskFormatter5 = new MaskFormatter("########");
+				combinaisonTextField = new JFormattedTextField(maskFormatter5);
 				break;
 			case 9:
-				maskFormatter = new MaskFormatter("#########");
+				MaskFormatter maskFormatter6 = new MaskFormatter("#########");
+				combinaisonTextField = new JFormattedTextField(maskFormatter6);
 				break;
 			case 10:
-				maskFormatter = new MaskFormatter("##########");
+				MaskFormatter maskFormatter7 = new MaskFormatter("##########");
+				combinaisonTextField = new JFormattedTextField(maskFormatter7);
 				break;
 			default:
-				maskFormatter = new MaskFormatter("####");
+				LOGGER.error(
+						"Jeu RecherchePlusMoins en mode Défenseur - Erreur d'initialisation des JFormattedTextField");
 				break;
 			}
-			combinaisonTextField = new JFormattedTextField(maskFormatter);
 		} catch (ParseException e) {
-			e.printStackTrace();
+			LOGGER.error("Jeu RecherchePlusMoins en mode Défenseur -" + e.getMessage());
 		}
 		combinaisonTextField.setPreferredSize(new Dimension(150, 25));
 		combinaisonTextField.setHorizontalAlignment(JTextField.CENTER);
@@ -209,6 +221,8 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 			passerButton.requestFocusInWindow();
 			this.nbCoups--;
 			this.combinaisonSecreteModeDefenseur = this.combinaisonTextField.getText();
+			LOGGER.debug("Jeu RecherchePlusMoins en mode Défenseur - Définition de la combinaison secrète du joueur:"
+					+ combinaisonSecreteModeDefenseur);
 			this.controler.setMode("DEFENSEUR");
 			this.controler.setCombinaisonSecreteModeDefenseur(combinaisonTextField.getText());
 			this.gestionFinDePartie(this.reponseOrdiLabel.getText());
@@ -225,6 +239,7 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 
 	public void gestionFinDePartie(String reponse) {
 		if (reponse.matches("[=]*") && this.nbCoups >= 0) {
+			LOGGER.trace("Jeu RecherchePlusMoins en mode Défenseur - Fin de partie");
 			JOptionPane.showMessageDialog(null,
 					"PERDU!\nL'IA a trouvé votre combinaison secrète " + this.combinaisonSecreteModeDefenseur
 							+ " en moins de " + this.nbCoupsConstant + " coups.",
@@ -247,6 +262,7 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 			}
 		}
 		if ((!reponse.matches("[=]*")) && this.nbCoups <= 0) {
+			LOGGER.trace("Jeu RecherchePlusMoins en mode Défenseur - Fin de partie");
 			JOptionPane.showMessageDialog(null,
 					"Vous avez gagné!\n" + "Votre combinaison secrète " + this.combinaisonSecreteModeDefenseur
 							+ " n'a pas été trouvée par l'ordinateur en moins de " + this.nbCoupsConstant + " coups.",
@@ -288,6 +304,7 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 
 	@Override
 	public void restart() {
+		LOGGER.trace("Jeu RecherchePlusMoins en mode Défenseur - Partie relancée");
 		this.storyTextArea.setText("");
 		this.nbCoups = nbCoupsConstant;
 		this.nombreCoupLabel.setText("Nombre de coups restants : " + this.nbCoups);
