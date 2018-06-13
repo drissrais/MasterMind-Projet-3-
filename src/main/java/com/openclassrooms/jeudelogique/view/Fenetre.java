@@ -33,6 +33,12 @@ import com.openclassrooms.jeudelogique.observer.Observer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/*
+ * La classe Fenetre est la fenêtre principale de l'application. Elle correspond à la page d'accueil du jeu.
+ * Elle est composée d'une barre de menu et d'une barre d'outils permettant d'accèder aux jeux RecherchePlusMoins
+ * et Mastermind dans les modes Challenger, Défenseur et Duel, mais également aux paramètres de jeu et aux instructions.
+ * Elle implémente l'interface Observer.
+ */
 public class Fenetre extends JFrame implements Observer {
 
 	static final Logger LOGGER = LogManager.getLogger();
@@ -96,7 +102,8 @@ public class Fenetre extends JFrame implements Observer {
 		setIconImage(new ImageIcon(getClass().getResource("/mastermindIcone.png")).getImage());
 
 	}
-
+	
+	// Méthode permettant d'initialiser la barre d'outils de la fenêtre principale.
 	private void initToolBar() {
 		LOGGER.trace("Initialisation de la barre d'outils");
 
@@ -109,31 +116,33 @@ public class Fenetre extends JFrame implements Observer {
 		newGameButton.addActionListener(new newGameListener());
 		exitButton.addActionListener((e) -> System.exit(1));
 	}
-
+	
+	// Méthode permettant d'initialiser le menu de la fenêtre principale. 
 	private void initMenu() {
 		LOGGER.trace("Initialisation du menu");
 
+		// Définition des accélérateurs et mnémoniques 
 		nouveau.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK));
 		quitter.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_DOWN_MASK));
 		regles.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, KeyEvent.CTRL_DOWN_MASK));
 		parametres.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, KeyEvent.CTRL_DOWN_MASK));
-
+		fichier.setMnemonic('F');
+		aPropos.setMnemonic('O');
+		param.setMnemonic('P');
+		
+		// Construction du menu
 		fichier.add(nouveau);
 		fichier.addSeparator();
 		fichier.add(quitter);
-		fichier.setMnemonic('F');
-
 		aPropos.add(regles);
-		aPropos.setMnemonic('O');
-
 		param.add(parametres);
-		param.setMnemonic('P');
-
 		menubar.add(fichier);
 		menubar.add(aPropos);
 		menubar.add(param);
+		
 		setJMenuBar(menubar);
-
+		
+		// Définition des listeners
 		nouveau.addActionListener(new newGameListener());
 
 		quitter.addActionListener((e) -> {
@@ -261,6 +270,8 @@ public class Fenetre extends JFrame implements Observer {
 		public void actionPerformed(ActionEvent e) {
 			LOGGER.trace("Initialisation de la boite dialogue de début de partie");
 			BoiteDialogueDebutDePartie boite = new BoiteDialogueDebutDePartie(null, "Nouveau Jeu", true);
+			
+			//On récupère les données enregistrées dans le fichier config.properties
 			properties = new Properties();
 			try (InputStream input = new FileInputStream("src/main/resources/config.properties")) {
 				properties.load(input);
@@ -348,7 +359,8 @@ public class Fenetre extends JFrame implements Observer {
 		}
 
 	}
-
+	
+	// Réinitialiser les modèles
 	private void initModel() {
 		this.searchModel = new SearchModel();
 		this.mastermindModel = new MastermindModel();

@@ -25,6 +25,7 @@ import com.openclassrooms.jeudelogique.utilities.RandomCombination;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+// Classe relative au jeu RecherchePlusMoins en mode challenger.
 public class SearchChallengerPanel extends ZContainer implements Observer {
 	private static final Logger LOGGER = LogManager.getLogger();
 
@@ -101,7 +102,8 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 		propositionLabel.setPreferredSize(new Dimension(300, 50));
 		propositionLabel.setFont(arial15);
 		centerContent.add(propositionLabel);
-
+		
+		//Mise en place du JFormattedTextField suivant le nombre de cases choisies.
 		try {
 			switch (this.nbCases) {
 			case 4:
@@ -171,7 +173,8 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 		this.panel.add(northContent, BorderLayout.NORTH);
 		this.panel.add(centerContent, BorderLayout.CENTER);
 		this.panel.add(southContent, BorderLayout.SOUTH);
-
+		
+		// Définition des listeners
 		propositionTextField.addActionListener(new ActionListener() {
 
 			@Override
@@ -233,6 +236,8 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 	public int getNbEssais() {
 		return nbCoupsConstant - this.nbCoups;
 	}
+	
+	// Implémentation du pattern Observer
 
 	@Override
 	public void update(String proposition, String reponse) {
