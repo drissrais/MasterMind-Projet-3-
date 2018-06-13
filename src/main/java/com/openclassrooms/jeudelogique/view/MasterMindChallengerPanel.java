@@ -27,7 +27,7 @@ import com.openclassrooms.jeudelogique.utilities.RandomCombination;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class MastermindChallengerPanel extends ZContainer implements Observer {
+public class MasterMindChallengerPanel extends ZContainer implements Observer {
 	private JLabel propositionLabel;
 	private JFormattedTextField propositionTextField;
 	private JTextArea storyTextArea;
@@ -41,7 +41,7 @@ public class MastermindChallengerPanel extends ZContainer implements Observer {
 	private int nbCoupsConstant;
 	private static final Logger LOGGER = LogManager.getLogger();
 
-	public MastermindChallengerPanel(Dimension dim, MastermindModel mod, int nbCoups, int nbCases,
+	public MasterMindChallengerPanel(Dimension dim, MastermindModel mod, int nbCoups, int nbCases,
 			int nbChiffresAUtiliser, boolean developerMode) {
 		super(dim);
 		LOGGER.trace("Instanciation du jeu Mastermind en mode Challenger");

@@ -307,7 +307,7 @@ public class Fenetre extends JFrame implements Observer {
 						&& boite.getzInfo().getMode().equals("CHALLENGER")) {
 					param.setEnabled(false);
 					conteneur.removeAll();
-					MastermindChallengerPanel mcp = new MastermindChallengerPanel(size, mastermindModel,
+					MasterMindChallengerPanel mcp = new MasterMindChallengerPanel(size, mastermindModel,
 							nbCoupsMastermind, nbCasesMastermind, nbChiffresAUtiliserMastermind, developerMode);
 					mastermindModel.addObserver(mcp);
 					conteneur.add(mcp.getPanel(), BorderLayout.CENTER);
