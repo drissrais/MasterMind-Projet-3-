@@ -28,6 +28,10 @@ public class MastermindChallengerControler {
 		this.mastermindModel.setMode(mode);
 	}
 	
+	public void setNbCases(int nbCases) {
+		this.mastermindModel.setNbCases(nbCases);
+	}
+	
 	public void setNbChiffresAUtiliser(int nbChiffresAUtiliser) {
 		this.nbChiffresAUtiliser = nbChiffresAUtiliser;
 		this.mastermindModel.setNbChiffresAUtiliser(nbChiffresAUtiliser);

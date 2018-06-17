@@ -75,7 +75,7 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 
 		JTextArea texte = new JTextArea("Saurez-vous trouver la combinaison cachée en moins de " + nbCoupsConstant
 				+ " coups?\n(Chiffres compris entre 0 et " + (this.nbChiffresAUtiliser - 1)
-				+ "  avec répétitions possibles)\nO : Chiffre mal placé ; # : Chiffre bien placé");
+				+ " avec répétitions possibles)\nO : Chiffre mal placé ; # : Chiffre bien placé");
 		texte.setEditable(false);
 		texte.setFocusable(false);
 		texte.setPreferredSize(new Dimension(700, 55));
@@ -90,6 +90,7 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 					"Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:" + combinaisonSecrete);
 		}
 		controler.setNbChiffresAUtiliser(this.nbChiffresAUtiliser);
+		controler.setNbCases(this.nbCases);
 		controler.setCombinaisonSecrete(combinaisonSecrete);
 
 		if (this.developerMode == true) {
@@ -166,7 +167,6 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 			public void actionPerformed(ActionEvent e) {
 				nbCoups--;
 				controler.setMode("CHALLENGER");
-				// controler.setNbChiffresAUtiliser(nbChiffresAUtiliser);
 				controler.setProposition(((JTextField) e.getSource()).getText());
 			}
 		});

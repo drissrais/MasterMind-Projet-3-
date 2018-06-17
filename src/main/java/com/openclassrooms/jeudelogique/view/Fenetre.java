@@ -108,24 +108,38 @@ public class Fenetre extends JFrame implements Observer {
 		setContentPane(contentPane);
 
 		setIconImage(new ImageIcon(getClass().getResource("/mastermindIcone.png")).getImage());
-
+		
 		properties = new Properties();
+		try (InputStream input = new FileInputStream("src/main/resources/config.properties")) {
+			properties.load(input);
+			nbCoupsRecherchePlusMoins = Integer.parseInt(properties.getProperty("param.nbCoupsRecherchePlusMoins"));
+			nbCasesRecherchePlusMoins = Integer.parseInt(properties.getProperty("param.nbCasesRecherchePlusMoins"));
+			nbCoupsMastermind = Integer.parseInt(properties.getProperty("param.nbCoupsMastermind"));
+			nbCasesMastermind = Integer.parseInt(properties.getProperty("param.nbCasesMastermind"));
+			nbChiffresAUtiliserMastermind = Integer
+					.parseInt(properties.getProperty("param.nbChiffresAUtiliserMastermind"));
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 		try (InputStream input = new FileInputStream("src/main/resources/config.properties");
 				OutputStream output = new FileOutputStream("src/main/resources/config.properties")) {
 			properties.load(input);
-			properties.setProperty("param.nbCoupsRecherchePlusMoins", "10");
-			properties.setProperty("param.nbCasesRecherchePlusMoins", "4");
-
+			// Traitement pour le jeu RecherchePlusMoins
+			properties.setProperty("param.nbCoupsRecherchePlusMoins", String.valueOf(nbCoupsRecherchePlusMoins));
+			properties.setProperty("param.nbCasesRecherchePlusMoins", String.valueOf(nbCasesRecherchePlusMoins));
+			
 			// Traitement pour le jeu Mastermind
-			properties.setProperty("param.nbCoupsMastermind", "10");
-			properties.setProperty("param.nbCasesMastermind", "4");
-			properties.setProperty("param.nbChiffresAUtiliserMastermind", "10");
+			properties.setProperty("param.nbCoupsMastermind", String.valueOf(nbCoupsMastermind));
+			properties.setProperty("param.nbCasesMastermind", String.valueOf(nbCasesMastermind));
+			properties.setProperty("param.nbChiffresAUtiliserMastermind", String.valueOf(nbChiffresAUtiliserMastermind));
+			
+			// Traitement pour le mode developpeur
 			properties.setProperty("param.modeDeveloppeur", this.developerModeString);
 			properties.store(output, "Fichier de configuration config.properties");
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-
+		
 	}
 
 	// Méthode permettant d'initialiser la barre d'outils de la fenêtre principale.
@@ -140,23 +154,7 @@ public class Fenetre extends JFrame implements Observer {
 		toolbarConteneur.add(toolbar, BorderLayout.PAGE_START);
 		newGameButton.addActionListener(new newGameListener());
 		exitButton.addActionListener((e) -> {
-			properties = new Properties();
-			try (InputStream input = new FileInputStream("src/main/resources/config.properties");
-					OutputStream output = new FileOutputStream("src/main/resources/config.properties")) {
-				properties.load(input);
-
-				properties.setProperty("param.nbCoupsRecherchePlusMoins", "10");
-				properties.setProperty("param.nbCasesRecherchePlusMoins", "4");
-
-				properties.setProperty("param.nbCoupsMastermind", "10");
-				properties.setProperty("param.nbCasesMastermind", "4");
-				properties.setProperty("param.nbChiffresAUtiliserMastermind", "10");
-				properties.setProperty("param.modeDeveloppeur", "false");
-
-				properties.store(output, "Fichier de configuration config.properties");
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
+			reinitializeConfigFile();
 			System.exit(0);
 		});
 	}
@@ -190,23 +188,7 @@ public class Fenetre extends JFrame implements Observer {
 		nouveau.addActionListener(new newGameListener());
 
 		quitter.addActionListener((e) -> {
-			properties = new Properties();
-			try (InputStream input = new FileInputStream("src/main/resources/config.properties");
-					OutputStream output = new FileOutputStream("src/main/resources/config.properties")) {
-				properties.load(input);
-
-				properties.setProperty("param.nbCoupsRecherchePlusMoins", "10");
-				properties.setProperty("param.nbCasesRecherchePlusMoins", "4");
-
-				properties.setProperty("param.nbCoupsMastermind", "10");
-				properties.setProperty("param.nbCasesMastermind", "4");
-				properties.setProperty("param.nbChiffresAUtiliserMastermind", "10");
-				properties.setProperty("param.modeDeveloppeur", "false");
-
-				properties.store(output, "Fichier de configuration config.properties");
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
+			reinitializeConfigFile();
 			System.exit(0);
 		});
 
@@ -224,24 +206,8 @@ public class Fenetre extends JFrame implements Observer {
 		this.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				properties = new Properties();
-				try (InputStream input = new FileInputStream("src/main/resources/config.properties");
-						OutputStream output = new FileOutputStream("src/main/resources/config.properties")) {
-					properties.load(input);
-
-					properties.setProperty("param.nbCoupsRecherchePlusMoins", "10");
-					properties.setProperty("param.nbCasesRecherchePlusMoins", "4");
-
-					properties.setProperty("param.nbCoupsMastermind", "10");
-					properties.setProperty("param.nbCasesMastermind", "4");
-					properties.setProperty("param.nbChiffresAUtiliserMastermind", "10");
-					properties.setProperty("param.modeDeveloppeur", "false");
-
-					properties.store(output, "Fichier de configuration config.properties");
-					System.exit(0);
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
+				reinitializeConfigFile();
+				System.exit(0);
 			}
 		});
 	}
@@ -289,26 +255,8 @@ public class Fenetre extends JFrame implements Observer {
 	@Override
 	public void exitApplication() {
 		LOGGER.trace("Fin de l'application");
-		properties = new Properties();
-		try (InputStream input = new FileInputStream("src/main/resources/config.properties");
-				OutputStream output = new FileOutputStream("src/main/resources/config.properties")) {
-			properties.load(input);
-
-			// Traitement pour le jeu RecherchePlusMoins
-			properties.setProperty("param.nbCoupsRecherchePlusMoins", "10");
-			properties.setProperty("param.nbCasesRecherchePlusMoins", "4");
-
-			// Traitement pour le jeu Mastermind
-			properties.setProperty("param.nbCoupsMastermind", "10");
-			properties.setProperty("param.nbCasesMastermind", "4");
-			properties.setProperty("param.nbChiffresAUtiliserMastermind", "10");
-			properties.setProperty("param.modeDeveloppeur", "false");
-
-			properties.store(output, "Fichier de configuration config.properties");
-			System.exit(0);
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
+		reinitializeConfigFile();
+		System.exit(0);
 	}
 
 	public class newGameListener implements ActionListener {
@@ -317,29 +265,8 @@ public class Fenetre extends JFrame implements Observer {
 		public void actionPerformed(ActionEvent e) {
 			LOGGER.trace("Initialisation de la boite dialogue de début de partie");
 			BoiteDialogueDebutDePartie boite = new BoiteDialogueDebutDePartie(null, "Nouveau Jeu", true);
-
-			// On récupère les données enregistrées dans le fichier config.properties
-			properties = new Properties();
-			try (InputStream input = new FileInputStream("src/main/resources/config.properties")) {
-				properties.load(input);
-				nbCoupsRecherchePlusMoins = Integer.parseInt(properties.getProperty("param.nbCoupsRecherchePlusMoins"));
-				nbCasesRecherchePlusMoins = Integer.parseInt(properties.getProperty("param.nbCasesRecherchePlusMoins"));
-				nbCoupsMastermind = Integer.parseInt(properties.getProperty("param.nbCoupsMastermind"));
-				nbCasesMastermind = Integer.parseInt(properties.getProperty("param.nbCasesMastermind"));
-				nbChiffresAUtiliserMastermind = Integer
-						.parseInt(properties.getProperty("param.nbChiffresAUtiliserMastermind"));
-				developerMode = Boolean.parseBoolean(properties.getProperty("param.modeDeveloppeur"));
-				System.out.println(developerMode);
-				LOGGER.debug("Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :" + nbCoupsRecherchePlusMoins);
-				LOGGER.debug("Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :" + nbCasesRecherchePlusMoins);
-				LOGGER.debug("Menu Fichier -> Nouveau jeu - Nb coups Mastermind :" + nbCoupsMastermind);
-				LOGGER.debug("Menu Fichier -> Nouveau jeu - Nb cases Mastermind :" + nbCasesMastermind);
-				LOGGER.debug("Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :"
-						+ nbChiffresAUtiliserMastermind);
-				LOGGER.debug("Menu Fichier -> Nouveau jeu - Etat du mode développeur :" + developerMode);
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
+			readConfigFile();
+			
 			if ((!boite.getzInfo().getGame().equals("")) && (!boite.getzInfo().getMode().equals(""))) {
 				if (boite.getzInfo().getGame().equals("Recherche +/-")
 						&& boite.getzInfo().getMode().equals("CHALLENGER")) {
@@ -406,7 +333,53 @@ public class Fenetre extends JFrame implements Observer {
 				}
 			}
 		}
+	}
+	
+	private void readConfigFile() {
+		// On récupère les données enregistrées dans le fichier config.properties
+		properties = new Properties();
+		try (InputStream input = new FileInputStream("src/main/resources/config.properties")) {
+			properties.load(input);
+			nbCoupsRecherchePlusMoins = Integer.parseInt(properties.getProperty("param.nbCoupsRecherchePlusMoins"));
+			nbCasesRecherchePlusMoins = Integer.parseInt(properties.getProperty("param.nbCasesRecherchePlusMoins"));
+			nbCoupsMastermind = Integer.parseInt(properties.getProperty("param.nbCoupsMastermind"));
+			nbCasesMastermind = Integer.parseInt(properties.getProperty("param.nbCasesMastermind"));
+			nbChiffresAUtiliserMastermind = Integer
+					.parseInt(properties.getProperty("param.nbChiffresAUtiliserMastermind"));
+			developerMode = Boolean.parseBoolean(properties.getProperty("param.modeDeveloppeur"));
+			LOGGER.debug("Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :" + nbCoupsRecherchePlusMoins);
+			LOGGER.debug("Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :" + nbCasesRecherchePlusMoins);
+			LOGGER.debug("Menu Fichier -> Nouveau jeu - Nb coups Mastermind :" + nbCoupsMastermind);
+			LOGGER.debug("Menu Fichier -> Nouveau jeu - Nb cases Mastermind :" + nbCasesMastermind);
+			LOGGER.debug("Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :"
+					+ nbChiffresAUtiliserMastermind);
+			LOGGER.debug("Menu Fichier -> Nouveau jeu - Etat du mode développeur :" + developerMode);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
+	
+	private void reinitializeConfigFile() {
+		properties = new Properties();
+		try (InputStream input = new FileInputStream("src/main/resources/config.properties");
+				OutputStream output = new FileOutputStream("src/main/resources/config.properties")) {
+			properties.load(input);
+			
+			// Traitement pour le jeu RecherchePlusMoins
+			properties.setProperty("param.nbCoupsRecherchePlusMoins", "10");
+			properties.setProperty("param.nbCasesRecherchePlusMoins", "4");
 
+			// Traitement pour le jeu Mastermind
+			properties.setProperty("param.nbCoupsMastermind", "10");
+			properties.setProperty("param.nbCasesMastermind", "4");
+			properties.setProperty("param.nbChiffresAUtiliserMastermind", "10");
+			
+			// Traitement pour le mode developpeur
+			properties.setProperty("param.modeDeveloppeur", this.developerModeString);
+			properties.store(output, "Fichier de configuration config.properties");
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 	}
 
 	// Réinitialiser les modèles
