@@ -43,19 +43,31 @@ public class MastermindModel implements Observable {
 	}
 
 	// Methodes relatives au mode challenger
+
+	/*
+	 * Methode relative au mode Challenger qui permet de recuperer la proposition du
+	 * joueur. Suite a la proposition du joueur, l'ordinateur devra repondre.
+	 */
 	public void setPropositionModeChallenger(String proposition) {
 		this.propositionJoueurModeChallenger = proposition;
-		LOGGER.debug("Mode Challenger - proposition Joueur :"
-				+ this.propositionJoueurModeChallenger);
+		LOGGER.debug("Mode Challenger - proposition Joueur :" + this.propositionJoueurModeChallenger);
 		this.compare(this.combinaisonSecreteModeChallenger, this.propositionJoueurModeChallenger);
 		this.notifyObserver();
 	}
 
+	// Methode relative au mode Challenger qui permet de recuperer la combinaison
+	// secrete de l'ordinateur.
 	public void setCombinaisonSecreteModeChallenger(String combinaisonSecrete) {
 		this.combinaisonSecreteModeChallenger = combinaisonSecrete;
 	}
 
 	// Methodes relatives au mode defenseur
+
+	/*
+	 * Methode relative au mode Defenseur qui permet de recuperer la combinaison
+	 * secrete du joueur. Apres recuperation de la combinaison secrete du joueur,
+	 * l'ordinateur devra faire une proposition.
+	 */
 	public void setCombinaisonSecreteModeDefenseur(String combinaisonSecreteModeDefenseur) {
 		this.combinaisonSecreteModeDefenseur = combinaisonSecreteModeDefenseur;
 		LOGGER.debug(
@@ -67,6 +79,12 @@ public class MastermindModel implements Observable {
 		this.genererPropositionOrdinateurModeDefenseur();
 	}
 
+	/*
+	 * Methode relative au mode Defenseur qui permet de generer une proposition de
+	 * l'ordinateur a la base de la reponse a la proposition precedante (Au 1er
+	 * coup, proposition aleatoire). Par la suite, nous adoptons un raisonnement
+	 * KNUTH
+	 */
 	public void genererPropositionOrdinateurModeDefenseur() {
 		String[] resultatsComparaisons = new String[this.listPossibilities.size()];
 		ArrayList<String> listeARejeter = new ArrayList<>();
@@ -105,6 +123,11 @@ public class MastermindModel implements Observable {
 	}
 
 	// Methodes relatives au mode duel
+
+	/*
+	 * Methode relative au mode Duel qui permet de recuperer la combinaison secrete
+	 * du joueur.
+	 */
 	public void setCombinaisonSecreteJoueurModeDuel(String combinaisonSecreteJoueurModeDuel) {
 		this.combinaisonSecreteJoueurModeDuel = combinaisonSecreteJoueurModeDuel;
 		LOGGER.debug(
@@ -113,21 +136,34 @@ public class MastermindModel implements Observable {
 		this.propositionOrdinateurModeDuel = "";
 	}
 
+	/*
+	 * Methode relative au mode Duel qui permet de recuperer la combinaison secrete
+	 * de l'ordinateur.
+	 */
 	public void setCombinaisonSecreteOrdinateurModeDuel(String combinaisonSecreteOrdinateurModeDuel) {
 		this.combinaisonSecreteOrdinateurModeDuel = combinaisonSecreteOrdinateurModeDuel;
 		this.initListPossibilities();
 		LOGGER.debug("Mode Duel - Taille de la liste des possibilités :" + listPossibilities.size());
 	}
 
+	/*
+	 * Methode relative au mode duel qui permet de recuperer la proposition du
+	 * joueur et la comparer a la combinaison secrete de l'ordinateur.
+	 */
 	public void setPropositionJoueurModeDuel(String propositionJoueurModeDuel) {
 		this.propositionJoueurModeDuel = propositionJoueurModeDuel;
-		LOGGER.debug(
-				"Mode Duel - Proposition Joueur Modèle de données :" + this.propositionJoueurModeDuel);
+		LOGGER.debug("Mode Duel - Proposition Joueur Modèle de données :" + this.propositionJoueurModeDuel);
 		this.compare(this.combinaisonSecreteOrdinateurModeDuel, this.propositionJoueurModeDuel);
 		this.genererPropositionOrdinateurModeDuel();
 		this.notifyObserver();
 	}
 
+	/*
+	 * Methode relative au mode Duel qui permet de generer une proposition de
+	 * l'ordinateur a la base de la reponse a la proposition precedante (Au 1er
+	 * coup, proposition aleatoire). Par la suite, nous adoptons un raisonnement
+	 * KNUTH
+	 */
 	public void genererPropositionOrdinateurModeDuel() {
 		String[] resultatsComparaisons = new String[this.listPossibilities.size()];
 		ArrayList<String> listeARejeter = new ArrayList<>();
@@ -135,8 +171,7 @@ public class MastermindModel implements Observable {
 		if (this.reponseCorrespondanteModeDuel.equals("") && this.propositionOrdinateurModeDuel.equals("")) {
 			this.propositionOrdinateurModeDuel = String
 					.valueOf(this.listPossibilities.get(new Random().nextInt(this.listPossibilities.size())));
-			LOGGER.debug("Mode Duel - proposition Ordinateur Mode Duel :"
-					+ this.propositionOrdinateurModeDefenseur);
+			LOGGER.debug("Mode Duel - proposition Ordinateur Mode Duel :" + this.propositionOrdinateurModeDefenseur);
 			this.reponseCorrespondanteModeDuel = this.compare(this.combinaisonSecreteJoueurModeDuel,
 					this.propositionOrdinateurModeDuel);
 			LOGGER.debug("Mode Duel - réponse correspondante à la proposition de l'ordinateur Mode Défenseur :"
@@ -154,8 +189,7 @@ public class MastermindModel implements Observable {
 			}
 			this.propositionOrdinateurModeDuel = String
 					.valueOf(this.listPossibilities.get(new Random().nextInt(this.listPossibilities.size())));
-			LOGGER.debug("Mode Duel - proposition Ordinateur Mode Duel :"
-					+ this.propositionOrdinateurModeDefenseur);
+			LOGGER.debug("Mode Duel - proposition Ordinateur Mode Duel :" + this.propositionOrdinateurModeDefenseur);
 			this.reponseCorrespondanteModeDuel = this.compare(this.combinaisonSecreteJoueurModeDuel,
 					this.propositionOrdinateurModeDuel);
 			LOGGER.debug("Mode Duel - réponse correspondante à la proposition de l'ordinateur Mode Défenseur :"
@@ -164,6 +198,11 @@ public class MastermindModel implements Observable {
 	}
 
 	// Methodes communes aux 3 modes de jeu
+
+	/*
+	 * Methode relative aux trois modes qui permet d'analyser deux chaines de
+	 * caracteres pour en generer une reponse sous forme d'indices # et/ou O
+	 */
 	public String compare(String combinaisonSecreteOrdinateur, String propositionJoueur) {
 		int nbChiffreMalPlace = 0;
 		int nbChiffreBienPlace = 0;
@@ -215,6 +254,11 @@ public class MastermindModel implements Observable {
 		return FromStringArrayToString.convert(tab2);
 	}
 
+	/*
+	 * Methode commune a tous les modes de jeu qui permet de recuperer le choix du
+	 * joueur en fin de partie et en fonction de cela, faire appel a la methode
+	 * adequate correspondant au choix du joueur.
+	 */
 	public void setChoixFinDePartie(String choixFinDePartie) {
 		this.choixFinDePartie = choixFinDePartie;
 		if (this.choixFinDePartie.equals("Quitter"))
@@ -226,18 +270,28 @@ public class MastermindModel implements Observable {
 		}
 	}
 
+	// Mutateur commune a tous les modes de jeu qui permet de modifier le mode de
+	// jeu.
 	public void setMode(String mode) {
 		this.mode = mode;
 	}
 
+	// Mutateur commune a tous les modes de jeu qui permet de modifier le nombre
+	// de cases.
 	public void setNbCases(int nbCases) {
 		this.nbCases = nbCases;
 	}
 
+	// Mutateur commune a tous les modes de jeu qui permet de modifier le nombre
+	// de chiffres utilisables.
 	public void setNbChiffresAUtiliser(int nbChiffresAUtiliser) {
 		this.nbChiffresAUtiliser = nbChiffresAUtiliser;
 	}
 
+	/*
+	 * Methode qui permet de generer la liste de toutes les combinaisons possibles
+	 * afin de s'en servir dans l'algorithme de knuth
+	 */
 	public void initListPossibilities() {
 		listPossibilities = new ArrayList<>();
 		if (nbCases == 4) {
@@ -283,7 +337,7 @@ public class MastermindModel implements Observable {
 		}
 	}
 
-	// Methodes a redefinir
+	// Methodes du pattern observer a redefinir
 	@Override
 	public void addObserver(Observer o) {
 		this.listObserver.add(o);

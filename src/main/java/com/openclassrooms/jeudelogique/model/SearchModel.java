@@ -37,17 +37,30 @@ public class SearchModel implements Observable {
 	}
 
 	// Methodes relatives au mode challenger
+
+	/*
+	 * Methode relative au mode Challenger qui permet de recuperer la proposition du
+	 * joueur. Suite a la proposition du joueur, l'ordinateur devra repondre.
+	 */
 	public void setProposition(String proposition) {
 		this.propositionJoueurModeChallenger = proposition;
 		this.compare(this.combinaisonSecreteModeChallenger, this.propositionJoueurModeChallenger);
 		this.notifyObserver();
 	}
 
+	// Methode relative au mode Challenger qui permet de recuperer la combinaison
+	// secrete de l'ordinateur.
 	public void setCombinaisonSecreteModeChallenger(String combinaisonSecrete) {
 		this.combinaisonSecreteModeChallenger = combinaisonSecrete;
 	}
 
 	// Methodes relatives au mode defenseur
+
+	/*
+	 * Methode relative au mode Defenseur qui permet de recuperer la combinaison
+	 * secrete du joueur. Apres recuperation de la combinaison secrete du joueur,
+	 * l'ordinateur devra faire une proposition.
+	 */
 	public void setCombinaisonSecreteModeDefenseur(String combinaisonSecreteModeDefender) {
 		this.combinaisonSecreteModeDefenseur = combinaisonSecreteModeDefender;
 		bornesMin = new int[this.combinaisonSecreteModeDefenseur.length()];
@@ -60,6 +73,12 @@ public class SearchModel implements Observable {
 		this.genererPropositionOrdinateurModeDefenseur();
 	}
 
+	/*
+	 * Methode relative au mode Defenseur qui permet de generer une proposition de
+	 * l'ordinateur a la base de la reponse a la proposition precedante (Au 1er
+	 * coup, proposition aleatoire). Par la suite, nous adoptons un raisonnement par
+	 * dichotomie
+	 */
 	public void genererPropositionOrdinateurModeDefenseur() {
 		int[] tabAnalyse = new int[this.combinaisonSecreteModeDefenseur.length()];
 		int[] tabReponse = new int[this.combinaisonSecreteModeDefenseur.length()];
@@ -97,6 +116,11 @@ public class SearchModel implements Observable {
 	}
 
 	// Methodes relatives au mode duel
+
+	/*
+	 * Methode relative au mode Duel qui permet de recuperer la combinaison secrete
+	 * du joueur.
+	 */
 	public void setCombinaisonSecreteJoueurModeDuel(String combinaisonSecreteJoueurModeDuel) {
 		this.combinaisonSecreteJoueurModeDuel = combinaisonSecreteJoueurModeDuel;
 		bornesMin = new int[this.combinaisonSecreteJoueurModeDuel.length()];
@@ -108,16 +132,30 @@ public class SearchModel implements Observable {
 		this.reponseCorrespondanteModeDuel = "";
 	}
 
+	/*
+	 * Methode relative au mode Duel qui permet de recuperer la combinaison secrete
+	 * de l'ordinateur.
+	 */
 	public void setCombinaisonSecreteOrdinateurModeDuel(String combinaisonSecreteOrdinateurModeDuel) {
 		this.combinaisonSecreteOrdinateurModeDuel = combinaisonSecreteOrdinateurModeDuel;
 	}
 
+	/*
+	 * Methode relative au mode duel qui permet de recuperer la proposition du
+	 * joueur et la comparer a la combinaison secrete de l'ordinateur.
+	 */
 	public void setPropositionJoueurModeDuel(String propositionJoueurModeDuel) {
 		this.propositionJoueurModeDuel = propositionJoueurModeDuel;
 		this.compare(this.combinaisonSecreteOrdinateurModeDuel, this.propositionJoueurModeDuel);
 		this.genererPropositionOrdinateurModeDuel();
 	}
 
+	/*
+	 * Methode relative au mode Duel qui permet de generer une proposition de
+	 * l'ordinateur a la base de la reponse a la proposition precedante (Au 1er
+	 * coup, proposition aleatoire). Par la suite, nous adoptons un raisonnement par
+	 * dichotomie
+	 */
 	public void genererPropositionOrdinateurModeDuel() {
 		int[] tabAnalyse = new int[this.combinaisonSecreteOrdinateurModeDuel.length()];
 		int[] tabReponse = new int[this.combinaisonSecreteOrdinateurModeDuel.length()];
@@ -154,6 +192,11 @@ public class SearchModel implements Observable {
 	}
 
 	// Methodes communes
+
+	/*
+	 * Methode relative aux trois modes qui permet d'analyser deux chaines de
+	 * caracteres pour en generer une reponse sous forme d'indices +, -, =
+	 */
 	public String compare(String proposition1, String proposition2) {
 		char[] tab = new char[proposition1.length()];
 		for (int i = 0; i < proposition1.length(); i++) {
@@ -167,10 +210,17 @@ public class SearchModel implements Observable {
 		return String.valueOf(tab);
 	}
 
+	// Mutateur commune a tous les modes de jeu qui permet de modifier le mode de
+	// jeu.
 	public void setMode(String mode) {
 		this.mode = mode;
 	}
 
+	/*
+	 * Methode commune a tous les modes de jeu qui permet de recuperer le choix du
+	 * joueur en fin de partie et en fonction de cela, faire appel a la methode
+	 * adequate correspondant au choix du joueur.
+	 */
 	public void setChoixFinDePartie(String choixFinDePartie) {
 		this.choixFinDePartie = choixFinDePartie;
 		if (this.choixFinDePartie.equals("Quitter"))

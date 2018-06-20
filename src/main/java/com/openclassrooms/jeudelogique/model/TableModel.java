@@ -2,6 +2,7 @@ package com.openclassrooms.jeudelogique.model;
 
 import javax.swing.table.AbstractTableModel;
 
+/* Classe relative au Modele de donnees du tableau utilise dans le cadre du jeu Mastermind. */
 public class TableModel extends AbstractTableModel {
 
 	private static final long serialVersionUID = -5037596278750368076L;
@@ -32,17 +33,17 @@ public class TableModel extends AbstractTableModel {
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		return this.data[rowIndex][columnIndex];
 	}
-	
+
 	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		this.data[rowIndex][columnIndex] = aValue;
 	}
-	
+
 	@Override
 	public String getColumnName(int column) {
 		return this.titles[column];
 	}
-	
+
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		return false;
