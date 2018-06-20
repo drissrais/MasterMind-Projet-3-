@@ -21,7 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.text.MaskFormatter;
 
-import com.openclassrooms.jeudelogique.controler.SearchDualControler;
+import com.openclassrooms.jeudelogique.controller.SearchDualController;
 import com.openclassrooms.jeudelogique.model.SearchModel;
 import com.openclassrooms.jeudelogique.model.TableModel;
 
@@ -43,7 +43,7 @@ public class SearchDualPanel extends ZContainer implements Observer {
 	private TableModel tableModel;
 	private LabelRenderer labelRenderer;
 	private JLabel couleurjoueurLabel, couleurOrdinateurLabel, solution;
-	private SearchDualControler controler;
+	private SearchDualController controller;
 
 	private int nbCases, rowIndex = 0, columnIndex = 0;
 	private int activerBoutonValiderCombiSecrete;
@@ -57,7 +57,7 @@ public class SearchDualPanel extends ZContainer implements Observer {
 		super(dim);
 		LOGGER.trace("Instanciation du jeu RecherchePlusMoins en mode Duel");
 
-		this.controler = new SearchDualControler(mod);
+		this.controller = new SearchDualController(mod);
 		this.nbCases = nbCases;
 		this.developerMode = developerMode;
 		initPanel();
@@ -91,7 +91,7 @@ public class SearchDualPanel extends ZContainer implements Observer {
 		this.combinaisonSecreteOrdinateurModeDuel = RandomCombination.generateRandomCombination(this.nbCases);
 		LOGGER.debug("Jeu RecherchePlusMoins en mode Duel - Génération de la combinaison secrète:"
 				+ combinaisonSecreteOrdinateurModeDuel);
-		this.controler.setCombinaisonSecreteOrdinateurModeDuel(this.combinaisonSecreteOrdinateurModeDuel);
+		this.controller.setCombinaisonSecreteOrdinateurModeDuel(this.combinaisonSecreteOrdinateurModeDuel);
 
 		if (this.developerMode == true) {
 			solution = new JLabel("Solution : " + this.combinaisonSecreteOrdinateurModeDuel);
@@ -288,13 +288,13 @@ public class SearchDualPanel extends ZContainer implements Observer {
 			validerButton.setEnabled(false);
 			this.propositionJoueurTextField.setEnabled(true);
 			this.propositionJoueurTextField.requestFocusInWindow();
-			this.controler.setMode("DUEL");
-			this.controler.setCombinaisonSecreteJoueurModeDuel(combinaisonTextField.getText());
+			this.controller.setMode("DUEL");
+			this.controller.setCombinaisonSecreteJoueurModeDuel(combinaisonTextField.getText());
 		});
 
 		propositionJoueurTextField.addActionListener((e) -> {
-			this.controler.setMode("DUEL");
-			this.controler.setPropositionJoueurModeDuel(((JTextField) e.getSource()).getText());
+			this.controller.setMode("DUEL");
+			this.controller.setPropositionJoueurModeDuel(((JTextField) e.getSource()).getText());
 			this.propositionJoueurTextField.setText("");
 			this.propositionJoueurTextField.requestFocusInWindow();
 			this.gestionFinDePartie(this.reponseOrdinateur, this.reponseJoueur);
@@ -313,13 +313,13 @@ public class SearchDualPanel extends ZContainer implements Observer {
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
 			switch (choix[rang]) {
 			case "Rejouer":
-				controler.setChoixFinDePartie("Rejouer");
+				controller.setChoixFinDePartie("Rejouer");
 				break;
 			case "Revenir au menu":
-				controler.setChoixFinDePartie("Revenir au menu");
+				controller.setChoixFinDePartie("Revenir au menu");
 				break;
 			case "Quitter":
-				controler.setChoixFinDePartie("Quitter");
+				controller.setChoixFinDePartie("Quitter");
 				break;
 			default:
 				break;
@@ -335,13 +335,13 @@ public class SearchDualPanel extends ZContainer implements Observer {
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
 			switch (choix[rang]) {
 			case "Rejouer":
-				controler.setChoixFinDePartie("Rejouer");
+				controller.setChoixFinDePartie("Rejouer");
 				break;
 			case "Revenir au menu":
-				controler.setChoixFinDePartie("Revenir au menu");
+				controller.setChoixFinDePartie("Revenir au menu");
 				break;
 			case "Quitter":
-				controler.setChoixFinDePartie("Quitter");
+				controller.setChoixFinDePartie("Quitter");
 				break;
 			default:
 				break;
@@ -357,13 +357,13 @@ public class SearchDualPanel extends ZContainer implements Observer {
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
 			switch (choix[rang]) {
 			case "Rejouer":
-				controler.setChoixFinDePartie("Rejouer");
+				controller.setChoixFinDePartie("Rejouer");
 				break;
 			case "Revenir au menu":
-				controler.setChoixFinDePartie("Revenir au menu");
+				controller.setChoixFinDePartie("Revenir au menu");
 				break;
 			case "Quitter":
-				controler.setChoixFinDePartie("Quitter");
+				controller.setChoixFinDePartie("Quitter");
 				break;
 			default:
 				break;
@@ -400,7 +400,7 @@ public class SearchDualPanel extends ZContainer implements Observer {
 		if (developerMode) {
 			solution.setText("Solution : " + this.combinaisonSecreteOrdinateurModeDuel);
 		}
-		this.controler.setCombinaisonSecreteOrdinateurModeDuel(this.combinaisonSecreteOrdinateurModeDuel);
+		this.controller.setCombinaisonSecreteOrdinateurModeDuel(this.combinaisonSecreteOrdinateurModeDuel);
 		this.combinaisonTextField.setEnabled(true);
 		this.combinaisonTextField.setText("");
 		this.propositionOrdinateur.setText("");

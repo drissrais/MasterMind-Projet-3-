@@ -17,7 +17,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
-import com.openclassrooms.jeudelogique.controler.SearchChallengerControler;
+import com.openclassrooms.jeudelogique.controller.SearchChallengerController;
 import com.openclassrooms.jeudelogique.model.SearchModel;
 import com.openclassrooms.jeudelogique.observer.Observer;
 import com.openclassrooms.jeudelogique.utilities.RandomCombination;
@@ -33,7 +33,7 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 	private JFormattedTextField propositionTextField;
 	private JTextArea storyTextArea;
 	private JLabel nombreCoupLabel;
-	private SearchChallengerControler controler;
+	private SearchChallengerController controller;
 
 	private int nbCases, nbCoups;
 	private String combinaisonSecrete = "";
@@ -47,7 +47,7 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 		super(dim);
 		LOGGER.trace("Instanciation du jeu RecherchePlusMoins en mode Challenger");
 
-		this.controler = new SearchChallengerControler(mod);
+		this.controller = new SearchChallengerController(mod);
 		this.nbCoups = nbCoups;
 		this.nbCases = nbCases;
 		this.nbCoupsConstant = nbCoups;
@@ -84,7 +84,7 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 		combinaisonSecrete = RandomCombination.generateRandomCombination(this.nbCases);
 		LOGGER.debug("Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:"
 				+ combinaisonSecrete);
-		controler.setCombinaisonSecrete(combinaisonSecrete);
+		controller.setCombinaisonSecrete(combinaisonSecrete);
 
 		if (this.developerMode == true) {
 			solution = new JLabel("Solution : " + combinaisonSecrete);
@@ -180,8 +180,8 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				nbCoups--;
-				controler.setMode("CHALLENGER");
-				controler.setProposition(((JTextField) e.getSource()).getText());
+				controller.setMode("CHALLENGER");
+				controller.setProposition(((JTextField) e.getSource()).getText());
 			}
 		});
 	}
@@ -197,13 +197,13 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
 			switch (choix[rang]) {
 			case "Rejouer":
-				controler.setChoixFinDePartie("Rejouer");
+				controller.setChoixFinDePartie("Rejouer");
 				break;
 			case "Revenir au menu":
-				controler.setChoixFinDePartie("Revenir au menu");
+				controller.setChoixFinDePartie("Revenir au menu");
 				break;
 			case "Quitter":
-				controler.setChoixFinDePartie("Quitter");
+				controller.setChoixFinDePartie("Quitter");
 				break;
 			default:
 				break;
@@ -219,13 +219,13 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
 			switch (choix[rang]) {
 			case "Rejouer":
-				controler.setChoixFinDePartie("Rejouer");
+				controller.setChoixFinDePartie("Rejouer");
 				break;
 			case "Revenir au menu":
-				controler.setChoixFinDePartie("Revenir au menu");
+				controller.setChoixFinDePartie("Revenir au menu");
 				break;
 			case "Quitter":
-				controler.setChoixFinDePartie("Quitter");
+				controller.setChoixFinDePartie("Quitter");
 				break;
 			default:
 				break;
@@ -257,7 +257,7 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 		if (developerMode) {
 			solution.setText("Solution : " + this.combinaisonSecrete);
 		}
-		controler.setCombinaisonSecrete(this.combinaisonSecrete);
+		controller.setCombinaisonSecrete(this.combinaisonSecrete);
 	}
 
 	@Override

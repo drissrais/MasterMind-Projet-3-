@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import com.openclassrooms.jeudelogique.controler.SearchChallengerControler;
+import com.openclassrooms.jeudelogique.controller.SearchChallengerController;
 import com.openclassrooms.jeudelogique.model.SearchModel;
 import com.openclassrooms.jeudelogique.observer.Observer;
 
@@ -20,11 +20,11 @@ public class RulesPanel extends ZContainer implements Observer {
 	private JTextArea texte2;
 	private JButton accueilButton;
 	
-	private SearchChallengerControler controler;
+	private SearchChallengerController controller;
 
 	public RulesPanel(Dimension dim, SearchModel model) {
 		super(dim);
-		this.controler = new SearchChallengerControler(model);
+		this.controller = new SearchChallengerController(model);
 		initPanel();
 	}
 
@@ -70,7 +70,7 @@ public class RulesPanel extends ZContainer implements Observer {
 		
 		accueilButton = new JButton("Retour à l'accueil");
 		accueilButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-		accueilButton.addActionListener((e) -> controler.setChoixFinDePartie("Revenir au menu"));
+		accueilButton.addActionListener((e) -> controller.setChoixFinDePartie("Revenir au menu"));
 		
 		this.panel.setBackground(Color.WHITE);
 		this.panel.add(searchPanel);

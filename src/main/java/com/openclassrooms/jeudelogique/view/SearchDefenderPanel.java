@@ -18,7 +18,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
-import com.openclassrooms.jeudelogique.controler.SearchDefenderControler;
+import com.openclassrooms.jeudelogique.controller.SearchDefenderController;
 import com.openclassrooms.jeudelogique.model.SearchModel;
 import com.openclassrooms.jeudelogique.observer.Observer;
 
@@ -36,7 +36,7 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 	private JButton passerButton;
 	private JTextArea storyTextArea;
 	private JLabel nombreCoupLabel;
-	private SearchDefenderControler controler;
+	private SearchDefenderController controller;
 
 	private int nbCases, nbCoups;
 	private int activerBoutonValiderCombiSecrete;
@@ -50,7 +50,7 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 		super(dim);
 		LOGGER.trace("Instanciation du jeu RecherchePlusMoins en mode Défenseur");
 
-		this.controler = new SearchDefenderControler(mod);
+		this.controller = new SearchDefenderController(mod);
 		this.nbCoups = nbCoups;
 		this.nbCoupsConstant = nbCoups;
 		this.nbCases = nbCases;
@@ -223,15 +223,15 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 			this.combinaisonSecreteModeDefenseur = this.combinaisonTextField.getText();
 			LOGGER.debug("Jeu RecherchePlusMoins en mode Défenseur - Définition de la combinaison secrète du joueur:"
 					+ combinaisonSecreteModeDefenseur);
-			this.controler.setMode("DEFENSEUR");
-			this.controler.setCombinaisonSecreteModeDefenseur(combinaisonTextField.getText());
+			this.controller.setMode("DEFENSEUR");
+			this.controller.setCombinaisonSecreteModeDefenseur(combinaisonTextField.getText());
 			this.gestionFinDePartie(this.reponseOrdiLabel.getText());
 		});
 
 		passerButton.addActionListener((e) -> {
 			this.nbCoups--;
-			this.controler.setMode("DEFENSEUR");
-			this.controler.genererPropositionOrdinateurModeDefenseur();
+			this.controller.setMode("DEFENSEUR");
+			this.controller.genererPropositionOrdinateurModeDefenseur();
 			this.gestionFinDePartie(this.reponseOrdiLabel.getText());
 		});
 
@@ -249,13 +249,13 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
 			switch (choix[rang]) {
 			case "Rejouer":
-				controler.setChoixFinDePartie("Rejouer");
+				controller.setChoixFinDePartie("Rejouer");
 				break;
 			case "Revenir au menu":
-				controler.setChoixFinDePartie("Revenir au menu");
+				controller.setChoixFinDePartie("Revenir au menu");
 				break;
 			case "Quitter":
-				controler.setChoixFinDePartie("Quitter");
+				controller.setChoixFinDePartie("Quitter");
 				break;
 			default:
 				break;
@@ -272,13 +272,13 @@ public class SearchDefenderPanel extends ZContainer implements Observer {
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
 			switch (choix[rang]) {
 			case "Rejouer":
-				controler.setChoixFinDePartie("Rejouer");
+				controller.setChoixFinDePartie("Rejouer");
 				break;
 			case "Revenir au menu":
-				controler.setChoixFinDePartie("Revenir au menu");
+				controller.setChoixFinDePartie("Revenir au menu");
 				break;
 			case "Quitter":
-				controler.setChoixFinDePartie("Quitter");
+				controller.setChoixFinDePartie("Quitter");
 				break;
 			default:
 				break;

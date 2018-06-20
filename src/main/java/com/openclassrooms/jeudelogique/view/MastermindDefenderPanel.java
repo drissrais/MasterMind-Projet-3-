@@ -18,7 +18,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
-import com.openclassrooms.jeudelogique.controler.MastermindDefenderControler;
+import com.openclassrooms.jeudelogique.controller.MastermindDefenderController;
 import com.openclassrooms.jeudelogique.model.MastermindModel;
 import com.openclassrooms.jeudelogique.observer.Observer;
 
@@ -36,7 +36,7 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 	private JButton passerButton;
 	private JTextArea storyTextArea;
 	private JLabel nombreCoupLabel;
-	private MastermindDefenderControler controler;
+	private MastermindDefenderController controller;
 
 	private int nbCases, nbCoups, nbChiffresAUtiliser;
 	private int activerBoutonValiderCombiSecrete;
@@ -50,7 +50,7 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 		super(dim);
 		LOGGER.trace("Instanciation du jeu Mastermind en mode Défenseur");
 
-		this.controler = new MastermindDefenderControler(mod);
+		this.controller = new MastermindDefenderController(mod);
 		this.nbCoups = nbCoups;
 		this.nbCoupsConstant = nbCoups;
 		this.nbCases = nbCases;
@@ -203,17 +203,17 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 			this.combinaisonSecreteModeDefenseur = this.combinaisonTextField.getText();
 			LOGGER.debug("Jeu Mastermind en mode Défenseur - Définition de la combinaison secrète du joueur:"
 					+ combinaisonSecreteModeDefenseur);
-			this.controler.setMode("DEFENSEUR");
-			this.controler.setNbCases(this.nbCases);
-			this.controler.setNbChiffresAUtiliser(this.nbChiffresAUtiliser);
-			this.controler.setCombinaisonSecreteModeDefenseur(combinaisonTextField.getText());
+			this.controller.setMode("DEFENSEUR");
+			this.controller.setNbCases(this.nbCases);
+			this.controller.setNbChiffresAUtiliser(this.nbChiffresAUtiliser);
+			this.controller.setCombinaisonSecreteModeDefenseur(combinaisonTextField.getText());
 			this.gestionFinDePartie(this.reponseOrdiLabel.getText());
 		});
 
 		passerButton.addActionListener((e) -> {
 			this.nbCoups--;
-			this.controler.setMode("DEFENSEUR");
-			this.controler.genererPropositionOrdinateurModeDefenseur();
+			this.controller.setMode("DEFENSEUR");
+			this.controller.genererPropositionOrdinateurModeDefenseur();
 			this.gestionFinDePartie(this.reponseOrdiLabel.getText());
 		});
 	}
@@ -234,13 +234,13 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
 			switch (choix[rang]) {
 			case "Rejouer":
-				controler.setChoixFinDePartie("Rejouer");
+				controller.setChoixFinDePartie("Rejouer");
 				break;
 			case "Revenir au menu":
-				controler.setChoixFinDePartie("Revenir au menu");
+				controller.setChoixFinDePartie("Revenir au menu");
 				break;
 			case "Quitter":
-				controler.setChoixFinDePartie("Quitter");
+				controller.setChoixFinDePartie("Quitter");
 				break;
 			default:
 				break;
@@ -258,13 +258,13 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
 			switch (choix[rang]) {
 			case "Rejouer":
-				controler.setChoixFinDePartie("Rejouer");
+				controller.setChoixFinDePartie("Rejouer");
 				break;
 			case "Revenir au menu":
-				controler.setChoixFinDePartie("Revenir au menu");
+				controller.setChoixFinDePartie("Revenir au menu");
 				break;
 			case "Quitter":
-				controler.setChoixFinDePartie("Quitter");
+				controller.setChoixFinDePartie("Quitter");
 				break;
 			default:
 				break;

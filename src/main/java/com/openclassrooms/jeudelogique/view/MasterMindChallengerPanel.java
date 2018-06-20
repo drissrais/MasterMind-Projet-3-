@@ -19,7 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.text.MaskFormatter;
 
-import com.openclassrooms.jeudelogique.controler.MastermindChallengerControler;
+import com.openclassrooms.jeudelogique.controller.MastermindChallengerController;
 import com.openclassrooms.jeudelogique.model.MastermindModel;
 import com.openclassrooms.jeudelogique.observer.Observer;
 import com.openclassrooms.jeudelogique.utilities.RandomCombination;
@@ -32,7 +32,7 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 	private JFormattedTextField propositionTextField;
 	private JTextArea storyTextArea;
 	private JLabel nombreCoupLabel, solution;
-	private MastermindChallengerControler controler;
+	private MastermindChallengerController controller;
 
 	private int nbCases, nbCoups, nbChiffresAUtiliser;
 	private String combinaisonSecrete = "";
@@ -46,7 +46,7 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 		super(dim);
 		LOGGER.trace("Instanciation du jeu Mastermind en mode Challenger");
 
-		this.controler = new MastermindChallengerControler(mod);
+		this.controller = new MastermindChallengerController(mod);
 		this.nbCoups = nbCoups;
 		this.nbCoupsConstant = nbCoups;
 		this.nbCases = nbCases;
@@ -89,9 +89,9 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 			LOGGER.debug(
 					"Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:" + combinaisonSecrete);
 		}
-		controler.setNbChiffresAUtiliser(this.nbChiffresAUtiliser);
-		controler.setNbCases(this.nbCases);
-		controler.setCombinaisonSecrete(combinaisonSecrete);
+		controller.setNbChiffresAUtiliser(this.nbChiffresAUtiliser);
+		controller.setNbCases(this.nbCases);
+		controller.setCombinaisonSecrete(combinaisonSecrete);
 
 		if (this.developerMode == true) {
 			solution = new JLabel("Solution : " + this.combinaisonSecrete);
@@ -166,8 +166,8 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				nbCoups--;
-				controler.setMode("CHALLENGER");
-				controler.setProposition(((JTextField) e.getSource()).getText());
+				controller.setMode("CHALLENGER");
+				controller.setProposition(((JTextField) e.getSource()).getText());
 			}
 		});
 	}
@@ -187,13 +187,13 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
 			switch (choix[rang]) {
 			case "Rejouer":
-				controler.setChoixFinDePartie("Rejouer");
+				controller.setChoixFinDePartie("Rejouer");
 				break;
 			case "Revenir au menu":
-				controler.setChoixFinDePartie("Revenir au menu");
+				controller.setChoixFinDePartie("Revenir au menu");
 				break;
 			case "Quitter":
-				controler.setChoixFinDePartie("Quitter");
+				controller.setChoixFinDePartie("Quitter");
 				break;
 			default:
 				break;
@@ -209,13 +209,13 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
 			switch (choix[rang]) {
 			case "Rejouer":
-				controler.setChoixFinDePartie("Rejouer");
+				controller.setChoixFinDePartie("Rejouer");
 				break;
 			case "Revenir au menu":
-				controler.setChoixFinDePartie("Revenir au menu");
+				controller.setChoixFinDePartie("Revenir au menu");
 				break;
 			case "Quitter":
-				controler.setChoixFinDePartie("Quitter");
+				controller.setChoixFinDePartie("Quitter");
 				break;
 			default:
 				break;
@@ -241,7 +241,7 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 		if (developerMode) {
 			solution.setText("Solution : " + this.combinaisonSecrete);
 		}
-		controler.setCombinaisonSecrete(this.combinaisonSecrete);
+		controller.setCombinaisonSecrete(this.combinaisonSecrete);
 	}
 
 	@Override

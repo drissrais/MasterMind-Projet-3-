@@ -22,7 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.text.MaskFormatter;
 
-import com.openclassrooms.jeudelogique.controler.MastermindDualControler;
+import com.openclassrooms.jeudelogique.controller.MastermindDualController;
 import com.openclassrooms.jeudelogique.model.MastermindModel;
 import com.openclassrooms.jeudelogique.model.TableModel;
 import com.openclassrooms.jeudelogique.observer.Observer;
@@ -42,7 +42,7 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 	private TableModel tableModel;
 	private LabelRenderer labelRenderer;
 	private JLabel couleurjoueurLabel, couleurOrdinateurLabel, solution;
-	private MastermindDualControler controler;
+	private MastermindDualController controller;
 
 	private int nbCases, nbChiffresAUtiliser, rowIndex = 0, columnIndex = 0;
 	private int activerBoutonValiderCombiSecrete;
@@ -57,7 +57,7 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 		super(dim);
 		LOGGER.trace("Instanciation du jeu Mastermind en mode Duel");
 		
-		this.controler = new MastermindDualControler(mod);
+		this.controller = new MastermindDualController(mod);
 		this.nbCases = nbCases;
 		this.nbChiffresAUtiliser = nbChiffresAUtiliser;
 		this.developerMode = developerMode;
@@ -97,9 +97,9 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 		this.combinaisonSecreteOrdinateurModeDuel = str;
 		LOGGER.debug("Jeu Mastermind en mode Duel - Génération de la combinaison secrète:"
 				+ combinaisonSecreteOrdinateurModeDuel);
-		this.controler.setNbChiffresAUtiliser(this.nbChiffresAUtiliser);
-		this.controler.setNbCases(this.nbCases);
-		this.controler.setCombinaisonSecreteOrdinateurModeDuel(this.combinaisonSecreteOrdinateurModeDuel);
+		this.controller.setNbChiffresAUtiliser(this.nbChiffresAUtiliser);
+		this.controller.setNbCases(this.nbCases);
+		this.controller.setCombinaisonSecreteOrdinateurModeDuel(this.combinaisonSecreteOrdinateurModeDuel);
 
 		if (this.developerMode == true) {
 			solution = new JLabel("Solution : " + this.combinaisonSecreteOrdinateurModeDuel);
@@ -254,16 +254,16 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 		validerButton.addActionListener((e) -> {
 			this.propositionJoueurTextField.setEnabled(true);
 			this.propositionJoueurTextField.requestFocusInWindow();
-			this.controler.setNbChiffresAUtiliser(this.nbChiffresAUtiliser);
-			this.controler.setMode("DUEL");
-			this.controler.setCombinaisonSecreteJoueurModeDuel(combinaisonTextField.getText());
+			this.controller.setNbChiffresAUtiliser(this.nbChiffresAUtiliser);
+			this.controller.setMode("DUEL");
+			this.controller.setCombinaisonSecreteJoueurModeDuel(combinaisonTextField.getText());
 			combinaisonTextField.setEnabled(false);
 			validerButton.setEnabled(false);
 		});
 
 		propositionJoueurTextField.addActionListener((e) -> {
-			this.controler.setMode("DUEL");
-			this.controler.setPropositionJoueurModeDuel(((JTextField) e.getSource()).getText());
+			this.controller.setMode("DUEL");
+			this.controller.setPropositionJoueurModeDuel(((JTextField) e.getSource()).getText());
 			this.propositionJoueurTextField.setText("");
 			this.propositionJoueurTextField.requestFocusInWindow();
 			this.gestionFinDePartie(this.reponseOrdinateur, this.reponseJoueur);
@@ -283,13 +283,13 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 						JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
 				switch (choix[rang]) {
 				case "Rejouer":
-					controler.setChoixFinDePartie("Rejouer");
+					controller.setChoixFinDePartie("Rejouer");
 					break;
 				case "Revenir au menu":
-					controler.setChoixFinDePartie("Revenir au menu");
+					controller.setChoixFinDePartie("Revenir au menu");
 					break;
 				case "Quitter":
-					controler.setChoixFinDePartie("Quitter");
+					controller.setChoixFinDePartie("Quitter");
 					break;
 				default:
 					break;
@@ -304,13 +304,13 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 						JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
 				switch (choix[rang]) {
 				case "Rejouer":
-					controler.setChoixFinDePartie("Rejouer");
+					controller.setChoixFinDePartie("Rejouer");
 					break;
 				case "Revenir au menu":
-					controler.setChoixFinDePartie("Revenir au menu");
+					controller.setChoixFinDePartie("Revenir au menu");
 					break;
 				case "Quitter":
-					controler.setChoixFinDePartie("Quitter");
+					controller.setChoixFinDePartie("Quitter");
 					break;
 				default:
 					break;
@@ -328,13 +328,13 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 						JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
 				switch (choix[rang]) {
 				case "Rejouer":
-					controler.setChoixFinDePartie("Rejouer");
+					controller.setChoixFinDePartie("Rejouer");
 					break;
 				case "Revenir au menu":
-					controler.setChoixFinDePartie("Revenir au menu");
+					controller.setChoixFinDePartie("Revenir au menu");
 					break;
 				case "Quitter":
-					controler.setChoixFinDePartie("Quitter");
+					controller.setChoixFinDePartie("Quitter");
 					break;
 				default:
 					break;
@@ -378,8 +378,8 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 		if (developerMode) {
 			solution.setText("Solution : " + this.combinaisonSecreteOrdinateurModeDuel);
 		}
-		this.controler.setNbChiffresAUtiliser(this.nbChiffresAUtiliser);
-		this.controler.setCombinaisonSecreteOrdinateurModeDuel(this.combinaisonSecreteOrdinateurModeDuel);
+		this.controller.setNbChiffresAUtiliser(this.nbChiffresAUtiliser);
+		this.controller.setCombinaisonSecreteOrdinateurModeDuel(this.combinaisonSecreteOrdinateurModeDuel);
 		this.combinaisonTextField.setEnabled(true);
 		this.combinaisonTextField.setText("");
 		this.propositionOrdinateur.setText("");
