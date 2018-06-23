@@ -694,3 +694,743 @@
 2018-06-20 19:42:20.817 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
 2018-06-20 19:42:27.469 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :12345
 2018-06-20 19:42:49.091 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :67890
+2018-06-22 12:40:21.404 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-22 12:40:21.478 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-22 12:40:21.489 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-22 12:40:21.489 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-22 12:40:21.617 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-22 12:41:19.682 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Retour à l'accueil
+2018-06-22 12:41:25.945 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-22 12:41:33.116 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-22 12:41:33.117 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-22 12:41:33.117 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-22 12:41:33.117 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-22 12:41:33.117 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :10
+2018-06-22 12:41:33.118 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-22 12:41:33.142 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchChallengerPanel - Instanciation du jeu RecherchePlusMoins en mode Challenger
+2018-06-22 12:41:33.388 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.SearchChallengerPanel - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:7646
+2018-06-22 12:41:33.425 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-22 12:42:16.234 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-22 12:42:16.303 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-22 12:42:16.312 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-22 12:42:16.312 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-22 12:42:16.466 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-22 12:42:24.218 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-22 12:42:26.689 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-22 12:42:26.689 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-22 12:42:26.690 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-22 12:42:26.690 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-22 12:42:26.690 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :10
+2018-06-22 12:42:26.690 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-22 12:42:26.697 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchChallengerPanel - Instanciation du jeu RecherchePlusMoins en mode Challenger
+2018-06-22 12:42:26.711 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.SearchChallengerPanel - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:6190
+2018-06-22 12:42:26.733 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-22 12:42:52.904 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-22 12:42:52.983 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-22 12:42:52.993 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-22 12:42:52.993 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-22 12:42:53.082 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-22 12:43:29.172 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-22 12:43:30.726 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-22 12:43:30.726 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-22 12:43:30.727 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-22 12:43:30.727 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-22 12:43:30.728 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :10
+2018-06-22 12:43:30.728 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-22 12:43:30.764 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchChallengerPanel - Instanciation du jeu RecherchePlusMoins en mode Challenger
+2018-06-22 12:43:30.815 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.SearchChallengerPanel - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:0585
+2018-06-22 12:43:30.865 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-22 12:43:38.162 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-22 12:43:43.559 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-22 12:43:43.559 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-22 12:43:43.559 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-22 12:43:43.559 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-22 12:43:43.560 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :10
+2018-06-22 12:43:43.560 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-22 12:43:43.574 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchDefenderPanel - Instanciation du jeu RecherchePlusMoins en mode Défenseur
+2018-06-22 12:43:43.605 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-22 12:44:14.551 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-22 12:44:14.627 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-22 12:44:14.636 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-22 12:44:14.637 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-22 12:44:14.680 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-22 12:44:22.239 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-22 12:44:27.308 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-22 12:44:27.309 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-22 12:44:27.309 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-22 12:44:27.309 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-22 12:44:27.309 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :10
+2018-06-22 12:44:27.310 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-22 12:44:27.316 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchChallengerPanel - Instanciation du jeu RecherchePlusMoins en mode Challenger
+2018-06-22 12:44:27.330 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.SearchChallengerPanel - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:2350
+2018-06-22 12:44:27.351 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-22 12:44:47.754 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchChallengerPanel - Jeu RecherchePlusMoins en mode Challenger - Fin de partie
+2018-06-22 12:45:03.510 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Retour à l'accueil
+2018-06-22 12:45:05.037 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-22 12:45:11.913 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-22 12:45:11.914 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-22 12:45:11.914 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-22 12:45:11.914 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-22 12:45:11.915 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :10
+2018-06-22 12:45:11.915 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-22 12:45:11.937 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Instanciation du jeu Mastermind en mode Challenger
+2018-06-22 12:45:11.949 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:0
+2018-06-22 12:45:11.949 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:04
+2018-06-22 12:45:11.949 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:045
+2018-06-22 12:45:11.949 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:0457
+2018-06-22 12:45:11.962 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-22 12:45:17.804 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :1234
+2018-06-22 12:45:28.982 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :5167
+2018-06-22 12:46:08.718 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :8159
+2018-06-22 12:46:51.455 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :6100
+2018-06-22 12:48:12.451 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :0457
+2018-06-22 12:48:12.452 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Fin de partie
+2018-06-22 12:48:18.373 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Retour à l'accueil
+2018-06-22 12:48:19.648 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-22 12:48:25.440 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-22 12:48:25.441 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-22 12:48:25.441 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-22 12:48:25.441 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-22 12:48:25.441 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :10
+2018-06-22 12:48:25.441 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-22 12:48:25.445 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchDefenderPanel - Instanciation du jeu RecherchePlusMoins en mode Défenseur
+2018-06-22 12:48:25.459 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-22 12:48:29.617 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.SearchDefenderPanel - Jeu RecherchePlusMoins en mode Défenseur - Définition de la combinaison secrète du joueur:5678
+2018-06-22 12:50:15.880 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchDefenderPanel - Jeu RecherchePlusMoins en mode Défenseur - Fin de partie
+2018-06-22 12:50:27.021 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Retour à l'accueil
+2018-06-22 12:50:28.128 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-22 12:50:34.144 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-22 12:50:34.144 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-22 12:50:34.144 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-22 12:50:34.144 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-22 12:50:34.145 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :10
+2018-06-22 12:50:34.145 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-22 12:50:34.158 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MastermindDefenderPanel - Instanciation du jeu Mastermind en mode Défenseur
+2018-06-22 12:50:34.182 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-22 12:50:37.916 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MastermindDefenderPanel - Jeu Mastermind en mode Défenseur - Définition de la combinaison secrète du joueur:1234
+2018-06-22 12:50:37.916 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - Combinaison secrète Joueur Mode Défenseur :1234
+2018-06-22 12:50:37.929 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - Taille de la liste :10000
+2018-06-22 12:50:37.929 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - proposition Ordinateur Mode Défenseur :5467
+2018-06-22 12:50:37.929 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - réponse correspondante à la proposition de l'ordinateur Mode Défenseur :O
+2018-06-22 12:50:45.354 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - proposition Ordinateur Mode Défenseur :0710
+2018-06-22 12:50:45.354 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - réponse correspondante à la proposition de l'ordinateur Mode Défenseur :O
+2018-06-22 12:50:49.640 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - proposition Ordinateur Mode Défenseur :9873
+2018-06-22 12:50:49.640 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - réponse correspondante à la proposition de l'ordinateur Mode Défenseur :O
+2018-06-22 12:51:00.340 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - proposition Ordinateur Mode Défenseur :2135
+2018-06-22 12:51:00.340 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - réponse correspondante à la proposition de l'ordinateur Mode Défenseur :#OO
+2018-06-22 12:51:04.028 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - proposition Ordinateur Mode Défenseur :2951
+2018-06-22 12:51:04.028 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - réponse correspondante à la proposition de l'ordinateur Mode Défenseur :OO
+2018-06-22 12:51:07.289 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - proposition Ordinateur Mode Défenseur :3142
+2018-06-22 12:51:07.290 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - réponse correspondante à la proposition de l'ordinateur Mode Défenseur :OOOO
+2018-06-22 12:51:09.543 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - proposition Ordinateur Mode Défenseur :1234
+2018-06-22 12:51:09.544 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - réponse correspondante à la proposition de l'ordinateur Mode Défenseur :####
+2018-06-22 12:51:09.544 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MastermindDefenderPanel - Jeu Mastermind en mode Défenseur - Fin de partie
+2018-06-22 12:51:13.487 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Retour à l'accueil
+2018-06-22 12:51:17.100 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-22 12:51:21.781 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-22 12:51:21.782 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-22 12:51:21.782 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-22 12:51:21.782 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-22 12:51:21.782 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :10
+2018-06-22 12:51:21.782 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-22 12:51:21.797 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchDualPanel - Instanciation du jeu RecherchePlusMoins en mode Duel
+2018-06-22 12:51:21.815 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.SearchDualPanel - Jeu RecherchePlusMoins en mode Duel - Génération de la combinaison secrète:9943
+2018-06-22 12:51:21.956 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-22 12:52:47.577 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchDualPanel - Jeu RecherchePlusMoins en mode Duel - Fin de partie
+2018-06-22 12:53:06.013 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Retour à l'accueil
+2018-06-22 12:53:07.512 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-22 12:53:10.876 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-22 12:53:10.876 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-22 12:53:10.876 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-22 12:53:10.877 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-22 12:53:10.877 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :10
+2018-06-22 12:53:10.877 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-22 12:53:10.900 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MastermindDualPanel - Instanciation du jeu Mastermind en mode Duel
+2018-06-22 12:53:10.924 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MastermindDualPanel - Jeu Mastermind en mode Duel - Génération de la combinaison secrète:7004
+2018-06-22 12:53:10.940 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Duel - Taille de la liste des possibilités :10000
+2018-06-22 12:53:10.965 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-22 12:53:14.044 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Duel - Combinaison Secrète Joueur Modèle de données :1234
+2018-06-22 12:53:16.960 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Duel - Proposition Joueur Modèle de données :1234
+2018-06-22 12:53:16.960 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Duel - proposition Ordinateur Mode Duel :
+2018-06-22 12:53:16.960 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Duel - réponse correspondante à la proposition de l'ordinateur Mode Défenseur :
+2018-06-22 12:53:49.315 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Duel - Proposition Joueur Modèle de données :5678
+2018-06-22 12:53:49.372 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Duel - proposition Ordinateur Mode Duel :
+2018-06-22 12:53:49.372 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Duel - réponse correspondante à la proposition de l'ordinateur Mode Défenseur :
+2018-06-22 12:54:00.677 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Duel - Proposition Joueur Modèle de données :7004
+2018-06-22 12:54:00.679 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Duel - proposition Ordinateur Mode Duel :
+2018-06-22 12:54:00.679 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Duel - réponse correspondante à la proposition de l'ordinateur Mode Défenseur :
+2018-06-22 12:54:00.680 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MastermindDualPanel - Jeu Mastermind en mode Duel - Fin de partie
+2018-06-22 12:54:00.680 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MastermindDualPanel - Jeu Mastermind en mode Duel - Fin de partie
+2018-06-22 12:54:05.001 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Retour à l'accueil
+2018-06-22 12:57:54.371 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-22 12:57:54.449 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-22 12:57:54.460 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-22 12:57:54.461 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-22 12:57:54.511 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-22 12:57:57.523 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-22 12:57:59.884 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-22 12:57:59.885 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-22 12:57:59.885 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-22 12:57:59.885 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-22 12:57:59.886 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :10
+2018-06-22 12:57:59.886 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-22 12:57:59.904 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchDualPanel - Instanciation du jeu RecherchePlusMoins en mode Duel
+2018-06-22 12:57:59.930 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.SearchDualPanel - Jeu RecherchePlusMoins en mode Duel - Génération de la combinaison secrète:9368
+2018-06-22 12:57:59.980 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-22 13:29:51.879 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchDualPanel - Jeu RecherchePlusMoins en mode Duel - Fin de partie
+2018-06-22 13:30:00.861 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchDualPanel - Jeu RecherchePlusMoins en mode Duel - Partie relancée
+2018-06-22 14:27:40.175 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-22 14:27:40.248 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-22 14:27:40.259 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-22 14:27:40.259 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-22 14:27:40.307 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-22 14:27:45.045 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-22 14:27:49.260 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-22 14:27:49.260 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-22 14:27:49.260 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-22 14:27:49.260 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-22 14:27:49.260 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :10
+2018-06-22 14:27:49.261 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-22 14:27:49.267 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchDefenderPanel - Instanciation du jeu RecherchePlusMoins en mode Défenseur
+2018-06-22 14:27:49.296 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-22 14:27:53.882 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.SearchDefenderPanel - Jeu RecherchePlusMoins en mode Défenseur - Définition de la combinaison secrète du joueur:1234
+2018-06-22 14:35:29.717 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-22 14:35:29.789 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-22 14:35:29.798 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-22 14:35:29.799 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-22 14:35:29.852 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-22 14:35:36.272 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-22 14:35:38.864 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-22 14:35:38.865 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-22 14:35:38.866 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-22 14:35:38.866 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-22 14:35:38.866 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :10
+2018-06-22 14:35:38.867 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :false
+2018-06-22 14:35:38.879 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchDefenderPanel - Instanciation du jeu RecherchePlusMoins en mode Défenseur
+2018-06-22 14:35:38.914 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-22 14:35:53.237 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.SearchDefenderPanel - Jeu RecherchePlusMoins en mode Défenseur - Définition de la combinaison secrète du joueur:1234
+2018-06-22 14:41:28.456 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchDefenderPanel - Jeu RecherchePlusMoins en mode Défenseur - Fin de partie
+2018-06-22 14:41:34.650 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchDefenderPanel - Jeu RecherchePlusMoins en mode Défenseur - Partie relancée
+2018-06-22 14:41:39.863 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.SearchDefenderPanel - Jeu RecherchePlusMoins en mode Défenseur - Définition de la combinaison secrète du joueur:5790
+2018-06-22 14:42:44.812 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchDefenderPanel - Jeu RecherchePlusMoins en mode Défenseur - Fin de partie
+2018-06-22 14:42:58.660 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchDefenderPanel - Jeu RecherchePlusMoins en mode Défenseur - Partie relancée
+2018-06-22 14:44:29.321 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.SearchDefenderPanel - Jeu RecherchePlusMoins en mode Défenseur - Définition de la combinaison secrète du joueur:2345
+2018-06-22 14:44:39.401 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchDefenderPanel - Jeu RecherchePlusMoins en mode Défenseur - Fin de partie
+2018-06-22 14:46:09.364 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchDefenderPanel - Jeu RecherchePlusMoins en mode Défenseur - Partie relancée
+2018-06-22 14:46:12.742 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.SearchDefenderPanel - Jeu RecherchePlusMoins en mode Défenseur - Définition de la combinaison secrète du joueur:1234
+2018-06-22 14:46:24.251 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchDefenderPanel - Jeu RecherchePlusMoins en mode Défenseur - Fin de partie
+2018-06-22 14:46:28.949 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Fin de l'application
+2018-06-22 16:47:29.678 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-22 16:47:29.939 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-22 16:47:29.961 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-22 16:47:29.962 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-22 16:47:30.115 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-22 16:52:57.984 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Retour à l'accueil
+2018-06-22 17:30:06.692 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-22 17:30:06.786 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-22 17:30:06.797 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-22 17:30:06.798 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-22 17:30:06.869 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-22 23:39:08.825 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-22 23:39:08.893 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-22 23:39:08.901 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-22 23:39:08.901 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-22 23:39:09.027 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-22 23:39:26.691 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-22 23:39:30.892 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-22 23:39:30.892 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-22 23:39:30.892 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :5
+2018-06-22 23:39:30.892 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :5
+2018-06-22 23:39:30.892 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :9
+2018-06-22 23:39:30.893 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :false
+2018-06-22 23:39:31.026 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Instanciation du jeu Mastermind en mode Challenger
+2018-06-22 23:39:31.062 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:1
+2018-06-22 23:39:31.062 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:10
+2018-06-22 23:39:31.063 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:100
+2018-06-22 23:39:31.063 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:1008
+2018-06-22 23:39:31.063 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:10087
+2018-06-22 23:39:31.118 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-22 23:39:55.382 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :12345
+2018-06-22 23:40:05.768 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :16789
+2018-06-22 23:40:16.101 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :16800
+2018-06-22 23:41:05.759 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :86019
+2018-06-22 23:42:09.494 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :02786
+2018-06-22 23:42:09.495 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Fin de partie
+2018-06-22 23:42:28.183 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Fin de l'application
+2018-06-23 00:50:45.809 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-23 00:50:45.876 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-23 00:50:45.885 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-23 00:50:45.885 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 00:50:46.058 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 00:50:59.968 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 00:51:03.665 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 00:51:03.665 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 00:51:03.665 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 00:51:03.665 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 00:51:03.666 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :6
+2018-06-23 00:51:03.666 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :false
+2018-06-23 00:51:03.672 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Instanciation du jeu Mastermind en mode Challenger
+2018-06-23 00:51:03.682 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:3
+2018-06-23 00:51:03.682 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:32
+2018-06-23 00:51:03.682 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:320
+2018-06-23 00:51:03.682 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:3200
+2018-06-23 00:51:03.693 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-23 00:51:09.194 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :1234
+2018-06-23 00:51:24.263 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :5031
+2018-06-23 00:51:40.346 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :1502
+2018-06-23 00:53:17.250 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :3054
+2018-06-23 00:54:20.309 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :0354
+2018-06-23 00:55:03.677 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :0215
+2018-06-23 00:55:45.131 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :1552
+2018-06-23 00:58:28.273 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :3200
+2018-06-23 00:58:28.274 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Fin de partie
+2018-06-23 00:58:34.528 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Fin de l'application
+2018-06-23 01:01:27.907 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-23 01:01:28.008 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-23 01:01:28.017 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-23 01:01:28.018 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 01:01:28.064 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 01:01:33.468 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 01:01:38.582 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 01:01:38.583 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 01:01:38.583 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 01:01:38.584 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 01:01:38.584 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :6
+2018-06-23 01:01:38.585 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-23 01:01:38.641 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchChallengerPanel - Instanciation du jeu RecherchePlusMoins en mode Challenger
+2018-06-23 01:01:38.682 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.SearchChallengerPanel - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:6226
+2018-06-23 01:01:38.722 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-23 01:01:49.573 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Retour à l'accueil
+2018-06-23 01:02:01.982 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 01:02:04.256 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 01:02:04.257 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 01:02:04.258 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 01:02:04.258 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 01:02:04.259 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :6
+2018-06-23 01:02:04.259 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-23 01:02:04.265 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Instanciation du jeu Mastermind en mode Challenger
+2018-06-23 01:02:04.275 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:1
+2018-06-23 01:02:04.275 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:15
+2018-06-23 01:02:04.276 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:153
+2018-06-23 01:02:04.276 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:1534
+2018-06-23 01:02:04.291 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-23 01:02:17.127 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :1666
+2018-06-23 01:03:02.245 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 01:03:06.320 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 01:03:06.320 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 01:03:06.321 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 01:03:06.321 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 01:03:06.321 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :6
+2018-06-23 01:03:06.321 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-23 01:03:06.359 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchDefenderPanel - Instanciation du jeu RecherchePlusMoins en mode Défenseur
+2018-06-23 01:03:06.478 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-23 01:03:11.396 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 01:03:16.217 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 01:03:16.217 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 01:03:16.218 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 01:03:16.218 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 01:03:16.218 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :6
+2018-06-23 01:03:16.218 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-23 01:03:16.221 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MastermindDefenderPanel - Instanciation du jeu Mastermind en mode Défenseur
+2018-06-23 01:03:16.231 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-23 01:03:30.234 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 01:03:35.799 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 01:03:35.800 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 01:03:35.800 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 01:03:35.800 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 01:03:35.801 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :6
+2018-06-23 01:03:35.801 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-23 01:03:35.823 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MastermindDualPanel - Instanciation du jeu Mastermind en mode Duel
+2018-06-23 01:03:35.846 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MastermindDualPanel - Jeu Mastermind en mode Duel - Génération de la combinaison secrète:3413
+2018-06-23 01:03:35.850 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Duel - Taille de la liste des possibilités :1296
+2018-06-23 01:03:36.045 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-23 01:30:49.161 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-23 01:30:49.231 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-23 01:30:49.239 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-23 01:30:49.239 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 01:30:49.281 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 01:30:57.272 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 01:31:01.891 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 01:31:01.892 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 01:31:01.893 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 01:31:01.893 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 01:31:01.893 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :8
+2018-06-23 01:31:01.894 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-23 01:31:01.906 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Instanciation du jeu Mastermind en mode Challenger
+2018-06-23 01:31:01.929 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:0
+2018-06-23 01:31:01.930 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:06
+2018-06-23 01:31:01.930 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:067
+2018-06-23 01:31:01.931 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:0673
+2018-06-23 01:31:01.983 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-23 01:31:22.411 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :    
+2018-06-23 01:34:40.574 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-23 01:34:40.649 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-23 01:34:40.660 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-23 01:34:40.661 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 01:34:40.711 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 01:34:46.990 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 01:34:50.277 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 01:34:50.278 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 01:34:50.278 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 01:34:50.279 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 01:34:50.279 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :6
+2018-06-23 01:34:50.280 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-23 01:34:50.291 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Instanciation du jeu Mastermind en mode Challenger
+2018-06-23 01:34:50.314 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:5
+2018-06-23 01:34:50.315 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:55
+2018-06-23 01:34:50.315 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:553
+2018-06-23 01:34:50.316 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:5534
+2018-06-23 01:34:50.364 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-23 01:42:30.193 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-23 01:42:30.265 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-23 01:42:30.273 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-23 01:42:30.273 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 01:42:30.323 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 01:42:35.419 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 01:42:38.398 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 01:42:38.398 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 01:42:38.399 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 01:42:38.399 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 01:42:38.400 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :6
+2018-06-23 01:42:38.400 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-23 01:42:38.413 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Instanciation du jeu Mastermind en mode Challenger
+2018-06-23 01:42:38.436 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:4
+2018-06-23 01:42:38.436 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:44
+2018-06-23 01:42:38.436 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:440
+2018-06-23 01:42:38.437 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:4404
+2018-06-23 01:42:38.475 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-23 01:58:03.643 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-23 01:58:03.724 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-23 01:58:03.734 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-23 01:58:03.734 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 01:58:03.788 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 01:58:09.326 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 01:58:12.103 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 01:58:12.104 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 01:58:12.104 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 01:58:12.105 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 01:58:12.105 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :8
+2018-06-23 01:58:12.106 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-23 01:58:12.118 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Instanciation du jeu Mastermind en mode Challenger
+2018-06-23 01:58:12.142 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:2
+2018-06-23 01:58:12.143 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:27
+2018-06-23 01:58:12.143 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:276
+2018-06-23 01:58:12.144 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:2766
+2018-06-23 01:58:12.183 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-23 01:58:34.491 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :1234
+2018-06-23 01:58:57.050 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Challenger - proposition Joueur :0567
+2018-06-23 01:59:24.154 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 01:59:27.043 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 01:59:27.043 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 01:59:27.043 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 01:59:27.043 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 01:59:27.043 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :8
+2018-06-23 01:59:27.044 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-23 02:06:10.870 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-23 02:06:10.936 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-23 02:06:10.948 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-23 02:06:10.948 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 02:06:11.018 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 02:06:14.715 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 02:06:20.177 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 02:06:20.177 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 02:06:20.177 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 02:06:20.178 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 02:06:20.178 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :6
+2018-06-23 02:06:20.178 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :false
+2018-06-23 02:06:20.186 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MastermindDefenderPanel - Instanciation du jeu Mastermind en mode Défenseur
+2018-06-23 02:06:20.210 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-23 02:06:55.188 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MastermindDefenderPanel - Jeu Mastermind en mode Défenseur - Définition de la combinaison secrète du joueur:1345
+2018-06-23 02:06:55.189 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - Combinaison secrète Joueur Mode Défenseur :1345
+2018-06-23 02:06:55.191 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - Taille de la liste :1296
+2018-06-23 02:06:55.191 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - proposition Ordinateur Mode Défenseur :4024
+2018-06-23 02:06:55.193 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - réponse correspondante à la proposition de l'ordinateur Mode Défenseur :O
+2018-06-23 02:06:58.524 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - proposition Ordinateur Mode Défenseur :1512
+2018-06-23 02:06:58.525 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - réponse correspondante à la proposition de l'ordinateur Mode Défenseur :#O
+2018-06-23 02:07:00.108 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - proposition Ordinateur Mode Défenseur :0113
+2018-06-23 02:07:00.108 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - réponse correspondante à la proposition de l'ordinateur Mode Défenseur :OO
+2018-06-23 02:07:02.190 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - proposition Ordinateur Mode Défenseur :5332
+2018-06-23 02:07:02.190 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - réponse correspondante à la proposition de l'ordinateur Mode Défenseur :#O
+2018-06-23 02:07:05.844 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - proposition Ordinateur Mode Défenseur :1435
+2018-06-23 02:07:05.845 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - réponse correspondante à la proposition de l'ordinateur Mode Défenseur :##OO
+2018-06-23 02:07:07.713 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - proposition Ordinateur Mode Défenseur :1345
+2018-06-23 02:07:07.713 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Défenseur - réponse correspondante à la proposition de l'ordinateur Mode Défenseur :####
+2018-06-23 02:07:07.714 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MastermindDefenderPanel - Jeu Mastermind en mode Défenseur - Fin de partie
+2018-06-23 02:07:13.691 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Fin de l'application
+2018-06-23 02:13:04.700 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-23 02:13:04.782 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-23 02:13:04.791 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-23 02:13:04.791 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 02:13:04.831 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 02:13:07.624 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 02:13:10.382 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 02:13:10.383 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 02:13:10.383 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 02:13:10.384 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 02:13:10.384 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :10
+2018-06-23 02:13:10.385 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :false
+2018-06-23 02:13:10.397 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MastermindDefenderPanel - Instanciation du jeu Mastermind en mode Défenseur
+2018-06-23 02:13:10.436 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-23 02:13:56.616 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-23 02:13:56.689 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-23 02:13:56.697 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-23 02:13:56.697 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 02:13:56.743 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 02:14:00.499 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 02:14:03.386 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 02:14:03.387 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 02:14:03.387 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 02:14:03.388 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 02:14:03.388 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :10
+2018-06-23 02:14:03.388 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :false
+2018-06-23 02:14:03.399 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MastermindDefenderPanel - Instanciation du jeu Mastermind en mode Défenseur
+2018-06-23 02:14:03.441 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-23 02:14:53.648 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-23 02:14:53.721 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-23 02:14:53.731 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-23 02:14:53.732 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 02:14:53.788 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 02:14:56.799 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 02:15:01.174 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 02:15:01.174 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 02:15:01.175 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 02:15:01.175 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 02:15:01.176 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :6
+2018-06-23 02:15:01.176 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :false
+2018-06-23 02:15:01.188 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MastermindDefenderPanel - Instanciation du jeu Mastermind en mode Défenseur
+2018-06-23 02:15:01.231 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-23 02:15:28.929 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 02:15:34.545 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 02:15:34.545 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 02:15:34.546 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 02:15:34.546 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 02:15:34.546 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :6
+2018-06-23 02:15:34.546 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :false
+2018-06-23 02:15:34.552 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MastermindDualPanel - Instanciation du jeu Mastermind en mode Duel
+2018-06-23 02:15:34.563 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MastermindDualPanel - Jeu Mastermind en mode Duel - Génération de la combinaison secrète:1255
+2018-06-23 02:15:34.566 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Duel - Taille de la liste des possibilités :1296
+2018-06-23 02:15:34.599 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-23 02:17:13.074 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-23 02:17:13.153 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-23 02:17:13.161 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-23 02:17:13.161 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 02:17:13.205 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 02:17:16.930 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 02:17:23.344 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 02:17:23.344 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 02:17:23.345 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 02:17:23.345 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 02:17:23.346 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :10
+2018-06-23 02:17:23.346 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :false
+2018-06-23 02:17:23.360 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MastermindDualPanel - Instanciation du jeu Mastermind en mode Duel
+2018-06-23 02:17:23.382 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MastermindDualPanel - Jeu Mastermind en mode Duel - Génération de la combinaison secrète:5213
+2018-06-23 02:17:23.405 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Duel - Taille de la liste des possibilités :10000
+2018-06-23 02:17:23.448 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-23 02:18:07.997 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-23 02:18:08.066 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-23 02:18:08.076 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-23 02:18:08.077 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 02:18:08.133 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 02:18:13.582 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 02:18:17.227 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 02:18:17.228 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 02:18:17.229 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 02:18:17.229 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 02:18:17.229 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :8
+2018-06-23 02:18:17.230 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :false
+2018-06-23 02:18:17.245 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MastermindDualPanel - Instanciation du jeu Mastermind en mode Duel
+2018-06-23 02:18:17.263 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MastermindDualPanel - Jeu Mastermind en mode Duel - Génération de la combinaison secrète:0037
+2018-06-23 02:18:17.271 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Duel - Taille de la liste des possibilités :4096
+2018-06-23 02:18:17.313 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-23 02:21:19.271 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-23 02:21:19.356 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-23 02:21:19.366 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-23 02:21:19.367 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 02:21:19.412 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 02:21:22.413 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 02:21:25.320 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 02:21:25.321 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 02:21:25.321 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 02:21:25.322 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 02:21:25.322 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :5
+2018-06-23 02:21:25.323 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :false
+2018-06-23 02:21:25.341 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MastermindDualPanel - Instanciation du jeu Mastermind en mode Duel
+2018-06-23 02:21:25.364 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MastermindDualPanel - Jeu Mastermind en mode Duel - Génération de la combinaison secrète:1310
+2018-06-23 02:21:25.367 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Duel - Taille de la liste des possibilités :625
+2018-06-23 02:21:25.418 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-23 02:21:51.949 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 02:21:54.602 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 02:21:54.602 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 02:21:54.603 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 02:21:54.603 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 02:21:54.603 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :5
+2018-06-23 02:21:54.603 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :false
+2018-06-23 02:22:00.293 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Retour à l'accueil
+2018-06-23 02:22:21.591 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 02:22:26.571 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 02:22:26.571 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 02:22:26.571 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 02:22:26.571 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 02:22:26.572 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :7
+2018-06-23 02:22:26.572 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-23 02:22:26.574 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MastermindDualPanel - Instanciation du jeu Mastermind en mode Duel
+2018-06-23 02:22:26.576 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MastermindDualPanel - Jeu Mastermind en mode Duel - Génération de la combinaison secrète:0345
+2018-06-23 02:22:26.581 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Duel - Taille de la liste des possibilités :2401
+2018-06-23 02:22:26.606 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-23 02:25:13.376 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-23 02:25:13.444 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-23 02:25:13.453 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-23 02:25:13.453 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 02:25:13.561 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 02:25:18.248 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 02:25:21.961 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 02:25:21.962 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 02:25:21.962 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 02:25:21.963 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 02:25:21.963 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :8
+2018-06-23 02:25:21.964 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-23 02:25:21.979 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MastermindDualPanel - Instanciation du jeu Mastermind en mode Duel
+2018-06-23 02:25:22.003 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MastermindDualPanel - Jeu Mastermind en mode Duel - Génération de la combinaison secrète:2527
+2018-06-23 02:25:22.019 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Duel - Taille de la liste des possibilités :4096
+2018-06-23 02:25:22.086 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-23 02:26:21.131 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Duel - Combinaison Secrète Joueur Modèle de données :1245
+2018-06-23 02:26:36.189 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Duel - Proposition Joueur Modèle de données :3456
+2018-06-23 02:26:36.190 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Duel - proposition Ordinateur Mode Duel :
+2018-06-23 02:26:36.191 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.model.MastermindModel - Mode Duel - réponse correspondante à la proposition de l'ordinateur Mode Défenseur :
+2018-06-23 02:28:09.035 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-23 02:28:09.107 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-23 02:28:09.117 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-23 02:28:09.117 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 02:28:09.153 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 02:28:13.040 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 02:28:21.768 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 02:28:21.769 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 02:28:21.769 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 02:28:21.770 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :5
+2018-06-23 02:28:21.770 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :7
+2018-06-23 02:28:21.771 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :false
+2018-06-23 02:28:21.784 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Instanciation du jeu Mastermind en mode Challenger
+2018-06-23 02:28:21.810 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:1
+2018-06-23 02:28:21.811 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:12
+2018-06-23 02:28:21.811 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:124
+2018-06-23 02:28:21.811 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:1243
+2018-06-23 02:28:21.812 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.MasterMindChallengerPanel - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:12436
+2018-06-23 02:28:21.829 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-23 02:46:29.006 [main] INFO  com.openclassrooms.jeudelogique.Main - Mode développeur activé
+2018-06-23 02:46:29.355 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-23 02:46:29.435 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-23 02:46:29.443 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-23 02:46:29.443 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 02:46:29.491 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 02:46:32.441 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 02:46:35.108 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 02:46:35.109 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 02:46:35.109 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 02:46:35.110 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 02:46:35.110 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :10
+2018-06-23 02:46:35.111 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-23 02:46:35.121 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchChallengerPanel - Instanciation du jeu RecherchePlusMoins en mode Challenger
+2018-06-23 02:46:35.153 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.SearchChallengerPanel - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:1087
+2018-06-23 02:46:35.192 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-23 02:46:41.236 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Retour à l'accueil
+2018-06-23 02:47:10.803 [main] INFO  com.openclassrooms.jeudelogique.Main - Mode développeur activé
+2018-06-23 02:47:11.136 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-23 02:47:11.209 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-23 02:47:11.217 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-23 02:47:11.218 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 02:47:11.257 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 02:47:32.597 [main] INFO  com.openclassrooms.jeudelogique.Main - Mode développeur activé
+2018-06-23 02:47:32.929 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-23 02:47:32.995 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-23 02:47:33.002 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-23 02:47:33.003 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 02:47:33.046 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 03:05:43.162 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fen�tre principale
+2018-06-23 03:05:43.278 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fen�tre de l'application
+2018-06-23 03:05:43.284 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des mod�les de donn�es
+2018-06-23 03:05:43.285 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 03:05:43.318 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 03:06:00.502 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de d�but de partie
+2018-06-23 03:06:03.483 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 03:06:03.483 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 03:06:03.484 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 03:06:03.484 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 03:06:03.484 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :10
+2018-06-23 03:06:03.485 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode d�veloppeur :false
+2018-06-23 03:06:03.629 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchChallengerPanel - Instanciation du jeu RecherchePlusMoins en mode Challenger
+2018-06-23 03:06:03.656 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.SearchChallengerPanel - Jeu RecherchePlusMoins en mode Challenger - G�n�ration de la combinaison secr�te:0687
+2018-06-23 03:06:03.669 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - R�initialisation des mod�les de donn�es
+2018-06-23 03:07:06.066 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fen�tre principale
+2018-06-23 03:07:06.133 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fen�tre de l'application
+2018-06-23 03:07:06.141 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des mod�les de donn�es
+2018-06-23 03:07:06.142 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 03:07:06.179 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 03:07:24.289 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de d�but de partie
+2018-06-23 03:07:26.085 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 03:07:26.085 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 03:07:26.085 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 03:07:26.085 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 03:07:26.085 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :10
+2018-06-23 03:07:26.086 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode d�veloppeur :false
+2018-06-23 03:07:26.090 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchChallengerPanel - Instanciation du jeu RecherchePlusMoins en mode Challenger
+2018-06-23 03:07:26.105 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.SearchChallengerPanel - Jeu RecherchePlusMoins en mode Challenger - G�n�ration de la combinaison secr�te:0117
+2018-06-23 03:07:26.115 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - R�initialisation des mod�les de donn�es
+2018-06-23 03:08:42.060 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fen�tre principale
+2018-06-23 03:08:42.124 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fen�tre de l'application
+2018-06-23 03:08:42.131 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des mod�les de donn�es
+2018-06-23 03:08:42.131 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 03:08:42.168 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 03:08:49.060 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de d�but de partie
+2018-06-23 03:08:52.018 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 03:08:52.018 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 03:08:52.019 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 03:08:52.019 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 03:08:52.020 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :10
+2018-06-23 03:08:52.020 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode d�veloppeur :false
+2018-06-23 03:08:52.029 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchChallengerPanel - Instanciation du jeu RecherchePlusMoins en mode Challenger
+2018-06-23 03:08:52.054 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.SearchChallengerPanel - Jeu RecherchePlusMoins en mode Challenger - G�n�ration de la combinaison secr�te:3045
+2018-06-23 03:08:52.063 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - R�initialisation des mod�les de donn�es
+2018-06-23 03:09:23.800 [main] INFO  com.openclassrooms.jeudelogique.Main - Mode développeur activé
+2018-06-23 03:09:24.075 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fenêtre principale
+2018-06-23 03:09:24.135 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fenêtre de l'application
+2018-06-23 03:09:24.142 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des modèles de données
+2018-06-23 03:09:24.143 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 03:09:24.179 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 03:09:29.486 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de début de partie
+2018-06-23 03:09:30.877 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 03:09:30.878 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 03:09:30.879 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 03:09:30.879 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 03:09:30.880 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :10
+2018-06-23 03:09:30.880 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode développeur :true
+2018-06-23 03:09:30.890 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.SearchChallengerPanel - Instanciation du jeu RecherchePlusMoins en mode Challenger
+2018-06-23 03:09:30.907 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.SearchChallengerPanel - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:2197
+2018-06-23 03:09:30.932 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Réinitialisation des modèles de données
+2018-06-23 12:15:22.770 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fen�tre principale
+2018-06-23 12:15:22.861 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fen�tre de l'application
+2018-06-23 12:15:22.869 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des mod�les de donn�es
+2018-06-23 12:15:22.869 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 12:15:22.909 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 12:29:50.841 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fen�tre principale
+2018-06-23 12:29:50.908 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fen�tre de l'application
+2018-06-23 12:29:50.917 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des mod�les de donn�es
+2018-06-23 12:29:50.918 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 12:29:50.956 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 12:29:53.693 [AWT-EventQueue-0] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la boite dialogue de d�but de partie
+2018-06-23 12:29:56.670 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups RecherchePlusMoins :10
+2018-06-23 12:29:56.670 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases RecherchePlusMoins :4
+2018-06-23 12:29:56.670 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb coups Mastermind :10
+2018-06-23 12:29:56.671 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb cases Mastermind :4
+2018-06-23 12:29:56.671 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Nb chiffres utilisables Mastermind :10
+2018-06-23 12:29:56.671 [AWT-EventQueue-0] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Menu Fichier -> Nouveau jeu - Etat du mode d�veloppeur :false
+2018-06-23 12:30:19.744 [main] INFO  com.openclassrooms.jeudelogique.Main - Mode d�veloppeur activ�
+2018-06-23 12:30:20.027 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fen�tre principale
+2018-06-23 12:30:20.102 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fen�tre de l'application
+2018-06-23 12:30:20.109 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des mod�les de donn�es
+2018-06-23 12:30:20.109 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 12:30:20.143 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils
+2018-06-23 12:42:37.742 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Instanciation de la fen�tre principale
+2018-06-23 12:42:37.825 [main] DEBUG com.openclassrooms.jeudelogique.view.Fenetre - Largeur et hauteur de la fen�tre de l'application
+2018-06-23 12:42:37.832 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation des mod�les de donn�es
+2018-06-23 12:42:37.832 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation du menu
+2018-06-23 12:42:37.867 [main] TRACE com.openclassrooms.jeudelogique.view.Fenetre - Initialisation de la barre d'outils

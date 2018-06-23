@@ -375,7 +375,7 @@ public class Fenetre extends JFrame implements Observer {
 			properties.setProperty("param.nbChiffresAUtiliserMastermind", "10");
 			
 			// Traitement pour le mode developpeur
-			properties.setProperty("param.modeDeveloppeur", this.developerModeString);
+			properties.setProperty("param.modeDeveloppeur", "false");
 			properties.store(output, "Fichier de configuration config.properties");
 		} catch (IOException e1) {
 			e1.printStackTrace();

@@ -12,6 +12,7 @@ Ce projet consiste à recréer le jeu Mastermind en deux variantes.
 Pour tester le jeu :
 
      . Cloner le projet Mastermind (Projet 3) sur votre ordinateur.
-     . Depuis le terminal de votre PC ou mac, placez vous dans le dossier où se trouve le projet cloné.
-     . Executez la commande : java -jar P3.jar et le jeu se lance. 
+     . Depuis le terminal de votre PC ou mac, placez vous dans le dossier où vous avez le cloné projet.
+     . Executez la commande : java -jar P3.jar et le jeu se lance.
+     . Si vous voulez lancer l'application en mode développeur : java -jar P3.jar -dev 
      . Vous pouvez changer les paramètres du jeu (nombre d'essais, de chiffres ou de cases) à travers le fichier config.properties

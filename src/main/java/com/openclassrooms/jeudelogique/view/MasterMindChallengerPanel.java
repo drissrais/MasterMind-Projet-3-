@@ -6,6 +6,8 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import java.util.Random;
 
@@ -160,6 +162,21 @@ public class MasterMindChallengerPanel extends ZContainer implements Observer {
 		this.panel.add(northContent, BorderLayout.NORTH);
 		this.panel.add(centerContent, BorderLayout.CENTER);
 		this.panel.add(southContent, BorderLayout.SOUTH);
+
+		propositionTextField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				for (int i = 0; i < nbCases; i++) {
+					if (propositionTextField.getText().charAt(i) != ' ' && Integer.parseInt(
+							String.valueOf(propositionTextField.getText().charAt(i))) >= nbChiffresAUtiliser) {
+						String message = "Les chiffres uniquement entre 0 et " + (nbChiffresAUtiliser - 1)
+								+ " sont autorisés!\nVeuillez saisir à nouveau votre proposition.";
+						JOptionPane.showMessageDialog(null, message, "Attention", JOptionPane.WARNING_MESSAGE);
+						propositionTextField.setText("");
+					}
+				}
+			}
+		});
 
 		propositionTextField.addActionListener(new ActionListener() {
 

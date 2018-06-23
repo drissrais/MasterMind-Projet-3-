@@ -49,14 +49,14 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 	private String combinaisonSecreteOrdinateurModeDuel;
 	private String reponseOrdinateur = "", reponseJoueur = "";
 	private boolean developerMode;
-	
-	private static final Logger LOGGER=LogManager.getLogger();
+
+	private static final Logger LOGGER = LogManager.getLogger();
 
 	public MastermindDualPanel(Dimension dim, MastermindModel mod, int nbCases, int nbChiffresAUtiliser,
 			boolean developerMode) {
 		super(dim);
 		LOGGER.trace("Instanciation du jeu Mastermind en mode Duel");
-		
+
 		this.controller = new MastermindDualController(mod);
 		this.nbCases = nbCases;
 		this.nbChiffresAUtiliser = nbChiffresAUtiliser;
@@ -68,7 +68,7 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 	protected void initPanel() {
 		JPanel northContent = new JPanel();
 		northContent.setBackground(Color.WHITE);
-		northContent.setPreferredSize(new Dimension(800, 45));
+		northContent.setPreferredSize(new Dimension(800, 40));
 		JLabel welcomeMessage = new JLabel("mastermind | mode duel".toUpperCase());
 		welcomeMessage.setHorizontalAlignment(JLabel.CENTER);
 		welcomeMessage.setFont(comics30);
@@ -76,19 +76,20 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 		northContent.add(welcomeMessage);
 
 		JPanel centerContent = new JPanel();
-		centerContent.setPreferredSize(new Dimension(800, 410));
+		centerContent.setPreferredSize(new Dimension(800, 415));
 		centerContent.setBackground(Color.WHITE);
 
 		JTextArea texte = new JTextArea(
-				"l'ordinateur et vous jouez tour à tour, le premier à trouver la combinaison secrète\nde l'autre a gagné.\t"
-						.toUpperCase() + " # : Chiffre bien placé \t     O : Chiffre mal placé");
+				"l'ordinateur et vous jouez tour à tour, le premier à trouver la combinaison secrète\nde l'autre a gagné. "
+						+ "   # : Chiffre bien placé    O : Chiffre mal placé" + "\n(Chiffres compris entre 0 et "
+						+ (this.nbChiffresAUtiliser - 1) + " avec répétitions possibles)");
 		texte.setForeground(Color.BLUE);
-		texte.setPreferredSize(new Dimension(800, 50));
+		texte.setPreferredSize(new Dimension(800, 55));
 		texte.setFont(arial15);
 		texte.setEditable(false);
 		texte.setFocusable(false);
 		centerContent.add(texte);
-		
+
 		String str = "";
 		for (int i = 0; i < this.nbCases; i++) {
 			Random randomGenerator = new Random();
@@ -106,9 +107,11 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 			solution.setPreferredSize(new Dimension(120, 50));
 			solution.setFont(arial15);
 			solution.setForeground(Color.RED);
-			texte.setPreferredSize(new Dimension(600, 50));
+			texte.setPreferredSize(new Dimension(600, 55));
 			texte.setText(
-					"l'ordinateur et vous jouez tour à tour, le premier à trouver la combinaison secrète\nde l'autre a gagné.\t# : Chiffre bien placé  O : Chiffre mal placé");
+					"l'ordinateur et vous jouez tour à tour, le premier à trouver la combinaison secrète\nde l'autre a gagné.\t# : Chiffre bien placé  O : Chiffre mal placé"
+							+ "\n(Chiffres compris entre 0 et " + (this.nbChiffresAUtiliser - 1)
+							+ " avec répétitions possibles)");
 			centerContent.add(solution);
 		}
 
@@ -141,7 +144,7 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 		combinaisonTextField.setFont(arial15);
 		combinaisonTextField.requestFocusInWindow();
 		centerContent.add(combinaisonTextField);
-		
+
 		validerButton = new JButton("Valider");
 		validerButton.setPreferredSize(new Dimension(100, 25));
 		validerButton.setEnabled(false);
@@ -240,6 +243,13 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 					if (combinaisonTextField.getText().charAt(i) != ' ') {
 						activerBoutonValiderCombiSecrete++;
 					}
+					if (combinaisonTextField.getText().charAt(i) != ' ' && Integer.parseInt(
+							String.valueOf(combinaisonTextField.getText().charAt(i))) >= nbChiffresAUtiliser) {
+						String message = "Les chiffres uniquement entre 0 et " + (nbChiffresAUtiliser - 1)
+								+ " sont autorisés!\nVeuillez saisir à nouveau votre proposition.";
+						JOptionPane.showMessageDialog(null, message, "Attention", JOptionPane.WARNING_MESSAGE);
+						combinaisonTextField.setText("");
+					}
 				}
 				if (activerBoutonValiderCombiSecrete == nbCases) {
 					validerButton.setEnabled(true);
@@ -259,6 +269,21 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 			this.controller.setCombinaisonSecreteJoueurModeDuel(combinaisonTextField.getText());
 			combinaisonTextField.setEnabled(false);
 			validerButton.setEnabled(false);
+		});
+
+		propositionJoueurTextField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				for (int i = 0; i < nbCases; i++) {
+					if (propositionJoueurTextField.getText().charAt(i) != ' ' && Integer.parseInt(
+							String.valueOf(propositionJoueurTextField.getText().charAt(i))) >= nbChiffresAUtiliser) {
+						String message = "Les chiffres uniquement entre 0 et " + (nbChiffresAUtiliser - 1)
+								+ " sont autorisés!\nVeuillez saisir à nouveau votre proposition.";
+						JOptionPane.showMessageDialog(null, message, "Attention", JOptionPane.WARNING_MESSAGE);
+						propositionJoueurTextField.setText("");
+					}
+				}
+			}
 		});
 
 		propositionJoueurTextField.addActionListener((e) -> {
@@ -320,8 +345,10 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 		if (reponseJoueur.matches("[#]*") && reponseJoueur.length() == this.nbCases) {
 			LOGGER.trace("Jeu Mastermind en mode Duel - Fin de partie");
 			if (!(reponseOrdinateur.matches("[#]*"))) {
-				JOptionPane.showMessageDialog(null, "Perdu! L'ordinateur a trouvé en premier votre combinaison secrète.\n"
-						+ "La combinaison secrète de l'ordinateur était : " + this.combinaisonSecreteOrdinateurModeDuel,
+				JOptionPane.showMessageDialog(null,
+						"Perdu! L'ordinateur a trouvé en premier votre combinaison secrète.\n"
+								+ "La combinaison secrète de l'ordinateur était : "
+								+ this.combinaisonSecreteOrdinateurModeDuel,
 						"Fin de partie", JOptionPane.INFORMATION_MESSAGE);
 				String[] choix = { "Rejouer", "Revenir au menu", "Quitter" };
 				int rang = JOptionPane.showOptionDialog(null, "Voulez-vous rejouer?", "Rejouer",

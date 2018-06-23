@@ -73,9 +73,10 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 		centerContent.setPreferredSize(new Dimension(800, 410));
 		centerContent.setBackground(Color.WHITE);
 
-		JTextArea texte = new JTextArea("L'ordinateur a ".toUpperCase() + this.nbCoups
-				+ " essais pour trouver votre combinaison secrète.".toUpperCase()
-				+ "\n# : Chiffre bien placé\t O : Chiffre mal placé");
+		JTextArea texte = new JTextArea("L'ordinateur a " + this.nbCoups
+				+ " essais pour trouver votre combinaison secrète."
+				+ "\n# : Chiffre bien placé   O : Chiffre mal placé "
+				+ "  (Chiffres compris entre 0 et " + (this.nbChiffresAUtiliser - 1) + " avec répétitions possibles)");
 		texte.setForeground(Color.BLUE);
 		texte.setPreferredSize(new Dimension(800, 50));
 		texte.setFont(arial15);
@@ -181,6 +182,13 @@ public class MastermindDefenderPanel extends ZContainer implements Observer {
 				for (int i = 0; i < nbCases; i++) {
 					if (combinaisonTextField.getText().charAt(i) != ' ') {
 						activerBoutonValiderCombiSecrete++;
+					}
+					if (combinaisonTextField.getText().charAt(i) != ' ' && Integer.parseInt(
+							String.valueOf(combinaisonTextField.getText().charAt(i))) >= nbChiffresAUtiliser) {
+						String message = "Les chiffres uniquement entre 0 et " + (nbChiffresAUtiliser - 1)
+								+ " sont autorisés!\nVeuillez saisir à nouveau votre proposition.";
+						JOptionPane.showMessageDialog(null, message, "Attention", JOptionPane.WARNING_MESSAGE);
+						combinaisonTextField.setText("");
 					}
 				}
 				if (activerBoutonValiderCombiSecrete == nbCases) {
