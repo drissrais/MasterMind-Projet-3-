@@ -31,7 +31,7 @@ public class Main {
 
 		// Si l'application est lancée avec le paramètre -dev ou que la proprièté dans
 		// le fichier config est 'param.modeDeveloppeur=true'
-		if (config.getProperty("param.modeDeveloppeur").equals("true") || (args.length > 0 && args[0].equals("dev"))) {
+		if (config.getProperty("param.modeDeveloppeur").equals("true") || (args.length > 0 && args[0].equals("-dev"))) {
 			logger.info("Mode développeur activé");
 			developerMode = true;
 		}
