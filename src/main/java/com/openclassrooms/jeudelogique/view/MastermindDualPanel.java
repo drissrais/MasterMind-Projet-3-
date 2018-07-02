@@ -297,6 +297,33 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 	}
 
 	public void gestionFinDePartie(String reponseOrdinateur, String reponseJoueur) {
+		if (reponseJoueur.matches("[#]*") && reponseJoueur.length() == this.nbCases) {
+			LOGGER.trace("Jeu Mastermind en mode Duel - Fin de partie");
+			if ( (!reponseOrdinateur.equals("####")) || (!reponseOrdinateur.equals("#####")) ) {
+				JOptionPane.showMessageDialog(null,
+						"Perdu! L'ordinateur a trouvé en premier votre combinaison secrète.\n"
+								+ "La combinaison secrète de l'ordinateur était : "
+								+ this.combinaisonSecreteOrdinateurModeDuel,
+						"Fin de partie", JOptionPane.INFORMATION_MESSAGE);
+				String[] choix = { "Rejouer", "Revenir au menu", "Quitter" };
+				int rang = JOptionPane.showOptionDialog(null, "Voulez-vous rejouer?", "Rejouer",
+						JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
+				switch (choix[rang]) {
+				case "Rejouer":
+					controller.setChoixFinDePartie("Rejouer");
+					break;
+				case "Revenir au menu":
+					controller.setChoixFinDePartie("Revenir au menu");
+					break;
+				case "Quitter":
+					controller.setChoixFinDePartie("Quitter");
+					break;
+				default:
+					break;
+				}
+			}
+		}
+		
 		if (reponseOrdinateur.matches("[#]*") && reponseOrdinateur.length() == this.nbCases) {
 			LOGGER.trace("Jeu Mastermind en mode Duel - Fin de partie");
 			if (reponseJoueur.matches("[#]*") && reponseJoueur.length() == this.nbCases) {
@@ -324,32 +351,6 @@ public class MastermindDualPanel extends ZContainer implements Observer {
 				JOptionPane.showMessageDialog(null,
 						"Bravo!!! vous avez trouvé en premier la combinaison secrète de l'ordinateur.", "Fin de partie",
 						JOptionPane.INFORMATION_MESSAGE);
-				String[] choix = { "Rejouer", "Revenir au menu", "Quitter" };
-				int rang = JOptionPane.showOptionDialog(null, "Voulez-vous rejouer?", "Rejouer",
-						JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
-				switch (choix[rang]) {
-				case "Rejouer":
-					controller.setChoixFinDePartie("Rejouer");
-					break;
-				case "Revenir au menu":
-					controller.setChoixFinDePartie("Revenir au menu");
-					break;
-				case "Quitter":
-					controller.setChoixFinDePartie("Quitter");
-					break;
-				default:
-					break;
-				}
-			}
-		}
-		if (reponseJoueur.matches("[#]*") && reponseJoueur.length() == this.nbCases) {
-			LOGGER.trace("Jeu Mastermind en mode Duel - Fin de partie");
-			if (!(reponseOrdinateur.matches("[#]*"))) {
-				JOptionPane.showMessageDialog(null,
-						"Perdu! L'ordinateur a trouvé en premier votre combinaison secrète.\n"
-								+ "La combinaison secrète de l'ordinateur était : "
-								+ this.combinaisonSecreteOrdinateurModeDuel,
-						"Fin de partie", JOptionPane.INFORMATION_MESSAGE);
 				String[] choix = { "Rejouer", "Revenir au menu", "Quitter" };
 				int rang = JOptionPane.showOptionDialog(null, "Voulez-vous rejouer?", "Rejouer",
 						JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);

@@ -6,31 +6,30 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.BorderFactory;
-import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.text.MaskFormatter;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.openclassrooms.jeudelogique.controller.SearchChallengerController;
 import com.openclassrooms.jeudelogique.model.SearchModel;
 import com.openclassrooms.jeudelogique.observer.Observer;
 import com.openclassrooms.jeudelogique.utilities.RandomCombination;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 // Classe relative au jeu RecherchePlusMoins en mode challenger.
 public class SearchChallengerPanel extends ZContainer implements Observer {
 	private static final Logger LOGGER = LogManager.getLogger();
 
 	private JLabel propositionLabel;
-	private JFormattedTextField propositionTextField;
+	private JTextField propositionTextField;
 	private JTextArea storyTextArea;
 	private JLabel nombreCoupLabel;
 	private SearchChallengerController controller;
@@ -102,46 +101,47 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 		propositionLabel.setPreferredSize(new Dimension(300, 50));
 		propositionLabel.setFont(arial15);
 		centerContent.add(propositionLabel);
-		
-		//Mise en place du JFormattedTextField suivant le nombre de cases choisies.
-		try {
-			switch (this.nbCases) {
-			case 4:
-				MaskFormatter maskFormatter = new MaskFormatter("####");
-				propositionTextField = new JFormattedTextField(maskFormatter);
-				break;
-			case 5:
-				MaskFormatter maskFormatter2 = new MaskFormatter("#####");
-				propositionTextField = new JFormattedTextField(maskFormatter2);
-				break;
-			case 6:
-				MaskFormatter maskFormatter3 = new MaskFormatter("######");
-				propositionTextField = new JFormattedTextField(maskFormatter3);
-				break;
-			case 7:
-				MaskFormatter maskFormatter4 = new MaskFormatter("#######");
-				propositionTextField = new JFormattedTextField(maskFormatter4);
-				break;
-			case 8:
-				MaskFormatter maskFormatter5 = new MaskFormatter("########");
-				propositionTextField = new JFormattedTextField(maskFormatter5);
-				break;
-			case 9:
-				MaskFormatter maskFormatter6 = new MaskFormatter("#########");
-				propositionTextField = new JFormattedTextField(maskFormatter6);
-				break;
-			case 10:
-				MaskFormatter maskFormatter7 = new MaskFormatter("##########");
-				propositionTextField = new JFormattedTextField(maskFormatter7);
-				break;
-			default:
-				LOGGER.error(
-						"Jeu RecherchePlusMoins en mode Challenger - Erreur d'initialisation pour le JFormattedTextField");
-				break;
-			}
-		} catch (ParseException e) {
-			LOGGER.error("Jeu RecherchePlusMoins en mode Challenger -" + e.getMessage());
-		}
+
+		// Mise en place du JFormattedTextField suivant le nombre de cases choisies.
+//		try {
+//			switch (this.nbCases) {
+//			case 4:
+//				MaskFormatter maskFormatter = new MaskFormatter("####");
+//				propositionTextField = new JFormattedTextField(maskFormatter);
+//				break;
+//			case 5:
+//				MaskFormatter maskFormatter2 = new MaskFormatter("#####");
+//				propositionTextField = new JFormattedTextField(maskFormatter2);
+//				break;
+//			case 6:
+//				MaskFormatter maskFormatter3 = new MaskFormatter("######");
+//				propositionTextField = new JFormattedTextField(maskFormatter3);
+//				break;
+//			case 7:
+//				MaskFormatter maskFormatter4 = new MaskFormatter("#######");
+//				propositionTextField = new JFormattedTextField(maskFormatter4);
+//				break;
+//			case 8:
+//				MaskFormatter maskFormatter5 = new MaskFormatter("########");
+//				propositionTextField = new JFormattedTextField(maskFormatter5);
+//				break;
+//			case 9:
+//				MaskFormatter maskFormatter6 = new MaskFormatter("#########");
+//				propositionTextField = new JFormattedTextField(maskFormatter6);
+//				break;
+//			case 10:
+//				MaskFormatter maskFormatter7 = new MaskFormatter("##########");
+//				propositionTextField = new JFormattedTextField(maskFormatter7);
+//				break;
+//			default:
+//				LOGGER.error(
+//						"Jeu RecherchePlusMoins en mode Challenger - Erreur d'initialisation pour le JFormattedTextField");
+//				break;
+//			}
+//		} catch (ParseException e) {
+//			LOGGER.error("Jeu RecherchePlusMoins en mode Challenger -" + e.getMessage());
+//		}
+		propositionTextField = new JTextField();
 		propositionTextField.setPreferredSize(new Dimension(300, 30));
 		propositionTextField.setHorizontalAlignment(JTextField.CENTER);
 		propositionTextField.setForeground(Color.BLUE);
@@ -173,15 +173,39 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 		this.panel.add(northContent, BorderLayout.NORTH);
 		this.panel.add(centerContent, BorderLayout.CENTER);
 		this.panel.add(southContent, BorderLayout.SOUTH);
-		
+
 		// Définition des listeners
+		propositionTextField.addKeyListener(new KeyAdapter() {
+			public void keyReleased(KeyEvent event) {
+				if (!isNumeric(event.getKeyChar()))
+					propositionTextField
+							.setText(propositionTextField.getText().replace(String.valueOf(event.getKeyChar()), ""));
+			}
+
+			// Retourne true si le paramètre est numérique, false dans le cas contraire
+			private boolean isNumeric(char carac) {
+				try {
+					Integer.parseInt(String.valueOf(carac));
+				} catch (NumberFormatException e) {
+					return false;
+				}
+				return true;
+			}
+		});
+
 		propositionTextField.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				nbCoups--;
-				controller.setMode("CHALLENGER");
-				controller.setProposition(((JTextField) e.getSource()).getText());
+				if (propositionTextField.getText().length() == nbCases) {
+					nbCoups--;
+					controller.setMode("CHALLENGER");
+					controller.setProposition(((JTextField) e.getSource()).getText());
+				} else {
+					String message = "Veuillez entrer une combinaison de " + nbCases + " chiffres!";
+					JOptionPane.showMessageDialog(null, message, "Erreur", JOptionPane.ERROR_MESSAGE);
+					propositionTextField.setText("");
+				}
 			}
 		});
 	}
@@ -236,7 +260,7 @@ public class SearchChallengerPanel extends ZContainer implements Observer {
 	public int getNbEssais() {
 		return nbCoupsConstant - this.nbCoups;
 	}
-	
+
 	// Implémentation du pattern Observer
 
 	@Override
